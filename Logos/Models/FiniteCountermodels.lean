@@ -25,7 +25,7 @@ def deadEndFinite : FiniteFrame where
   complete := by
     intro w
     cases w
-    simp
+    exact List.Mem.head _
 
 abbrev deadEndFrame : Frame := deadEndFinite.toFrame
 
@@ -92,7 +92,9 @@ def arrowFinite : FiniteFrame where
   worlds := [.source, .target]
   complete := by
     intro w
-    cases w <;> simp
+    cases w with
+    | source => exact List.Mem.head _
+    | target => exact List.Mem.tail _ (List.Mem.head _)
 
 abbrev arrowFrame : Frame := arrowFinite.toFrame
 
@@ -106,8 +108,24 @@ theorem arrow_reflexive : Reflexive arrowFrame := by
 
 theorem arrow_transitive : Transitive arrowFrame := by
   intro w v x hwv hvx
-  cases w <;> cases v <;> cases x <;>
-    simp [arrowAccess] at hwv hvx ⊢
+  cases w with
+  | source =>
+      cases v with
+      | source =>
+          cases x with
+          | source => exact True.intro
+          | target => exact True.intro
+      | target =>
+          cases x with
+          | source => exact False.elim hvx
+          | target => exact True.intro
+  | target =>
+      cases v with
+      | source => exact False.elim hwv
+      | target =>
+          cases x with
+          | source => exact False.elim hvx
+          | target => exact True.intro
 
 theorem arrow_serial : Serial arrowFrame := by
   intro w
@@ -176,7 +194,11 @@ def pathFinite : FiniteFrame where
   worlds := [.left, .center, .right]
   complete := by
     intro w
-    cases w <;> simp
+    cases w with
+    | left => exact List.Mem.head _
+    | center => exact List.Mem.tail _ (List.Mem.head _)
+    | right =>
+        exact List.Mem.tail _ (List.Mem.tail _ (List.Mem.head _))
 
 abbrev pathFrame : Frame := pathFinite.toFrame
 
@@ -186,7 +208,22 @@ theorem path_reflexive : Reflexive pathFrame := by
 
 theorem path_symmetric : Symmetric pathFrame := by
   intro w v hwv
-  cases w <;> cases v <;> simp [pathAccess] at hwv ⊢
+  cases w with
+  | left =>
+      cases v with
+      | left => exact True.intro
+      | center => exact True.intro
+      | right => exact False.elim hwv
+  | center =>
+      cases v with
+      | left => exact True.intro
+      | center => exact True.intro
+      | right => exact True.intro
+  | right =>
+      cases v with
+      | left => exact False.elim hwv
+      | center => exact True.intro
+      | right => exact True.intro
 
 theorem path_serial : Serial pathFrame := by
   intro w

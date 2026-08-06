@@ -23,3 +23,5 @@ jobs:
           test: false
           lint: false
           use-mathlib-cache: false
+      - name: Run axiom audit
+        run: lake env lean Logos/Audit.lean

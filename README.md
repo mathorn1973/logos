@@ -21,4 +21,4 @@ It contains no definition of God, positivity, essence, creation, freedom, or TWI
 
 Status: **FORMAL LABORATORY — CUT 1 IN PREPARATION**.
 
-License: not yet selected.
+License: MIT, copyright 2026 A. M. Thorn.

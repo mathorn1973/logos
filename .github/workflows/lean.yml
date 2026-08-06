@@ -1,0 +1,25 @@
+name: Lean
+
+on:
+  push:
+    branches: ["main", "cut/**"]
+  pull_request:
+    branches: ["main"]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Reject unfinished proofs
+        run: |
+          if grep -R -n --include='*.lean' -E '\bsorry\b|sorryAx' .; then
+            exit 1
+          fi
+      - uses: leanprover/lean-action@v1
+        with:
+          build: true
+          test: false
+          lint: false
+          use-mathlib-cache: false

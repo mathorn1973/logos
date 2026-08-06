@@ -1,0 +1,6 @@
+name = "logos"
+version = "0.1.0"
+defaultTargets = ["Logos"]
+
+[[lean_lib]]
+name = "Logos"

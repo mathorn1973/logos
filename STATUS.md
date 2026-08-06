@@ -6,7 +6,7 @@ STATE       FORMAL LABORATORY
 CUT         modal-foundation-1
 AUTHORITY   none; no released theorem catalogue exists yet
 CANON       none
-LICENSE     not selected
+LICENSE     MIT; copyright 2026 A. M. Thorn
 ```
 
 ## Non-negotiable boundary

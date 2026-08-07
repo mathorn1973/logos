@@ -45,3 +45,5 @@ jobs:
         run: lake env lean Logos/FactSufficientExplanationAudit.lean
       - name: Run contingent absolute audit
         run: lake env lean Logos/ContingentAbsoluteAudit.lean
+      - name: Run grounded modality audit
+        run: lake env lean Logos/GroundedModalityAudit.lean

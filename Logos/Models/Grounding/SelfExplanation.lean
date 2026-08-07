@@ -39,7 +39,7 @@ theorem contingent_explanation_proper :
     ContingentExplanationProper M E := by
   intro a x hx hNotNecessary hExplain hEq
   cases hEq
-  cases x with
+  cases a with
   | root =>
       exact False.elim (hNotNecessary root_necessary)
   | node n =>

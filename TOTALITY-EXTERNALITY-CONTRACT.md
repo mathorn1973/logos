@@ -1,14 +1,14 @@
 # DESIGN CONTRACT - TOTALITY-EXTERNALITY-1
 
-Status: **NON-CANONICAL PRE-PROMOTION CONTRACT**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
-This contract is the authoritative preregistration for the restacked `TOTALITY-EXTERNALITY-1` cut against protected `main` after `TOTALITY-REGRESS-1`.
+This contract records the accepted `TOTALITY-EXTERNALITY-1` cut after promotion to protected `main`.
 
-The original organic branch contract is historical only. Its contract-before-proof ordering could not be independently reconstructed from the available repository interface, so this restack began from a fresh contract committed before the restacked Lean implementation.
+The restack was rebuilt against accepted `TOTALITY-REGRESS-1`. The original organic branch contract is historical only because its contract-before-proof ordering could not be independently reconstructed. A fresh preregistration was committed before the restacked Lean implementation.
 
-**Amendment A1.** Semantic review after the first green comparison run found that the original R3 criterion was insufficient: with `explainsFact` kept primitive, one model satisfying `E_expl` while old E fails does not by itself establish a logical weakening. This amendment is committed before the additional bridge-order tests implementing the corrected criterion below. No already-proved main theorem depends on the erroneous weakening claim.
+During review, Amendment A1 corrected an important premise-order mistake before promotion: with `explainsFact` primitive, a model satisfying `E_expl` while old E fails does not by itself establish that `E_expl` is weaker. The accepted cut therefore distinguishes unbridged independence from bridge-relative ordering.
 
-## 1. Exact problem inherited from TOTALITY-REGRESS-1
+## 1. Problem inherited from TOTALITY-REGRESS-1
 
 The accepted totality theorem uses:
 
@@ -26,39 +26,39 @@ OR
 exists a,
   Actual(a)
   and Necessary(a)
-  and ActualGroundsFact(a, totality)
+  and ActualGroundsFact(a,totality)
   and not inside(a)
 ```
 
-The inferential roles are not symmetric. The `not inside(a)` clause is E instantiated at the witness supplied by F4. The genuinely additional step is modal: if that external witness were non-necessary, C would place it back inside the represented totality, contradicting E. Thus C forces the witness to be necessary.
+The inferential roles are asymmetric.
 
-The accepted independence suite proves that F4, E, and C are non-redundant. It does not show that they are equally distant from the conclusion. This cut attacks E and the role structure surrounding it.
+`not inside(a)` is supplied directly by E for the witness produced by F4. The derived step is necessity: if that witness were non-necessary, C would place it inside the represented totality, contradicting E.
 
-## 2. Role split
+The earlier F4/E/C countermodels establish non-redundancy. They do not imply that all premises are equally distant from the conclusion.
 
-Introduce two primitive relations:
+## 2. Primitive role split
+
+The cut introduces separate primitive relations:
 
 ```text
 constitutesFact
 explainsFact
 ```
 
-with intended bookkeeping readings:
+with bookkeeping readings:
 
 ```text
 constitutesFact  internal or constitutive support for a fact
 explainsFact     a source registered as answering why the fact obtains
 ```
 
-The formal layer must not define either relation in terms of the other.
+Neither relation is defined from the other.
 
-The word `explains` is only a typed relation label in this cut. No definition may silently include adequacy, completeness, non-circularity, sufficient reason, or any other normative success condition. Those commitments, if needed, must be explicit later premises.
-
-R1 and R2 below therefore establish semantic non-identification only. They do not constitute a philosophical theory of explanation.
+The word `explains` is only a typed relation label here. No definition silently includes adequacy, completeness, non-circularity, sufficient reason, or any other normative success condition.
 
 ## 3. Generic F4 and explanatory EF4
 
-The accepted fact-level sufficient-ground principle is:
+Accepted generic F4 is:
 
 ```text
 F4(p):
@@ -69,7 +69,7 @@ DerivedFact(p)
 
 where `DerivedFact` uses generic `groundsFact`.
 
-The proposed explanation-specific principle is:
+Explanation-specific EF4 is:
 
 ```text
 EF4(p):
@@ -80,46 +80,53 @@ ExplainedFact(p)
 
 where `ExplainedFact` uses `explainsFact`.
 
-At the primitive-language level, neither relation contains the other. The cut must therefore test both directions:
+The accepted comparison suite proves:
 
 ```text
-R4  F4 holds and EF4 fails
-R5  EF4 holds and F4 fails
+without any bridge:
+  F4 does not imply EF4
+  EF4 does not imply F4
 ```
 
-If both elaborate, F4 and EF4 are independent in the unbridged semantics.
+Thus F4 and EF4 are independent in the primitive semantics.
 
-### Optional bridge G
+## 4. Bridge G
 
-Define separately:
+The cut separately defines:
 
 ```text
 G = ExplanationImpliesGrounding:
-ActualExplainsFact(a,p) -> ActualGroundsFact(a,p)
+ActualExplainsFact(a,p)
+->
+ActualGroundsFact(a,p)
 ```
 
-G is not definitional and is not part of the main theorem package unless explicitly passed.
+G is not definitional and is not a premise of the deepest theorem unless explicitly passed elsewhere.
 
-Under G, Lean may prove:
+Under G, Lean proves:
 
 ```text
 EF4 -> F4
 ```
 
-To determine whether this implication is strict, the R4 model must also satisfy G. If it does, then:
+The comparison model also proves:
 
 ```text
 G + F4 does not imply EF4
-G + EF4 implies F4
 ```
 
-so EF4 is strictly stronger than F4 relative to G.
+Therefore:
 
-This is the exact test for the premise-strengthening trap. If established, the cut must state plainly that weakening externality while replacing F4 with EF4 is not a net premise weakening.
+```text
+relative to G:
+EF4 is strictly stronger than F4
+```
 
-## 4. Old E and explanatory E_expl
+This is a load-bearing premise-accounting result. Replacing F4 with EF4 is not a weakening if explanation is required to be a form of grounding.
 
-Old E is:
+## 5. Old E and explanatory E_expl
+
+Old externality is:
 
 ```text
 E:
@@ -128,7 +135,7 @@ ActualGroundsFact(a,totality)
 not inside(a)
 ```
 
-The role-specific premise is:
+Role-specific explanatory externality is:
 
 ```text
 E_expl:
@@ -137,40 +144,41 @@ ActualExplainsFact(a,totality)
 not inside(a)
 ```
 
-Because `explainsFact` is primitive, E and E_expl are not automatically ordered.
-
-### Unbridged comparison
-
-The cut must test both directions:
+Without G, the accepted comparison models prove both directions of separation:
 
 ```text
-R3a  E_expl holds and E fails
-R3b  E holds and E_expl fails
+E_expl with not E
+E with not E_expl
 ```
 
-If both elaborate, E and E_expl are independent in the unbridged semantics.
+So E and E_expl are independent in the unbridged primitive semantics.
 
-### Bridged comparison
-
-Under G, every explainer is a generic fact ground, so Lean may prove:
+Under G, Lean proves:
 
 ```text
-G + E -> E_expl
+E -> E_expl
 ```
 
-The R3a model must also satisfy G. If so, it witnesses strict weakening relative to G:
+and the mixed-role model satisfies:
 
 ```text
-G + E implies E_expl
-but
-G + E_expl does not imply E
+G
+E_expl
+not E
 ```
 
-Only in this explicitly bridged sense may the cut describe E_expl as weaker than old E.
+Therefore:
 
-## 5. Mandatory comparison suite
+```text
+relative to G:
+E_expl is strictly weaker than E
+```
 
-The comparison layer must elaborate before promotion of the main theorem layer.
+This weakening claim is valid only with the bridge stated explicitly.
+
+## 6. Accepted comparison suite
+
+The promoted cut contains the following witnesses.
 
 ### R1 - constitution without explanation
 
@@ -186,9 +194,7 @@ ActualExplainsFact(a,p)
 not ActualConstitutesFact(a,p)
 ```
 
-### R3a - E_expl without E
-
-Same totality model:
+### R3a - E_expl without E under G
 
 ```text
 G
@@ -196,18 +202,14 @@ E_expl
 not E
 ```
 
-### R3b - E without E_expl
-
-A separate unbridged model:
+### R3b - E without E_expl without G
 
 ```text
 E
 not E_expl
 ```
 
-This demonstrates that no weakening relation exists without G.
-
-### R4 - F4 without EF4
+### R4 - F4 without EF4 under G
 
 ```text
 G
@@ -215,26 +217,24 @@ F4
 not EF4
 ```
 
-### R5 - EF4 without F4
+### R5 - EF4 without F4 without G
 
 ```text
 EF4
 not F4
 ```
 
-R4 and R5 establish primitive independence. R4 together with the theorem `G + EF4 -> F4` establishes strict strengthening of EF4 relative to G.
+Together with the bridge theorems, these models establish the exact premise-order map rather than a verbal relabeling.
 
-No documentation may describe the total premise package as weaker merely because E is factorized.
+## 7. Explicit E_expl theorem layer
 
-## 6. First theorem layer: explicit E_expl
-
-The first theorem layer may use:
+The first accepted theorem layer uses:
 
 ```text
 EF4 + E_expl + C
 ```
 
-and prove:
+and proves:
 
 ```text
 NecessaryFact(totality)
@@ -246,13 +246,13 @@ exists a,
   and not inside(a)
 ```
 
-This is a role-separated analogue of the accepted totality theorem. It is conditional on EF4, not on generic F4.
+This theorem is conditional on EF4, not on generic F4.
 
-The `not inside(a)` clause is still supplied by E_expl in this layer. Only necessity of the witness is derived from C.
+`not inside(a)` is supplied directly by E_expl in this layer. Necessity of the witness is derived from C.
 
-## 7. Deep theorem layer: derive E_expl
+## 8. Derived externality layer
 
-The deeper target removes primitive E_expl.
+The deeper layer removes primitive E_expl.
 
 ### S - scope coverage
 
@@ -267,7 +267,7 @@ then a explains every entity inside the claimed explanatory scope
 no actual entity explains itself
 ```
 
-Then Lean must prove directly:
+Lean proves directly:
 
 ```text
 S + I -> E_expl
@@ -275,17 +275,15 @@ S + I -> E_expl
 
 If an explainer were inside the represented totality, S would make it explain itself and I would reject that self-relation.
 
-This theorem concerns the chosen primitive explanation relation. It does not prove that this relation is metaphysically adequate.
+## 9. Deep accepted theorem
 
-## 8. Deep theorem boundary
-
-The deepest theorem allowed in this cut has exactly the substantive package:
+The deepest theorem uses exactly the substantive package:
 
 ```text
 EF4 + S + I + C
 ```
 
-and conclusion:
+and proves:
 
 ```text
 NecessaryFact(totality)
@@ -297,89 +295,73 @@ exists a,
   and not inside(a)
 ```
 
-Negative boundary:
+The proof derives outside-ness from S + I and necessity from S + I + C.
+
+It does not package those premises into an externality record and call an earlier theorem.
+
+## 10. Independence of S and I
+
+The accepted model suite also shows:
+
+```text
+without S:
+  I and C can hold while pure contingency survives
+
+without I:
+  S and C can hold while pure contingency survives
+```
+
+Thus S and I are non-redundant within the deep package.
+
+## 11. Negative boundary
+
+The deepest theorem contains:
 
 ```text
 NO A2 / WellFounded
 NO A3 / common_ground
 NO old E
 NO ExternalRegressTotalityAxioms
-NO primitive E_expl in the deep theorem
-NO ExternalExplanationAxioms conversion inside the deep theorem file
+NO primitive E_expl premise
+NO ExternalExplanationAxioms conversion in the deep theorem source
 NO A6-A8
 NO God predicate
 NO Goedel-Scott premise
 NO TWIST-J dependency
 ```
 
-The proof should derive necessity directly from S + I + C and derive outside-ness directly from S + I. It must not obtain the result by packaging those premises into an externality record and calling an earlier theorem.
+This boundary is enforced both by theorem signatures and by a static CI scan of the deep theorem source.
 
-## 9. Independence of S and I
+## 12. Promotion audit record
 
-### Without S
+The cut was promoted only after all of the following passed:
 
-I and C may hold while an internal contingent entity is registered as explaining the totality fact without covering members in its alleged scope. Pure contingency must remain satisfiable.
+1. fresh contract committed before restacked Lean implementation;
+2. Amendment A1 committed before the corrected bridge-order comparison layer;
+3. whole project build under the pinned Lean toolchain;
+4. no `sorry` or `sorryAx`;
+5. R1 and R2 role-separation models;
+6. R3a and R3b externality-order models;
+7. theorem `G + E -> E_expl`;
+8. R4 and R5 F4/EF4 models;
+9. theorem `G + EF4 -> F4`;
+10. explicit-E_expl theorem with no A2 or A3;
+11. theorem `S + I -> E_expl`;
+12. no-S and no-I countermodels;
+13. deep theorem with no A2, A3, old E, primitive E_expl, or forbidden externality-record conversion;
+14. central axiom audit;
+15. accepted-core boundary audit;
+16. dedicated premise-comparison audit;
+17. scope audit;
+18. totality-externality type-boundary audit;
+19. static regression guard for externality and A2/A3 records;
+20. no theological interpretation in the proof core.
 
-### Without I
+## 13. Interpretation boundary
 
-S and C may hold because an internal contingent explainer is allowed to explain itself. Pure contingency must remain satisfiable.
+The accepted cut does not prove that explanation is metaphysically fundamental or that every contingent fact has an adequate explanation.
 
-These models establish that S and I are non-redundant within the deep package.
-
-## 10. Boundary audits
-
-### B1 - explicit-E_expl theorem
-
-A wrapper must elaborate from `CompleteExplanationAxioms` and contain no A2 or A3 record.
-
-### B2 - deep theorem
-
-A wrapper must elaborate from `CompleteScopedExplanationAxioms` alone.
-
-In addition to the type audit, CI must statically reject the following names in the deep theorem source:
-
-```text
-ExternalRegressTotalityAxioms
-ExternalExplanationAxioms
-FoundationAxioms
-StructuralAxioms
-NecessaryExistenceAxioms
-NecessaryGroundAxioms
-grounding_wellFounded
-common_ground
-```
-
-The static check exists because a clean public signature alone would not detect an internal conversion through a forbidden stronger record.
-
-## 11. Acceptance tests
-
-The cut is acceptable only if:
-
-1. the fresh restack contract was committed before the restacked Lean implementation;
-2. Amendment A1 precedes the new bridge-order tests R3b and the bridged comparison theorems;
-3. whole project builds under the pinned Lean toolchain;
-4. no `sorry` or `sorryAx` occurs;
-5. R1 and R2 elaborate;
-6. R3a elaborates with G;
-7. R3b elaborates without G;
-8. Lean proves `G + E -> E_expl`;
-9. documentation calls E_expl weaker than E only relative to G;
-10. R4 elaborates with G;
-11. R5 elaborates;
-12. Lean proves `G + EF4 -> F4`;
-13. documentation records F4/EF4 independence without G and strict EF4 strengthening relative to G;
-14. the explicit-E_expl theorem has no A2 or A3 dependency;
-15. `S + I -> E_expl` elaborates;
-16. no-S and no-I countermodels elaborate;
-17. the deep theorem contains no A2, A3, old E, primitive E_expl, or externality-record conversion;
-18. central, scope, type-boundary, and static boundary audits pass;
-19. no theological interpretation enters the proof core.
-
-## 12. Interpretation boundary
-
-A successful cut will not prove that explanation is metaphysically fundamental or that every contingent fact has an adequate explanation.
-
-Its strongest conditional result is:
+Its strongest conditional map is:
 
 ```text
 EF4 + S + I + C
@@ -387,7 +369,7 @@ EF4 + S + I + C
 pure contingency fails
 ```
 
-The premise audit must remain visible:
+The premise audit remains part of the result:
 
 ```text
 unbridged:
@@ -395,10 +377,10 @@ unbridged:
   E and E_expl are independent
 
 with G = ExplanationImpliesGrounding:
-  EF4 is stronger than F4
-  E_expl is weaker than E
+  EF4 is strictly stronger than F4
+  E_expl is strictly weaker than E
 ```
 
-Thus the cut may successfully factor externality without producing a globally weaker metaphysical package. That is a legitimate result, not a failure.
+Therefore `TOTALITY-EXTERNALITY-1` is a successful factorization and premise-accounting cut, not a proof that the total metaphysical premise package became strictly weaker.
 
-Whether EF4, G, S, or I is philosophically defensible remains a human question and the explicit attack surface for later cuts.
+The live philosophical questions move to EF4 and to the adequacy of self-explanation. Those are attacked in later cuts rather than smuggled into the meaning of `explainsFact`.

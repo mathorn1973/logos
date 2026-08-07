@@ -61,6 +61,11 @@ import Logos
 #print axioms Logos.Grounding.absoluteGround_is_necessarilyAseitic
 #print axioms Logos.Grounding.exists_unique_necessarilyAseitic_absoluteGround
 
+#print axioms Logos.Grounding.regress_totality_necessary_or_external_ground
+#print axioms Logos.Grounding.external_totality_ground_is_necessary
+#print axioms Logos.Grounding.contingent_totality_forces_necessary_reality
+#print axioms Logos.Grounding.no_pure_contingent_reality
+
 #print axioms Logos.GroundingModels.free_grounding_wellFounded
 #print axioms Logos.GroundingModels.freeCreationAxioms
 #print axioms Logos.GroundingModels.free_ground_is_absolute
@@ -105,3 +110,24 @@ import Logos
 #print axioms Logos.GroundingModels.MinimalNecessity.twoRoot_two_necessary_ungrounded
 #print axioms Logos.GroundingModels.MinimalNecessity.brute_A4Prime_fails
 #print axioms Logos.GroundingModels.MinimalNecessity.brute_A4_iff_A4Prime
+
+#print axioms Logos.GroundingModels.TotalityRegress.regress_step
+#print axioms Logos.GroundingModels.TotalityRegress.completeTotalityAxioms
+#print axioms Logos.GroundingModels.TotalityRegress.totality_not_necessary
+#print axioms Logos.GroundingModels.TotalityRegress.positive_totality_forces_external_necessary_ground
+#print axioms Logos.GroundingModels.TotalityRegress.InternalGround.iRegressStep
+#print axioms Logos.GroundingModels.TotalityRegress.InternalGround.iFactAxioms
+#print axioms Logos.GroundingModels.TotalityRegress.InternalGround.internal_totality_not_necessary
+#print axioms Logos.GroundingModels.TotalityRegress.InternalGround.every_internal_entity_nonNecessary
+#print axioms Logos.GroundingModels.TotalityRegress.InternalGround.externality_fails
+#print axioms Logos.GroundingModels.TotalityRegress.InternalGround.pure_contingency_survives_without_externality
+
+#print axioms Logos.GroundingModels.TotalityRegressIndependence.IncompleteCoverage.externalAxioms
+#print axioms Logos.GroundingModels.TotalityRegressIndependence.IncompleteCoverage.external_nonNecessary
+#print axioms Logos.GroundingModels.TotalityRegressIndependence.IncompleteCoverage.completeness_fails
+#print axioms Logos.GroundingModels.TotalityRegressIndependence.IncompleteCoverage.pure_contingency_survives_without_completeness
+#print axioms Logos.GroundingModels.TotalityRegressIndependence.NoFactSufficientGround.totality_not_derived
+#print axioms Logos.GroundingModels.TotalityRegressIndependence.NoFactSufficientGround.completeness_holds
+#print axioms Logos.GroundingModels.TotalityRegressIndependence.NoFactSufficientGround.externality_holds
+#print axioms Logos.GroundingModels.TotalityRegressIndependence.NoFactSufficientGround.fact_A4Prime_fails
+#print axioms Logos.GroundingModels.TotalityRegressIndependence.NoFactSufficientGround.pure_contingency_survives_without_fact_A4Prime

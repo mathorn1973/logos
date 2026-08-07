@@ -6,9 +6,14 @@ import Logos.Logic.FiniteFrame
 import Logos.Models.FiniteCountermodels
 import Logos.Ontology.ClaimStatus
 import Logos.Ontology.Grounding.Language
+import Logos.Ontology.Grounding.FactLanguage
 import Logos.Systems.AbsoluteGround.Axioms
 import Logos.Systems.AbsoluteGround.Theorems
+import Logos.Systems.TotalityRegress.Axioms
+import Logos.Systems.TotalityRegress.Theorems
 import Logos.Models.Grounding.FreeCreation
 import Logos.Models.Grounding.Independence
 import Logos.Models.Grounding.InfiniteRegress
 import Logos.Models.Grounding.MinimalNecessity
+import Logos.Models.Grounding.TotalityRegress
+import Logos.Models.Grounding.TotalityRegressIndependence

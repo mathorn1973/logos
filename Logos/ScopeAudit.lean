@@ -1,0 +1,15 @@
+import Logos
+
+#print axioms Logos.Grounding.totality_explainer_is_outside
+#print axioms Logos.Grounding.totality_explainer_is_necessary_from_scope
+#print axioms Logos.Grounding.contingent_totality_forces_necessary_reality_from_scope
+#print axioms Logos.Grounding.no_pure_contingency_from_scope
+
+#print axioms Logos.GroundingModels.TotalityExternality.Positive.root_outside_derived
+#print axioms Logos.GroundingModels.TotalityExternality.Positive.deep_route_has_necessary_explainer
+#print axioms Logos.GroundingModels.TotalityExternality.NoScope.irreflexivity_holds
+#print axioms Logos.GroundingModels.TotalityExternality.NoScope.scope_fails
+#print axioms Logos.GroundingModels.TotalityExternality.NoScope.pure_contingency_survives_without_scope
+#print axioms Logos.GroundingModels.TotalityExternality.NoIrreflexivity.scope_holds
+#print axioms Logos.GroundingModels.TotalityExternality.NoIrreflexivity.irreflexivity_fails
+#print axioms Logos.GroundingModels.TotalityExternality.NoIrreflexivity.pure_contingency_survives_without_irreflexivity

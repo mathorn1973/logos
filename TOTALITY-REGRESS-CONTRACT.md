@@ -98,6 +98,8 @@ If the totality fact is necessary, necessary reality already exists at the fact 
 
 If it is not necessary, F4 yields an actual entity grounding that fact. E places that entity outside the represented totality.
 
+**Inferential-distance note.** The `¬ inside(a)` clause in the right-hand conclusion is E instantiated at the witness supplied by F4; it is not independently derived. The independence suite establishes that E is non-redundant, not that externality emerges from weaker premises. The additional derivation is the modal status of that witness: C turns its externality into necessity by contradiction.
+
 If that external entity were itself non-necessary, C would place it inside the totality, contradicting E.
 
 Therefore the external ground is necessary.

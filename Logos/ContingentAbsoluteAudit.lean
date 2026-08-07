@@ -14,4 +14,3 @@ import Logos
 #print axioms Logos.GroundingModels.ContingentAbsolute.BruteTotality.brute_modal_asymmetry
 #print axioms Logos.GroundingModels.ContingentAbsolute.NecessaryExplained.stable_modally_absolute
 #print axioms Logos.GroundingModels.ContingentAbsolute.NecessaryExplained.stable_not_explanatorily_absolute
-#print axioms Logos.GroundingModels.ContingentAbsolute.explanatory_and_modal_absoluteness_are_independent

@@ -25,3 +25,5 @@ jobs:
           use-mathlib-cache: false
       - name: Run axiom audit
         run: lake env lean Logos/Audit.lean
+      - name: Run core boundary audit
+        run: lake env lean Logos/CoreBoundaryAudit.lean

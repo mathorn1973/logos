@@ -1,12 +1,14 @@
 # DESIGN CONTRACT — CUT 1: MODAL FOUNDATION
 
-Status: **NON-CANONICAL DESIGN CONTRACT**.
+Status: **HISTORICAL CUT CONTRACT — CUT ACCEPTED ON MAIN**.
 
-This contract governs the first LOGOS cut. It defines a formal laboratory, not a proof of God, a theology, or a metaphysical canon.
+This contract records the design boundary of the first LOGOS cut. Project-wide governance, claim typing, import firewall, branch topology, and merge-closure rules now live in `PROJECT-RULES.md`.
+
+This document is not a proof of God, a theology, or a metaphysical canon.
 
 ## 1. Purpose
 
-The first cut builds the smallest trustworthy semantic core needed to distinguish:
+CUT 1 built the smallest semantic core needed to distinguish:
 
 ```text
 truth        phi
@@ -16,7 +18,7 @@ contingency  diamond phi and diamond not-phi
 validity     phi holds at every world of a model
 ```
 
-The cut must support both proofs and countermodels. A system that can prove intended consequences but cannot express failed consequences is not yet an adequate philosophical laboratory.
+The cut supports both proofs and countermodels.
 
 ## 2. Primitive objects
 
@@ -34,11 +36,11 @@ A formula over a frame is a world-indexed proposition:
 abbrev Formula (F : Frame) := F.World → Prop
 ```
 
-Necessity and possibility are defined from `access`. They are not primitive axioms.
+Necessity and possibility are defined from `access`. They are not primitive project axioms.
 
 ## 3. Frame conditions
 
-The cut defines, but does not globally assume:
+CUT 1 defines, but does not globally assume:
 
 - reflexivity;
 - symmetry;
@@ -58,26 +60,19 @@ B   symmetric
 
 No file may silently replace one frame class with another.
 
-## 4. Claim typing
+## 4. Project-wide claim typing
 
-Later philosophical work needs a vocabulary that distinguishes kinds of commitment. The first cut introduces labels for:
+CUT 1 introduced the first metadata vocabulary for definitions, assumptions, theorems, conjectures, bridges, interpretations, confessions, and metaphors.
 
-```text
-definition
-assumption
-theorem
-conjecture
-bridge
-interpretation
-confession
-metaphor
-```
+That vocabulary is no longer a CUT-1-local rule. Its canonical project-wide form is maintained in `PROJECT-RULES.md`.
 
-These labels are metadata only. They do not turn an interpretation or confession into a proof premise. That protection must ultimately be enforced by the import graph and theorem signatures.
+The governing principle remains: an interpretation, confession, or metaphor does not become a proof premise by being written next to formal mathematics.
 
-## 5. Import firewall
+## 5. Project-wide import firewall
 
-The intended dependency direction is:
+The dependency firewall first stated in CUT 1 is now project-wide governance and is maintained in `PROJECT-RULES.md`.
+
+The intended direction remains:
 
 ```text
 Logic
@@ -93,49 +88,40 @@ Interpretation
 Essays
 ```
 
-Forbidden directions include:
+CUT-specific contracts may strengthen local boundaries but may not reverse the project-wide direction.
+
+## 6. Acceptance tests
+
+CUT 1 was accepted only after:
+
+1. the project built with the committed Lean toolchain;
+2. K elaborated with no frame assumption;
+3. T, B, 4, and 5 elaborated under exactly their named frame conditions;
+4. `Logos/Audit.lean` exposed no hidden project axiom for those theorems;
+5. no `sorry` occurred in trusted source;
+6. no theological or physical predicate entered the modal core; and
+7. README and STATUS matched the accepted source boundary.
+
+## 7. Historical continuation
+
+The only direct continuation committed by this CUT-1 contract was the finite-model/countermodel layer. That work became `finite-countermodels-2` and is now on `main`.
+
+The old planning list that placed Gödel–Scott as step 3 of one linear main sequence is superseded.
+
+Current project topology is governed by `PROJECT-RULES.md`:
 
 ```text
-Essays -> Theorems
-Interpretation -> Logic
-TWIST-J bridge -> General ontology
-Metaphor -> Formal premise
-Confession -> Formal premise
+modal/general logic          accepted shared base
+grounding/absolute-ground    independent metaphysical line
+totality/explanation         second grounding research line
+Gödel–Scott                  separate formal branch
+TWIST-J                      optional interpretation/adapter work, never a dependency of general ontology
 ```
 
-The first cut contains no `Systems`, `Interpretation`, `Essays`, or `TwistJBridge` module.
-
-## 6. First acceptance tests
-
-The cut is acceptable only if:
-
-1. the project builds with the committed Lean toolchain;
-2. the K distribution theorem elaborates with no frame assumption;
-3. T, B, 4, and 5 elaborate under exactly their named frame conditions;
-4. `Logos/Audit.lean` reports no project axiom for these theorems;
-5. no `sorry` occurs in trusted source;
-6. no theological or physical predicate is present;
-7. the README and STATUS boundary match the Lean source.
-
-## 7. Next cut boundary
-
-The next cut may add finite frames and explicit countermodels. It must not add the Gödel–Scott axioms until the modal basis has passed independent review.
-
-The intended order is:
-
-```text
-1  modal semantic foundation
-2  finite models and countermodels
-3  Gödel–Scott language and axiom record
-4  derivability audit
-5  modal-collapse audit
-6  repaired variants
-7  interpretation bridge to essays
-8  optional TWIST-J adapter
-```
+Git stack order is not evidence of logical dependency.
 
 ## 8. Human responsibility
 
-Lean can establish that a conclusion follows from formal premises. It cannot decide, merely by proving that implication, whether the premises are true of reality, whether a formal predicate captures the intended philosophical concept, or whether a bridge from mathematics to theology is justified.
+Lean establishes consequence from formal premises. It does not decide, merely by proving an implication, whether the premises are true of reality, whether a formal predicate captures the intended philosophical concept, or whether a bridge from mathematics to theology is justified.
 
-Those judgments remain explicit human obligations of the program.
+Those judgments remain explicit human obligations of LOGOS.

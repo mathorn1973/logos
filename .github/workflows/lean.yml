@@ -27,6 +27,8 @@ jobs:
         run: lake env lean Logos/Audit.lean
       - name: Run core boundary audit
         run: lake env lean Logos/CoreBoundaryAudit.lean
+      - name: Run totality externality comparison audit
+        run: lake env lean Logos/TotalityExternalityComparisonAudit.lean
       - name: Run totality externality scope audit
         run: lake env lean Logos/ScopeAudit.lean
       - name: Run totality externality boundary audit

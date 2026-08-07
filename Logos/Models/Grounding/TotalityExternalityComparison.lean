@@ -184,7 +184,9 @@ theorem p_actual : ActualFact F Fact.p := rfl
 
 theorem p_not_necessary : ¬ NecessaryFact F Fact.p := by
   intro hNecessary
-  exact hNecessary World.absent True.intro
+  have hImpossible : World.absent = World.actual :=
+    hNecessary World.absent True.intro
+  cases hImpossible
 
 /-- R4 positive side: old generic F4 holds. -/
 theorem generic_F4_holds : GenericFactSufficientGround F := by
@@ -250,7 +252,9 @@ theorem p_actual : ActualFact F Fact.p := rfl
 
 theorem p_not_necessary : ¬ NecessaryFact F Fact.p := by
   intro hNecessary
-  exact hNecessary World.absent True.intro
+  have hImpossible : World.absent = World.actual :=
+    hNecessary World.absent True.intro
+  cases hImpossible
 
 /-- R5 positive side: EF4 holds. -/
 theorem explanatory_F4_holds : ExplanatoryFactSufficientGround G := by

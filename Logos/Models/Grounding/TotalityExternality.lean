@@ -25,8 +25,8 @@ theorem totality_not_necessary : ¬ NecessaryFact F R.totality := by
   intro hNecessary
   exact hNecessary World.stripped True.intro
 
-/-- Explicit-E_expl package. This uses EF4, not generic F4. -/
-def completeExplanationAxioms : CompleteExplanationAxioms M F G R where
+/-- EF4 core, deliberately built without any externality field. -/
+def explanatoryFactAxioms : ExplanatoryFactAxioms M F G where
   explains_existents := by
     intro a p hExplain
     cases a with
@@ -40,12 +40,20 @@ def completeExplanationAxioms : CompleteExplanationAxioms M F G R where
     intro p hp hNotNecessary
     cases p
     exact ⟨Entity.root, root_explains⟩
+
+/-- Completeness C, stated separately so both theorem layers reuse the same fact. -/
+theorem coverage :
+    ∀ x, Actual M x → ¬ Necessary M x → R.inside x := by
+  intro x hx hNotNecessary
+  cases x with
+  | root => exact False.elim (hNotNecessary root_necessary)
+  | node n => exact True.intro
+
+/-- Explicit-E_expl package. This uses EF4, not generic F4. -/
+def completeExplanationAxioms : CompleteExplanationAxioms M F G R where
+  toExplanatoryFactAxioms := explanatoryFactAxioms
   totality_explanation_external := explanatory_externality_holds
-  covers_nonNecessary := by
-    intro x hx hNotNecessary
-    cases x with
-    | root => exact False.elim (hNotNecessary root_necessary)
-    | node n => exact True.intro
+  covers_nonNecessary := coverage
 
 /-- The explicit-E_expl theorem is inhabited while old E fails in the same model. -/
 theorem explicit_externality_route_has_necessary_explainer :
@@ -68,9 +76,9 @@ abbrev E := entityExplanation
 theorem root_explains_each_node (n : Nat) :
     ActualExplainsEntity E Entity.root (Entity.node n) := True.intro
 
-/-- Deep package EF4 + S + I + C, with no externality field. -/
+/-- Deep package EF4 + S + I + C, constructed directly without any externality record. -/
 def completeScopedAxioms : CompleteScopedExplanationAxioms M F G E R where
-  toExplanatoryFactAxioms := completeExplanationAxioms.toExternalExplanationAxioms.toExplanatoryFactAxioms
+  toExplanatoryFactAxioms := explanatoryFactAxioms
   explains_members := by
     intro a hExplain x hInside
     cases a with
@@ -84,14 +92,14 @@ def completeScopedAxioms : CompleteScopedExplanationAxioms M F G E R where
     cases a with
     | root => exact hSelf
     | node n => exact hSelf
-  covers_nonNecessary := completeExplanationAxioms.covers_nonNecessary
+  covers_nonNecessary := coverage
 
 /-- E_expl is now derived rather than assumed. -/
 theorem root_outside_derived : ¬ R.inside Entity.root :=
   totality_explainer_is_outside
     completeScopedAxioms.toScopedExplanationAxioms root_explains
 
-/-- Deepest theorem instantiated without passing through an externality record. -/
+/-- Deepest theorem instantiated from EF4 + S + I + C only. -/
 theorem deep_route_has_necessary_explainer :
     ∃ a, Actual M a ∧ Necessary M a ∧
       ActualExplainsFact G a R.totality ∧ ¬ R.inside a := by

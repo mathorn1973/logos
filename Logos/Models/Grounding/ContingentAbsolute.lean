@@ -80,7 +80,7 @@ theorem stable_necessary : NecessaryFact NF NFact.stable := by
   intro world hAccess
   exact True.intro
 
-theorem stable_modally_absolute : ModallyAbsoluteFact NFact.stable :=
+theorem stable_modally_absolute : ModallyAbsoluteFact (F := NF) NFact.stable :=
   ⟨stable_actual, stable_necessary⟩
 
 theorem root_explains_stable :
@@ -92,32 +92,6 @@ theorem stable_not_explanatorily_absolute :
   exact hAbsolute.2 ⟨Entity.root, root_explains_stable⟩
 
 end NecessaryExplained
-
-/-- The two notions of absoluteness are independent in the current semantics. -/
-theorem explanatory_and_modal_absoluteness_are_independent :
-    (∃ (M0 : Grounding.Model) (F0 : FactModel M0)
-        (G0 : FactGroundingRoles M0 F0) (p : F0.Fact),
-      ExplanatorilyAbsoluteFact G0 p ∧ ¬ NecessaryFact F0 p) ∧
-    (∃ (M1 : Grounding.Model) (F1 : FactModel M1)
-        (G1 : FactGroundingRoles M1 F1) (q : F1.Fact),
-      ModallyAbsoluteFact q ∧ ¬ ExplanatorilyAbsoluteFact G1 q) := by
-  constructor
-  · exact ⟨
-      TotalityExternality.InternalExplanation.iEntityModel,
-      TotalityExternality.InternalExplanation.iFactModel,
-      FactSufficientExplanation.BruteTotality.noExplanationRoles,
-      TotalityExternality.InternalExplanation.IFact.totality,
-      BruteTotality.explanatory_absolute,
-      BruteTotality.not_modally_necessary
-    ⟩
-  · exact ⟨
-      TotalityExternality.entityModel,
-      NecessaryExplained.factModel,
-      NecessaryExplained.roles,
-      NecessaryExplained.NFact.stable,
-      NecessaryExplained.stable_modally_absolute,
-      NecessaryExplained.stable_not_explanatorily_absolute
-    ⟩
 
 end ContingentAbsolute
 end GroundingModels

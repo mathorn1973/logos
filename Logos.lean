@@ -10,6 +10,7 @@ import Logos.Ontology.Grounding.FactLanguage
 import Logos.Ontology.Grounding.ExplanationLanguage
 import Logos.Ontology.Grounding.ExplanationScope
 import Logos.Ontology.Grounding.SelfExplanation
+import Logos.Ontology.Grounding.ExplanationAdequacy
 import Logos.Systems.AbsoluteGround.Axioms
 import Logos.Systems.AbsoluteGround.Theorems
 import Logos.Systems.TotalityRegress.Axioms
@@ -20,6 +21,8 @@ import Logos.Systems.TotalityExternality.ScopeAxioms
 import Logos.Systems.TotalityExternality.ScopeTheorems
 import Logos.Systems.SelfExplanation.Axioms
 import Logos.Systems.SelfExplanation.Theorems
+import Logos.Systems.SelfExplanation.AdequateScopeAxioms
+import Logos.Systems.SelfExplanation.AdequateScopeTheorems
 import Logos.Models.Grounding.FreeCreation
 import Logos.Models.Grounding.Independence
 import Logos.Models.Grounding.InfiniteRegress
@@ -29,3 +32,4 @@ import Logos.Models.Grounding.TotalityRegressIndependence
 import Logos.Models.Grounding.TotalityExternalityComparison
 import Logos.Models.Grounding.TotalityExternality
 import Logos.Models.Grounding.SelfExplanation
+import Logos.Models.Grounding.SelfExplanationAdequacy

@@ -27,3 +27,13 @@ jobs:
         run: lake env lean Logos/Audit.lean
       - name: Run core boundary audit
         run: lake env lean Logos/CoreBoundaryAudit.lean
+      - name: Run totality externality scope audit
+        run: lake env lean Logos/ScopeAudit.lean
+      - name: Run totality externality boundary audit
+        run: lake env lean Logos/TotalityExternalityBoundaryAudit.lean
+      - name: Reject externality or A2/A3 regression in deep theorem
+        run: |
+          if grep -nE 'ExternalRegressTotalityAxioms|ExternalExplanationAxioms|FoundationAxioms|StructuralAxioms|NecessaryExistenceAxioms|NecessaryGroundAxioms|grounding_wellFounded|common_ground' Logos/Systems/TotalityExternality/ScopeTheorems.lean; then
+            echo 'Deep TOTALITY-EXTERNALITY theorem reintroduced a forbidden premise or record.'
+            exit 1
+          fi

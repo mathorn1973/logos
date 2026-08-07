@@ -2,13 +2,11 @@
 
 Status: **NON-CANONICAL DESIGN CONTRACT**.
 
-This cut attacks the irreflexivity principle `I` used by the totality-explanation route.  Its purpose is to determine how much anti-self-explanation content is actually needed to refute pure contingency.
+This cut attacks the irreflexivity principle `I` used by the totality-explanation route. Its purpose is to determine how much anti-self-explanation content is actually needed to refute pure contingency.
 
 It does not define God, does not attribute any positive property to necessary reality, and does not assume A2, A3, primitive externality E, or primitive explanatory externality E*.
 
-## 1. Main finding
-
-Global explanatory irreflexivity is stronger than the argument requires.
+## 1. First reduction: global I is too strong
 
 The previous principle was:
 
@@ -17,7 +15,7 @@ I
 every actual entity fails to explain itself.
 ```
 
-The minimal principle needed here is only:
+A much weaker principle suffices:
 
 ```text
 Ic
@@ -39,37 +37,59 @@ ContingentSelfExplanationExcluded
 ContingentExplanationProper
 ```
 
-Lean proves these two formulations equivalent.
+Lean proves these two formulations equivalent and proves that global I implies Ic.
 
-## 2. Why this is weaker
-
-`Ic` says nothing about self-explanation of a necessary entity.
-
-The cut therefore does not attempt to answer whether necessary reality may be described as self-explanatory, self-grounding, or neither.  Such language lies outside the target.
-
-A concrete model is required in which:
+A concrete model then shows the converse is unnecessary for the argument:
 
 ```text
 a necessary root explains itself;
 global irreflexivity I fails;
-Ic still holds for all non-necessary targets;
+Ic holds for all non-necessary targets;
 the necessary-reality theorem remains true.
 ```
 
-This demonstrates formally that full I was surplus structure.
+Therefore full I is surplus structure.
 
-## 3. Minimal theorem package
+## 2. Second reduction: even global Ic is too strong
 
-The load-bearing assumptions are now:
+The argument does not need to forbid contingent self-citation everywhere in the explanatory graph.
+
+It needs only a local adequacy condition on the explanations delivered by the *specific explanation of the totality*.
+
+Define:
+
+```text
+AdequateExplainsEntity(a, x)
+```
+
+to mean:
+
+```text
+a actually explains x,
+and if x is non-necessary then a is distinct from x.
+```
+
+Necessary targets remain unrestricted.
+
+The corresponding package is:
+
+```text
+AdequateTotalityScopeAxioms
+```
+
+with only:
 
 ```text
 EF4  every actual non-necessary fact has an explanatory source
-S    an explanation of the represented totality explains every entity inside it
-Ic   explanations of actual non-necessary entities are proper/non-identical
+LA   the explanation of the represented totality adequately explains each actual member in its scope
 C    every actual non-necessary entity lies inside the represented totality
 ```
 
-From these, Lean proves:
+No global I and no global Ic occurs.
+
+## 3. Deepest theorem in this cut
+
+Lean proves:
 
 ```text
 NecessaryFact(totality)
@@ -80,23 +100,40 @@ exists a,
   and a explains the totality fact.
 ```
 
-No global irreflexivity premise occurs.
+from `EF4 + LA + C` alone.
 
-The proof is short:
+The proof is minimal:
 
 ```text
 assume a explains the totality fact;
 if a were non-necessary, C would place a inside the totality;
-S would then make a explain itself;
-Ic forbids that for a non-necessary entity;
+LA would require the totality explanation to adequately explain a;
+for a non-necessary target, adequacy requires source != target;
+but the source here is a itself;
+contradiction;
 therefore a is necessary.
 ```
 
-Together with EF4, a non-necessary totality fact therefore yields a necessary explainer.
+No well-foundedness, unity, primitive externality, explanatory externality, global irreflexivity, or global contingent-self-exclusion premise is used.
 
-## 4. Countermodel to Ic
+## 4. Model showing global Ic is also surplus
 
-The cut must preserve the existing pure-contingency model in which:
+The cut contains a stronger positive stress test:
+
+```text
+the necessary root explains the totality;
+the root may self-explain;
+a contingent internal node also self-explains elsewhere;
+therefore global Ic fails;
+local adequacy of the totality explanation still holds;
+necessary reality still follows.
+```
+
+This is the decisive reduction: contingent self-citation as such is not forbidden. What is rejected is counting an identity citation as an *adequate answer supplied by the complete explanation of the totality* for that very contingent source.
+
+## 5. Exact countermodel
+
+The existing pure-contingency model supplies the opposite case:
 
 ```text
 the totality fact is non-necessary;
@@ -104,60 +141,70 @@ every actual entity is non-necessary;
 an internal node explains the totality;
 that same node explains itself;
 EF4 holds;
-S holds;
-C holds.
+totality coverage holds;
+raw scope coverage holds;
+local adequacy fails exactly at source = target;
+pure contingency survives.
 ```
 
-In that model `ContingentExplanationProper` fails and pure contingency survives.
+Therefore the remaining load-bearing issue is not general self-explanation. It is whether identity citation may count as adequate explanation of contingent existence within a purported complete explanation.
 
-Therefore Ic is load-bearing.
+## 6. Philosophical reading
 
-## 5. Philosophical reading
+The residual issue is now semantic rather than structural.
 
-`Ic` is not presented as a theorem of pure modal logic.
+The disputed form is:
 
-It is an adequacy criterion for explanation of contingent existence:
+```text
+P because P
+```
 
-> citing the very contingent existence whose obtaining is in question does not by itself supply a distinct explanatory source.
+when P is contingent.
 
-The objection to Ic must therefore be explicit:
+LOGOS does **not** prove that this formula is logically contradictory. It is not.
 
-> an actual entity may fail to exist necessarily and nevertheless its own existence may count as a complete explanation of why it exists.
+The formal claim is narrower:
 
-LOGOS does not hide that option.  It provides a concrete model showing that accepting it restores a fully contingent reality.
+> if a purported complete explanation answers the question why a contingent member exists by citing only that same member as its explanatory source, that citation is not counted as an adequate explanatory discharge.
 
-## 6. What this cut does not claim
+An opponent may reject that adequacy criterion. If so, the countermodel shows exactly what becomes possible: a completely contingent reality closed by circular self-citation.
+
+## 7. What this cut does not claim
 
 The cut does not claim:
 
 ```text
 self-explanation is logically contradictory;
 necessary reality cannot explain itself;
+contingent entities may never self-cite in any explanatory relation;
 all explanatory relations are asymmetric;
 all grounding relations are well founded;
 a necessary explainer is ungrounded;
 a necessary explainer is God.
 ```
 
-The formal result is only that global anti-self-explanation can be weakened to contingent explanatory non-vacuity.
+The cut leaves necessary reality completely undescribed beyond necessity.
 
-## 7. Acceptance tests
+## 8. Acceptance tests
 
 1. whole project builds under the pinned Lean toolchain;
 2. no `sorry` or `sorryAx` occurs;
 3. `ContingentExplanationProper` and `ContingentSelfExplanationExcluded` are proved equivalent;
-4. global irreflexivity is proved sufficient but not necessary for the minimal criterion;
-5. the necessary-self-citation positive model elaborates;
-6. the positive model explicitly refutes global irreflexivity;
-7. the pure-contingency self-explanation countermodel elaborates;
-8. the main theorem contains no A2, A3, E, E*, or global I assumption;
-9. a dedicated axiom audit covers all new load-bearing theorems and models;
-10. no theological interpretation enters the proof core.
+4. global irreflexivity implies the weaker criterion but is refuted in a positive model;
+5. necessary self-explanation is compatible with the theorem;
+6. global contingent self-citation is also compatible with the theorem when it occurs outside the local totality explanation;
+7. `AdequateTotalityScopeAxioms` proves the necessary-reality dichotomy without I or Ic;
+8. the pure-contingency countermodel fails local adequacy exactly at a contingent self-citation;
+9. the main theorem contains no A2, A3, E, E*, global I, or global Ic assumption;
+10. the dedicated self-explanation axiom audit is green;
+11. no theological interpretation enters the proof core.
 
-## 8. Next attack surface
+## 9. Remaining attack surface
 
-If this cut closes, the remaining question about I is semantic rather than structural:
+After the two reductions, there is no broad metaphysical anti-self-explanation axiom left to attack.
 
-> Is `P because P` an adequate explanation when P is contingent?
+The remaining human judgment is the meaning of *adequate explanation*:
 
-A later cut may attempt to replace Ic by a more primitive account of explanatory non-vacuity, novelty, or contrast.  Until then Ic remains an explicit humanly judged adequacy principle, not an unconditional theorem about reality.
+> Can an identity citation `P because P` count as a complete explanation of why contingent P obtains?
+
+Lean can expose the consequences of answering yes or no. It cannot decide the intended semantics of the word "explanation" independently of a humanly chosen adequacy criterion.

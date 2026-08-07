@@ -1,5 +1,4 @@
-import Logos.Ontology.Grounding.ExplanationLanguage
-import Logos.Systems.TotalityRegress.Axioms
+import Logos.Systems.TotalityExternality.Axioms
 
 namespace Logos
 namespace GroundingModels
@@ -7,7 +6,7 @@ namespace TotalityExternalityComparison
 
 open Grounding
 
-/-! ## R1-R3: role separation and revised externality -/
+/-! ## R1-R3: role separation and externality ordering -/
 
 namespace MixedRoles
 
@@ -113,18 +112,28 @@ theorem root_not_constitutes :
   intro h
   exact h
 
+/-- G holds: every registered explainer in this model is also a generic fact ground. -/
+theorem explanation_implies_grounding : ExplanationImpliesGrounding G := by
+  intro a p hExplain
+  cases a with
+  | root =>
+      cases p
+      exact True.intro
+  | node n =>
+      cases p
+      exact False.elim hExplain
+
 theorem node0_generic_ground :
     ActualGroundsFact F (Entity.node 0) R.totality := True.intro
 
 /-- Old E fails because an internal member is a generic ground. -/
-theorem old_externality_fails :
-    ¬ (∀ {a}, ActualGroundsFact F a R.totality → ¬ R.inside a) := by
+theorem old_externality_fails : ¬ GenericTotalityExternality F R := by
   intro hOld
   exact hOld node0_generic_ground True.intro
 
-/-- R3: revised explanatory externality holds in the same model. -/
+/-- R3a: revised explanatory externality holds in the same model. -/
 theorem explanatory_externality_holds :
-    ∀ {a}, ActualExplainsFact G a R.totality → ¬ R.inside a := by
+    ExplanatoryTotalityExternality G R := by
   intro a hExplain
   cases a with
   | root =>
@@ -133,9 +142,84 @@ theorem explanatory_externality_holds :
   | node n =>
       exact False.elim hExplain
 
+/-- Under G this model witnesses strict weakening on the externality axis. -/
+theorem bridged_externality_strictness_witness :
+    ExplanationImpliesGrounding G ∧
+      ExplanatoryTotalityExternality G R ∧
+      ¬ GenericTotalityExternality F R :=
+  ⟨explanation_implies_grounding,
+    explanatory_externality_holds,
+    old_externality_fails⟩
+
 end MixedRoles
 
-/-! ## R4: generic F4 does not imply EF4 -/
+/-! ## R3b: old E does not imply E_expl without bridge G -/
+
+namespace EWithoutEExpl
+
+open MixedRoles
+
+/-- Alternate generic fact model: only the external root is a generic ground. -/
+def facts : FactModel M where
+  Fact := Fact
+  holdsAt := holdsAt
+  groundsFact := fun world entity fact =>
+    match world, entity, fact with
+    | .actual, .root, .totality => True
+    | _, _, _ => False
+
+abbrev F := facts
+
+theorem regress_step (n : Nat) :
+    ActualGrounds M (Entity.node (n + 1)) (Entity.node n) := MixedRoles.regress_step n
+
+def regress : RegressTotality M F where
+  node := Entity.node
+  step := regress_step
+  totality := Fact.totality
+  actual_totality := True.intro
+  inside := inside
+  node_inside := by intro n; exact True.intro
+
+abbrev R := regress
+
+/-- An internal node is registered as explaining the totality while not being a generic ground. -/
+def roles : FactGroundingRoles M F where
+  constitutesFact := fun _ _ _ => False
+  explainsFact := fun world entity fact =>
+    match world, entity, fact with
+    | .actual, .node 0, .totality => True
+    | _, _, _ => False
+
+abbrev G := roles
+
+theorem generic_externality_holds : GenericTotalityExternality F R := by
+  intro a hGround
+  cases a with
+  | root =>
+      intro hInside
+      exact hInside
+  | node n =>
+      exact False.elim hGround
+
+theorem node0_explains :
+    ActualExplainsFact G (Entity.node 0) R.totality := True.intro
+
+theorem explanatory_externality_fails :
+    ¬ ExplanatoryTotalityExternality G R := by
+  intro hEExpl
+  exact hEExpl node0_explains True.intro
+
+/-- As intended, bridge G fails in this unbridged independence model. -/
+theorem explanation_implies_grounding_fails :
+    ¬ ExplanationImpliesGrounding G := by
+  intro hBridge
+  have hGround := hBridge node0_explains
+  exact hGround
+
+end EWithoutEExpl
+
+/-! ## R4: generic F4 does not imply EF4, even when bridge G holds -/
 
 namespace F4NotEF4
 
@@ -188,6 +272,13 @@ theorem p_not_necessary : ¬ NecessaryFact F Fact.p := by
     hNecessary World.absent True.intro
   cases hImpossible
 
+/-- Bridge G holds vacuously because there are no registered explanations. -/
+theorem explanation_implies_grounding : ExplanationImpliesGrounding G := by
+  intro a p hExplain
+  cases a
+  cases p
+  exact False.elim hExplain
+
 /-- R4 positive side: old generic F4 holds. -/
 theorem generic_F4_holds : GenericFactSufficientGround F := by
   intro p hp hNotNecessary
@@ -201,9 +292,16 @@ theorem explanatory_F4_fails : ¬ ExplanatoryFactSufficientGround G := by
   cases a
   exact hExplain
 
+/-- With G fixed, F4 still does not imply EF4. -/
+theorem bridged_F4_not_EF4 :
+    ExplanationImpliesGrounding G ∧
+      GenericFactSufficientGround F ∧
+      ¬ ExplanatoryFactSufficientGround G :=
+  ⟨explanation_implies_grounding, generic_F4_holds, explanatory_F4_fails⟩
+
 end F4NotEF4
 
-/-! ## R5: EF4 does not imply generic F4 -/
+/-! ## R5: EF4 does not imply generic F4 without bridge G -/
 
 namespace EF4NotF4
 
@@ -267,6 +365,14 @@ theorem generic_F4_fails : ¬ GenericFactSufficientGround F := by
   intro hF4
   rcases hF4 Fact.p p_actual p_not_necessary with ⟨a, hGround⟩
   cases a
+  exact hGround
+
+/-- Bridge G necessarily fails here: the explainer is not a generic ground. -/
+theorem explanation_implies_grounding_fails :
+    ¬ ExplanationImpliesGrounding G := by
+  intro hBridge
+  have hGround : ActualGroundsFact F Entity.source Fact.p :=
+    hBridge (a := Entity.source) (p := Fact.p) True.intro
   exact hGround
 
 end EF4NotF4

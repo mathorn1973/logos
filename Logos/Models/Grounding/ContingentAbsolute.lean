@@ -13,8 +13,7 @@ open Grounding
 namespace BruteTotality
 
 open FactSufficientExplanation.BruteTotality
-open TotalityExternality.InternalExplanation
-open TotalityExplanationScope.SelfExplanation
+open TotalityRegress.InternalGround
 
 /-- The existing brute-totality model is explanatorily absolute. -/
 theorem explanatory_absolute :
@@ -24,7 +23,7 @@ theorem explanatory_absolute :
 
 /-- But it is explicitly not necessary. -/
 theorem not_modally_necessary :
-    ¬ NecessaryFact IFM IR.totality := totality_nonNecessary
+    ¬ NecessaryFact IFM IR.totality := internal_totality_not_necessary
 
 /-- Hence explanatory ultimacy alone does not imply modal necessity in the
 current semantics. -/
@@ -45,7 +44,7 @@ end BruteTotality
 
 namespace NecessaryExplained
 
-open TotalityExternality
+open TotalityExternalityComparison.MixedRoles
 
 inductive NFact where
   | stable

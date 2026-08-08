@@ -1,0 +1,16 @@
+import Logos
+
+#print axioms Logos.Grounding.accessibleCounterexample_of_notNecessaryFact
+#print axioms Logos.Grounding.contingentAbsolute_iff_bruteModalAsymmetry
+#print axioms Logos.Grounding.ultimateModalStabilityAt_iff_localFactSufficientExplanation
+#print axioms Logos.Grounding.ultimateModalStabilityAt_iff_noContingentAbsolute
+#print axioms Logos.Grounding.pure_contingency_forces_brute_modal_asymmetry
+#print axioms Logos.Grounding.totality_ultimateModalStability_iff_localEF4
+#print axioms Logos.Grounding.totality_ultimateModalStability_iff_noContingentAbsolute
+
+#print axioms Logos.GroundingModels.ContingentAbsolute.BruteTotality.explanatory_absolute
+#print axioms Logos.GroundingModels.ContingentAbsolute.BruteTotality.not_modally_necessary
+#print axioms Logos.GroundingModels.ContingentAbsolute.BruteTotality.ultimacy_does_not_imply_necessity
+#print axioms Logos.GroundingModels.ContingentAbsolute.BruteTotality.brute_modal_asymmetry
+#print axioms Logos.GroundingModels.ContingentAbsolute.NecessaryExplained.stable_modally_absolute
+#print axioms Logos.GroundingModels.ContingentAbsolute.NecessaryExplained.stable_not_explanatorily_absolute

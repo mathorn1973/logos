@@ -43,3 +43,5 @@ jobs:
         run: lake env lean Logos/SelfExplanationAudit.lean
       - name: Run fact sufficient explanation audit
         run: lake env lean Logos/FactSufficientExplanationAudit.lean
+      - name: Run contingent absolute audit
+        run: lake env lean Logos/ContingentAbsoluteAudit.lean

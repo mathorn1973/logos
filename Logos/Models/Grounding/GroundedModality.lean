@@ -13,8 +13,7 @@ open Grounding
 namespace BruteUnlicensed
 
 open FactSufficientExplanation.BruteTotality
-open TotalityExternality.InternalExplanation
-open TotalityExplanationScope.SelfExplanation
+open TotalityRegress.InternalGround
 
 inductive NoCondition
 
@@ -48,7 +47,7 @@ theorem fully_unconditioned :
   ⟨explanatorily_absolute, modally_unconditioned⟩
 
 theorem not_necessary :
-    ¬ NecessaryFact IFM IR.totality := totality_nonNecessary
+    ¬ NecessaryFact IFM IR.totality := internal_totality_not_necessary
 
 /-- No-brute-modality fails exactly at the `absent` world. -/
 theorem noBruteModalVariation_fails :
@@ -68,8 +67,7 @@ end BruteUnlicensed
 namespace ConditionedBrute
 
 open FactSufficientExplanation.BruteTotality
-open TotalityExternality.InternalExplanation
-open TotalityExplanationScope.SelfExplanation
+open TotalityRegress.InternalGround
 
 inductive Condition where
   | absenceLicense
@@ -82,7 +80,7 @@ def variationModel : ModalVariationModel IM IFM where
   availableAt := fun world _ => world = IWorld.actual
   licensesFailure := fun condition fact world =>
     match condition, fact, world with
-    | .absenceLicense, .totality, .absent => True
+    | .absenceLicense, .regressTotality, .absent => True
     | _, _, _ => False
 
 abbrev V := variationModel
@@ -116,7 +114,7 @@ theorem local_EF4_fails :
   local_totality_EF4_fails
 
 theorem not_necessary :
-    ¬ NecessaryFact IFM IR.totality := totality_nonNecessary
+    ¬ NecessaryFact IFM IR.totality := internal_totality_not_necessary
 
 end ConditionedBrute
 
@@ -124,7 +122,7 @@ end ConditionedBrute
 
 namespace ExplainedButBruteModal
 
-open TotalityExternality
+open TotalityExternalityComparison.MixedRoles
 
 inductive NoCondition
 

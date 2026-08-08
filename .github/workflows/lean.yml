@@ -41,3 +41,5 @@ jobs:
           fi
       - name: Run self-explanation audit
         run: lake env lean Logos/SelfExplanationAudit.lean
+      - name: Run fact sufficient explanation audit
+        run: lake env lean Logos/FactSufficientExplanationAudit.lean

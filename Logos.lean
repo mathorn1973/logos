@@ -12,6 +12,7 @@ import Logos.Ontology.Grounding.ExplanationScope
 import Logos.Ontology.Grounding.SelfExplanation
 import Logos.Ontology.Grounding.ExplanationAdequacy
 import Logos.Ontology.Grounding.ExplanatoryAbsolute
+import Logos.Ontology.Grounding.ScopeCarrier
 import Logos.Systems.AbsoluteGround.Axioms
 import Logos.Systems.AbsoluteGround.Theorems
 import Logos.Systems.TotalityRegress.Axioms
@@ -26,6 +27,9 @@ import Logos.Systems.SelfExplanation.AdequateScopeAxioms
 import Logos.Systems.SelfExplanation.AdequateScopeTheorems
 import Logos.Systems.FactSufficientExplanation.Axioms
 import Logos.Systems.FactSufficientExplanation.Theorems
+import Logos.Systems.CarrierSchema.Axioms
+import Logos.Systems.CarrierSchema.Theorems
+import Logos.Systems.CarrierSchema.EntityInstance
 import Logos.Models.Grounding.FreeCreation
 import Logos.Models.Grounding.Independence
 import Logos.Models.Grounding.InfiniteRegress
@@ -37,3 +41,4 @@ import Logos.Models.Grounding.TotalityExternality
 import Logos.Models.Grounding.SelfExplanation
 import Logos.Models.Grounding.SelfExplanationAdequacy
 import Logos.Models.Grounding.FactSufficientExplanation
+import Logos.Models.Grounding.CarrierSchema

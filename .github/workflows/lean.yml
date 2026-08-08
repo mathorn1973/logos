@@ -43,3 +43,12 @@ jobs:
         run: lake env lean Logos/SelfExplanationAudit.lean
       - name: Run fact sufficient explanation audit
         run: lake env lean Logos/FactSufficientExplanationAudit.lean
+      - name: Run carrier schema audit
+        run: lake env lean Logos/CarrierSchemaAudit.lean
+      - name: Reject carrier assumptions in the schema layer
+        run: |
+          if grep -rnE 'Model\.|FactModel|RegressTotality|EntityExplanationModel|FactGroundingRoles' Logos/Ontology/Grounding/ScopeCarrier.lean Logos/Systems/CarrierSchema/Axioms.lean Logos/Systems/CarrierSchema/Theorems.lean; then
+            echo 'CARRIER-SCHEMA: the carrier-neutral layer referred to entity, fact or regress structure.'
+            echo 'That layer must stay independent of what populates the carrier; put the dependency in EntityInstance.lean instead.'
+            exit 1
+          fi

@@ -1,0 +1,31 @@
+import Logos
+
+#print axioms Logos.Grounding.closure_explainer_is_necessary
+#print axioms Logos.Grounding.closure_dichotomy
+#print axioms Logos.Grounding.escape_requires_exemption
+#print axioms Logos.Grounding.pure_contingency_leaves_target_absolute_at_carrier
+
+#print axioms Logos.Grounding.entityScopeCarrier
+#print axioms Logos.Grounding.TotalityExplanationCore.toScopeClosureAxioms
+#print axioms Logos.Grounding.totality_explainer_is_necessary_via_schema
+#print axioms Logos.Grounding.contingent_totality_explainer_refutes_core
+
+#print axioms Logos.GroundingModels.CarrierSchema.CompletenessExempt.closure_fails
+#print axioms Logos.GroundingModels.CarrierSchema.CompletenessExempt.completeness_fails
+#print axioms Logos.GroundingModels.CarrierSchema.CompletenessExempt.source_actual_holds
+#print axioms Logos.GroundingModels.CarrierSchema.CompletenessExempt.scope_holds
+#print axioms Logos.GroundingModels.CarrierSchema.CompletenessExempt.adequacy_holds
+
+#print axioms Logos.GroundingModels.CarrierSchema.ScopeExempt.closure_fails
+#print axioms Logos.GroundingModels.CarrierSchema.ScopeExempt.scope_fails
+#print axioms Logos.GroundingModels.CarrierSchema.ScopeExempt.source_actual_holds
+#print axioms Logos.GroundingModels.CarrierSchema.ScopeExempt.completeness_holds
+#print axioms Logos.GroundingModels.CarrierSchema.ScopeExempt.adequacy_holds
+
+#print axioms Logos.GroundingModels.CarrierSchema.AdequacyExempt.closure_fails
+#print axioms Logos.GroundingModels.CarrierSchema.AdequacyExempt.adequacy_fails
+#print axioms Logos.GroundingModels.CarrierSchema.AdequacyExempt.source_actual_holds
+#print axioms Logos.GroundingModels.CarrierSchema.AdequacyExempt.completeness_holds
+#print axioms Logos.GroundingModels.CarrierSchema.AdequacyExempt.scope_holds
+
+#print axioms Logos.GroundingModels.CarrierSchema.each_condition_is_separately_load_bearing

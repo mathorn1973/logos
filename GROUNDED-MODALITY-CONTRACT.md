@@ -286,4 +286,6 @@ The open question is therefore the status of the licensing condition.  Is a moda
 11. dedicated axiom audit is green;
 12. no theological interpretation enters the proof core;
 13. the contract states that the no-brute/unconditioned pair is equivalent to necessity and is therefore a partition, not a derivation;
-14. the contract states that no-brute-modality is compatible with a contingent explanatory absolute totality, and names the model that witnesses it.
+14. the contract states that no-brute-modality is compatible with a contingent explanatory absolute totality, and names the model that witnesses it;
+15. that compatibility is pinned by a single audited Lean statement forcing all four properties onto one fact of one carrier, not only asserted in prose;
+16. a static CI guard rejects the modal layer appearing in any `Systems/` module outside `GroundedModality`.

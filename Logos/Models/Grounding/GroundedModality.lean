@@ -116,6 +116,24 @@ theorem local_EF4_fails :
 theorem not_necessary :
     ¬ NecessaryFact IFM IR.totality := internal_totality_not_necessary
 
+/-- Contract section 10.2, pinned by Lean instead of by prose.
+
+The four properties above are individually unremarkable.  The contract's claim
+is that they hold *jointly*, of the same fact on the same carrier, so that
+accepting "every modal contrast is licensed" leaves the contingent explanatory
+absolute of `FACT-SUFFICIENT-EXPLANATION-1` untouched.
+
+Stating them separately does not pin that: a later edit could retarget any one
+of them to a different model or fact and every per-theorem audit would stay
+green while the contract claim silently became false.  This single statement
+forces the shared `V`, `BG`, `IFM` and `IR.totality` through one type. -/
+theorem no_brute_modality_permits_contingent_explanatory_absolute :
+    NoBruteModalVariationAt V IR.totality
+      ∧ ExplanatorilyAbsoluteFact BG IR.totality
+      ∧ ¬ LocalFactSufficientExplanation BG IR.totality
+      ∧ ¬ NecessaryFact IFM IR.totality :=
+  ⟨no_brute_modal_variation, explanatorily_absolute, local_EF4_fails, not_necessary⟩
+
 end ConditionedBrute
 
 /-! ## 3. Sufficient explanation does not imply no-brute modality -/

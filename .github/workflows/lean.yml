@@ -39,3 +39,5 @@ jobs:
             echo 'Deep TOTALITY-EXTERNALITY theorem reintroduced a forbidden premise or record.'
             exit 1
           fi
+      - name: Run self-explanation audit
+        run: lake env lean Logos/SelfExplanationAudit.lean

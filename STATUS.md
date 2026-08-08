@@ -134,7 +134,19 @@ Goedel-Scott remains a separate research branch.
 
 ## Open stack
 
-PRs #7-#10 remain research cuts beyond the accepted externality layer. Their sequence is logically real at current PR granularity because each later cut imports types or theorems introduced by the preceding cut. Promotion should remain sequential unless the cuts are deliberately repartitioned.
+Five research cuts are open beyond the accepted externality layer.
+
+```text
+#7   self-explanation-1             -> main
+#8   fact-sufficient-explanation-1  -> #7
+#9   contingent-absolute-1          -> #8
+#10  grounded-modality-1            -> #9
+#14  carrier-schema-1               -> #8
+```
+
+The `#7` to `#10` chain is a real dependency order at current PR granularity, because each later cut imports types or theorems introduced by the preceding one. Promotion along that chain should remain sequential unless the cuts are deliberately repartitioned.
+
+`carrier-schema-1` is not a further floor on that chain. Its only real dependency is `TotalityExplanationCore`, so under PROJECT-RULES section 4 it is based on `#8` and is a sibling of `#9`, not a successor to `#10`. It may be promoted after `#8` independently of `#9` and `#10`.
 
 ## Promotion and closure rule
 

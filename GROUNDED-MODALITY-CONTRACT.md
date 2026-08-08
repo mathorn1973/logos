@@ -226,19 +226,50 @@ for arbitrary facts.
 
 ## 10. Remaining philosophical boundary
 
-If this cut closes, the residual choice is extremely narrow:
+Two limits of this cut must be stated before its results are read as progress on the main fork.
+
+### 10.1 The main theorem partitions necessity, it does not derive it
+
+`NoBruteModalVariationAt V p` together with `ModallyUnconditionedFact V p` is equivalent to `ActualFact p` together with `NecessaryFact p`.  The cut proves one direction as `modallyUnconditioned_implies_necessary_of_noBrute`, the other as `necessary_implies_modallyUnconditioned`, and states the equivalence explicitly as `modallyUnconditioned_iff_modallyAbsolute_of_noBrute`.
+
+The forward proof is a direct unfolding of the two definitions, by classical contradiction: an accessible failure would have to be licensed by no-brute-modality and unlicensed by modal unconditionedness at the same time.
+
+So the cut does not obtain necessity from anything weaker than necessity.  It splits necessity along a new axis and shows that axis is independent of the explanatory one.  The independence is the content.  The implication itself carries none.
+
+### 10.2 No-brute-modality does not exclude the contingent explanatory absolute
+
+The `ConditionedBrute` model in this cut satisfies:
+
+```text
+NoBruteModalVariationAt(totality)
+ExplanatorilyAbsoluteFact(totality)
+not LocalFactSufficientExplanation(totality)
+not NecessaryFact(totality)
+```
+
+Every actual entity in that model is non-necessary and the entity regress is genuinely infinite.  Accepting that every modal contrast is licensed therefore leaves the surviving opponent position of `FACT-SUFFICIENT-EXPLANATION-1` intact.
+
+The residual choice is consequently **not**:
 
 ```text
 A  every genuine modal contrast is grounded/licensed;
-
 or
-
-B  the modal structure of reality may contain brute alternatives:
-   p is actual, not-p is genuinely possible, and nothing whatsoever
-   makes that contrast possible.
+B  reality contains brute modal alternatives.
 ```
 
-LOGOS can verify the consequences of A and exhibit models for B.  Human judgment remains responsible for deciding whether brute modality is metaphysically coherent.
+Choosing A does not exclude B's substance.  It relocates the unexplained item.  Instead of a bare accessibility edge the opponent now carries an actual modal condition licensing the failure of the total contingent reality, and nothing yet requires that condition to be explained, to be covered by the totality, or to lie outside it.
+
+### 10.3 What is actually open after this cut
+
+The modal layer is not connected to the totality argument.  `ModalVariationModel`, `NoBruteModalVariationAt`, and `ModallyUnconditionedFact` occur in no axiom record or theorem under `Systems/` outside `GroundedModality` itself, and there is no theorem of the form:
+
+```text
+TotalityExplanationCore + no-brute-modality -> necessary reality
+```
+
+The `ConditionedBrute` model shows why no such theorem follows from these premises alone.
+
+The open question is therefore the status of the licensing condition.  Is a modal condition that licenses the failure of the represented totality inside that totality, outside it, or a carrier to which completeness and scope do not apply?  Answering that requires a further cut on the `Condition` carrier, and that cut must first pass the standard new-axis test, since it may turn out to be C and LA restated one level up.
 
 ## 11. Acceptance tests
 
@@ -253,4 +284,6 @@ LOGOS can verify the consequences of A and exhibit models for B.  Human judgment
 9. no-brute modality without EF4 model elaborates;
 10. EF4 without no-brute modality model elaborates;
 11. dedicated axiom audit is green;
-12. no theological interpretation enters the proof core.
+12. no theological interpretation enters the proof core;
+13. the contract states that the no-brute/unconditioned pair is equivalent to necessity and is therefore a partition, not a derivation;
+14. the contract states that no-brute-modality is compatible with a contingent explanatory absolute totality, and names the model that witnesses it.

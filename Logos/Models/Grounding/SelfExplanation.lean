@@ -1,6 +1,5 @@
 import Logos.Systems.SelfExplanation.Theorems
 import Logos.Models.Grounding.TotalityExternality
-import Logos.Models.Grounding.TotalityExplanationScope
 
 namespace Logos
 namespace GroundingModels
@@ -12,7 +11,7 @@ open Grounding
 
 namespace NecessarySelfCitation
 
-open TotalityExternality
+open TotalityExternalityComparison.MixedRoles
 
 /-- The necessary root explains the contingent members and is also allowed to
 explain itself.  This deliberately violates global irreflexivity. -/
@@ -32,7 +31,7 @@ theorem root_self_explains :
 theorem global_irreflexivity_fails :
     ¬ GlobalExplanationIrreflexive M E := by
   intro h
-  exact h root_actual root_self_explains
+  exact h TotalityExternality.Positive.root_actual root_self_explains
 
 /-- Nevertheless, every explanation of a contingent target is proper. -/
 theorem contingent_explanation_proper :
@@ -41,7 +40,7 @@ theorem contingent_explanation_proper :
   cases hEq
   cases a with
   | root =>
-      exact False.elim (hNotNecessary root_necessary)
+      exact False.elim (hNotNecessary TotalityExternality.Positive.root_necessary)
   | node n =>
       exact False.elim hExplain
 
@@ -49,7 +48,7 @@ theorem contingent_explanation_proper :
 self-explains. -/
 def contingentScopeAxioms : ContingentScopeAxioms M F G E R where
   toExplanatoryFactAxioms :=
-    completeExplanationAxioms.toExternalExplanationAxioms.toExplanatoryFactAxioms
+    TotalityExternality.Positive.completeExplanationAxioms.toExternalExplanationAxioms.toExplanatoryFactAxioms
 
   explains_members := by
     intro a hExplain x hInside
@@ -63,7 +62,7 @@ def contingentScopeAxioms : ContingentScopeAxioms M F G E R where
 
   contingent_explanation_proper := contingent_explanation_proper
 
-  covers_nonNecessary := completeExplanationAxioms.covers_nonNecessary
+  covers_nonNecessary := TotalityExternality.Positive.completeExplanationAxioms.covers_nonNecessary
 
 /-- Necessary reality follows despite explicit necessary self-citation. -/
 theorem necessary_reality_survives_necessary_self_explanation :
@@ -79,21 +78,21 @@ end NecessarySelfCitation
 
 namespace ContingentSelfCitation
 
-open TotalityExternality.InternalExplanation
-open TotalityExplanationScope.SelfExplanation
+open TotalityRegress.InternalGround
+open TotalityExternality.NoIrreflexivity
 
 /-- The internal explainer is actual and non-necessary. -/
 theorem node0_nonNecessary :
     ¬ Necessary IM (IEntity.node 0) := by
-  exact every_entity_nonNecessary (IEntity.node 0) True.intro
+  exact every_internal_entity_nonNecessary (IEntity.node 0) True.intro
 
 /-- It explains itself in the existing pure-contingency model. -/
 theorem node0_self_explains :
-    ActualExplainsEntity ES (IEntity.node 0) (IEntity.node 0) := True.intro
+    ActualExplainsEntity E (IEntity.node 0) (IEntity.node 0) := True.intro
 
 /-- The minimal contingent propriety principle fails exactly at that self-loop. -/
 theorem contingent_explanation_proper_fails :
-    ¬ ContingentExplanationProper IM ES := by
+    ¬ ContingentExplanationProper IM E := by
   intro hProper
   have hNe : IEntity.node 0 ≠ IEntity.node 0 :=
     hProper True.intro node0_nonNecessary node0_self_explains
@@ -101,14 +100,14 @@ theorem contingent_explanation_proper_fails :
 
 /-- Fact-level sufficient explanation still holds. -/
 theorem fact_sufficient_explanation_holds :
-    ExplanatoryFactAxioms IM IFM IG := explanatoryFactAxioms
+    ExplanatoryFactAxioms IM IFM G := explanatoryFactAxioms
 
 /-- Scope adequacy still holds: the internal source explains every represented
 member, including itself. -/
 theorem totality_scope_holds :
-    ∀ {a}, ActualExplainsFact IG a IR.totality →
-      ∀ {x}, IR.inside x → ActualExplainsEntity ES a x :=
-  scope_adequacy_holds
+    ∀ {a}, ActualExplainsFact G a IR.totality →
+      ∀ {x}, IR.inside x → ActualExplainsEntity E a x :=
+  scope_holds
 
 /-- Coverage of all actual non-necessary entities also holds because every
 entity is inside this totality. -/
@@ -122,7 +121,7 @@ accepted. -/
 theorem pure_contingency_survives_if_contingent_self_explanation_counts :
     (¬ NecessaryFact IFM IR.totality) ∧
       (∀ x, Actual IM x → ¬ Necessary IM x) :=
-  pure_contingency_survives_with_self_explanation
+  pure_contingency_survives_without_irreflexivity
 
 end ContingentSelfCitation
 

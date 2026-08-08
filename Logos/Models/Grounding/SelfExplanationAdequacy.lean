@@ -1,6 +1,5 @@
 import Logos.Systems.SelfExplanation.AdequateScopeTheorems
 import Logos.Models.Grounding.TotalityExternality
-import Logos.Models.Grounding.TotalityExplanationScope
 
 namespace Logos
 namespace GroundingModels
@@ -12,7 +11,7 @@ open Grounding
 
 namespace LocalOnly
 
-open TotalityExternality
+open TotalityExternalityComparison.MixedRoles
 
 /-- Raw explanatory graph with both necessary self-citation and an unrelated
 contingent self-citation.  Only the root explains the totality fact. -/
@@ -47,7 +46,7 @@ theorem global_contingent_propriety_fails :
 for every member it purports to explain. -/
 def adequateScopeAxioms : AdequateTotalityScopeAxioms M F G E R where
   toExplanatoryFactAxioms :=
-    completeExplanationAxioms.toExternalExplanationAxioms.toExplanatoryFactAxioms
+    TotalityExternality.Positive.completeExplanationAxioms.toExternalExplanationAxioms.toExplanatoryFactAxioms
 
   adequate_members := by
     intro a hExplain x hInside hx
@@ -64,7 +63,7 @@ def adequateScopeAxioms : AdequateTotalityScopeAxioms M F G E R where
     | node n =>
         exact False.elim hExplain
 
-  covers_nonNecessary := completeExplanationAxioms.covers_nonNecessary
+  covers_nonNecessary := TotalityExternality.Positive.completeExplanationAxioms.covers_nonNecessary
 
 /-- Necessary reality follows even though contingent self-citation exists
 elsewhere in the explanatory graph. -/
@@ -81,26 +80,26 @@ end LocalOnly
 
 namespace NoLocalAdequacy
 
-open TotalityExternality.InternalExplanation
-open TotalityExplanationScope.SelfExplanation
+open TotalityRegress.InternalGround
+open TotalityExternality.NoIrreflexivity
 
 /-- The local adequacy condition for the totality explanation fails at node 0. -/
 theorem adequate_totality_scope_fails :
-    ¬ (∀ {a}, ActualExplainsFact IG a IR.totality →
+    ¬ (∀ {a}, ActualExplainsFact G a IR.totality →
       ∀ {x}, IR.inside x → Actual IM x →
-        AdequateExplainsEntity IM ES a x) := by
+        AdequateExplainsEntity IM E a x) := by
   intro hAdequate
   have h := hAdequate node0_explains
     (x := IEntity.node 0) True.intro True.intro
   have hNot : ¬ Necessary IM (IEntity.node 0) :=
-    every_entity_nonNecessary (IEntity.node 0) True.intro
+    every_internal_entity_nonNecessary (IEntity.node 0) True.intro
   exact h.2 hNot rfl
 
 /-- And the same model remains wholly contingent. -/
 theorem pure_contingency_survives_when_self_citation_counts_as_adequate :
     (¬ NecessaryFact IFM IR.totality) ∧
       (∀ x, Actual IM x → ¬ Necessary IM x) :=
-  pure_contingency_survives_with_self_explanation
+  pure_contingency_survives_without_irreflexivity
 
 end NoLocalAdequacy
 

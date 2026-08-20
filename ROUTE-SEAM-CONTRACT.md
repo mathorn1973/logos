@@ -10,6 +10,14 @@ A feasibility spike confirmed that the two load-bearing statements of section 5 
 
 **Amended during review.** Section 7 originally claimed that the exclusivity result could not be turned into an exhaustive dichotomy, on the ground that a negation supplies neither a descending chain nor the fact-layer data. The first half of that reason was right and the second was wrong: the fact layer is free data. Section 5.4 now proves the dichotomy, and section 7 records what the correction does and does not buy. The amendment is kept visible rather than rewritten away.
 
+**Amended a second time during review.** Review found two overreaches and one stale
+dependency. Sections 6 and 9 read the structural dichotomy as though the full premise
+packages were exhaustive, and read the totality conclusion as a necessary explanatory
+source without its remaining disjuncts. Section 5.3 was stated against
+`CompleteScopedExplanationAxioms`, which the promotion of the explanation line superseded.
+Sections 5.3, 5.4, 6, 7, 8, 9 and the acceptance tests are corrected, and the countermodel
+is now also a witness for `TotalityExplanationCore`. Both amendments stay on the record.
+
 ## 1. Motivation
 
 `main` carries two routes to necessary reality that have never been related to each other.
@@ -18,9 +26,10 @@ A feasibility spike confirmed that the two load-bearing statements of section 5 
 foundation route     A0 + A1 + A2 + A4 + A5
                        -> some actual ungrounded entity exists necessarily
 
-totality route       EF4 + S + I + C
+totality route       TotalityExplanationCore (ES + LA + C), no EF4
                        -> NecessaryFact(totality)
-                          or an actual necessary explanatory source outside the regress
+                          or an actual necessary explanatory source
+                          or a contingent explanatory absolute totality fact
 ```
 
 `README` and `STATUS` both record that the totality route "does not prove that the necessary witness is ungrounded". That is stated as prose. It has never been pinned by a countermodel, and the obvious repair, importing A2 to recover ungroundedness through the existing ancestry machinery, has never been checked.
@@ -40,6 +49,8 @@ proved theorem   regressTotality_refutes_wellFoundedness
                  exists_descending_chain_of_not_wellFounded
                  wellFounded_or_regressTotality
                  bare_totality_necessary
+                 core_trichotomy_second_disjunct
+                 core_fixes_necessity_not_grounding
 countermodel     GroundedExplainer
 consistency witness  UngroundedExplainer (read off the accepted positive model)
                      BareRegress (cheapest regress totality)
@@ -101,10 +112,12 @@ This closes the repair route named in section 1. Ungroundedness cannot be recove
 the totality explainer by importing A2, because A2 is unavailable wherever the totality
 route applies.
 
-### 5.3 Ungroundedness of the explainer is independent of the deep package
+### 5.3 The core fixes the explainer's modal status, not its grounding status
 
-`GroundedExplainer` is a model satisfying `CompleteScopedExplanationAxioms`, that is
-EF4 + S + I + C, in which:
+`GroundedExplainer` inhabits `TotalityExplanationCore`, the package accepted on `main`,
+which asserts no sufficient-explanation principle at all. It also inhabits the older and
+stronger `CompleteScopedExplanationAxioms`, so the reading does not depend on which
+package is used. In it:
 
 ```text
 the totality fact is actual and non-necessary
@@ -114,9 +127,22 @@ therefore root is derived and not ungrounded
 and no explainer of the totality fact in the model is ungrounded
 ```
 
+`core_trichotomy_second_disjunct` records which branch of the accepted trichotomy the model
+realizes: the totality fact is neither necessary nor unexplained, so the model sits on the
+middle disjunct and is not a contingent explanatory absolute.
+
 The accepted positive model already on `main` gives the opposite reading: its explainer is
-ungrounded. Stating both makes `Ungrounded(explainer)` neither forced nor forbidden by the
-deep package. It is simply not determined by it.
+ungrounded. Stating both yields the exact reading of the cut:
+
+```text
+core_fixes_necessity_not_grounding
+    every explainer of the totality fact is necessary
+    and no explainer of the totality fact is ungrounded, in this model
+```
+
+`totality_explainer_is_necessary_from_core` fixes the modal status of any source that
+explains the totality fact. It fixes nothing about that source's position in the grounding
+order. `Ungrounded(explainer)` is neither forced nor forbidden; it is simply not determined.
 
 ### 5.4 The dichotomy is exhaustive, and that is worth nothing
 
@@ -141,7 +167,9 @@ wellFounded_or_regressTotality
       or Nonempty (RegressTotality M (bareFactModel M))
 ```
 
-Together with 5.1 the dichotomy is therefore both exclusive and exhaustive.
+Together with 5.1 this **structural** dichotomy is both exclusive and exhaustive. It is a
+dichotomy about the shape of actual grounding and about the availability of the record, not
+about the premise packages of the two arguments. See 7 for why the latter is not exhaustive.
 
 It is also empty. In the witness just constructed the totality fact obtains at every
 world:
@@ -162,15 +190,50 @@ exhaustiveness is an argument for anything.
 
 ## 6. What this establishes about the program
 
-The two routes are **alternatives, not stages**. The foundation route treats well-founded
-grounding and concludes to an ungrounded necessary entity. The totality route treats
-bottomless grounding and concludes to a necessary explanatory source that may itself be
-grounded. They divide the ground between them; they never overlap.
+### 6.1 `RegressTotality` is a weak record
 
-The stronger predicate `AbsoluteGround`, which builds in `Ungrounded`, is therefore
-reachable only on the foundation side. Nothing on the totality side supports it.
+This is the substantive finding of the cut, and 5.1 to 5.4 are best read through it.
+
+The record carries an infinite descending grounding chain, and beyond that its fact layer,
+its designated totality fact and its `inside` predicate are largely free data. Any actual
+infinite descent can therefore be dressed as a `RegressTotality` with a single
+always-obtaining fact. What the record captures is essentially the chain plus a label. All
+the substantive content of the totality route arrives with the further premises stated over
+it, never from the record itself.
+
+### 6.2 The grounding presuppositions of the two routes are incompatible
+
+A2 is a field of the foundation package and is refuted by the mere presence of the record.
+So no model carries both premise packages, and any theorem stated over both is vacuous.
+
+This is a statement about presuppositions, not about conclusions. It does not say that one
+route applies whenever the other fails.
+
+### 6.3 What each route yields when its own package does hold
+
+```text
+foundation package holds   -> some actual ungrounded entity exists necessarily
+current totality core holds -> NecessaryFact(totality)
+                               or an actual necessary explanatory source
+                               or a contingent explanatory absolute totality fact
+```
+
+Both conclusions remain disjunctive or trichotomous where the accepted theorems make them
+so. The totality route does not conclude to a necessary explanatory source simpliciter, and
+this cut relies on that: the bare witness of 5.4 discharges the first disjunct.
+
+The stronger predicate `AbsoluteGround`, which builds in `Ungrounded`, is reachable only on
+the foundation side. Nothing on the totality side supports it, which 5.3 now pins against
+the current core rather than against a superseded package.
 
 ## 7. What this does not establish
+
+It does not show that the premise packages of the two arguments are exhaustive. Only the
+structural dichotomy of 5.4 is exhaustive. Both packages can fail together: well-founded
+grounding by itself supplies neither A0, A1, A4 nor A5, and the availability of a regress
+record by itself supplies neither local sufficient explanation, nor adequacy, nor
+completeness. "One route or the other applies" is not a theorem of this cut and is not
+true in general.
 
 It does not show that the exhaustive dichotomy of 5.4 has argumentative force. The
 disjunction "A2, or a regress totality is available" is a theorem, but 5.4 also shows the
@@ -200,25 +263,31 @@ NO new ontological language
 NO modification of any accepted theorem or record
 NO A3, A6, A7, A8 anywhere in the cut
 NO claim that the exhaustive dichotomy supports either route
-NO claim that EF4, S, I and C are available whenever A2 fails
+NO claim that the two premise packages are exhaustive; both may fail
+NO claim that either route applies whenever the other does not
+NO unqualified reading of the totality conclusion as a necessary explanatory source
+NO claim that the substantive totality premises are available whenever A2 fails
 NO claim that the totality explainer is grounded, only that it may be
 ```
 
 ## 9. Remaining philosophical boundary
 
-The seam is now exact and it is a fork about the shape of grounding, not about explanation:
+The seam is now exact, and it must be stated at the right level.
 
-> Is actual grounding well founded?
+> The grounding presuppositions of the two routes are incompatible. Well-foundedness
+> against the availability of a bare regress record is an exhaustive structural dichotomy.
+> The full premise packages of the two arguments do not form an exhaustive dichotomy;
+> both may fail.
 
-If yes, the foundation route applies and delivers an ungrounded necessary entity.
-If it is bottomless in the specific shape of a regress totality, the foundation route is
-unavailable and the totality route delivers something weaker: a necessary explanatory
-source that need not be a terminus of grounding at all.
+Where the foundation package does hold, its conclusion is an ungrounded necessary entity.
+Where the current totality core does hold, its conclusion is a trichotomy, and even its
+middle disjunct yields a necessary explanatory source that need not be a terminus of
+grounding at all.
 
-The open human question is whether the weaker conclusion is worth the same name. A
-necessary explanatory source that is itself grounded is not an absolute in the sense
-`absolute-ground-1` defines, and the program should stop writing as though the two routes
-converge on one object.
+The open human question is therefore not "which route applies" but whether the middle
+disjunct is worth the same name as the foundation conclusion. A necessary explanatory
+source that is itself grounded is not an absolute in the sense `absolute-ground-1` defines,
+and the program should stop writing as though the two routes converge on one object.
 
 ## 10. Acceptance tests
 
@@ -227,7 +296,8 @@ converge on one object.
 3. `regressTotality_refutes_wellFoundedness` is proved from the `RegressTotality` fields alone;
 4. the two refutation corollaries for `FoundationAxioms` and `NecessaryExistenceAxioms` elaborate;
 5. `seam_bridge_is_vacuous` elaborates for an arbitrary conclusion;
-6. `GroundedExplainer` inhabits `CompleteScopedExplanationAxioms`;
+6. `GroundedExplainer` inhabits `TotalityExplanationCore`, the package accepted on `main`,
+   as well as the older `CompleteScopedExplanationAxioms`;
 7. in `GroundedExplainer` the totality fact is non-necessary and no explainer of it is ungrounded;
 8. the accepted positive model is shown to have an ungrounded explainer, giving the other direction;
 9. a descending chain is extracted from failure of A2, using only classical choice;
@@ -237,4 +307,7 @@ converge on one object.
 12. the seam layer declares no `structure`, enforced by static CI guard;
 13. dedicated axiom audit is green;
 14. no new premise enters any accepted axiom record;
-15. no theological interpretation enters the proof core.
+15. `core_fixes_necessity_not_grounding` elaborates against the current core;
+16. no statement in this contract reads the totality conclusion as a necessary explanatory
+    source without its remaining disjuncts;
+17. no theological interpretation enters the proof core.

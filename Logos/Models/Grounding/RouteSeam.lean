@@ -1,5 +1,6 @@
 import Logos.Systems.RouteSeam.Theorems
 import Logos.Systems.TotalityExternality.ScopeTheorems
+import Logos.Systems.FactSufficientExplanation.Theorems
 import Logos.Models.Grounding.TotalityExternality
 
 namespace Logos
@@ -189,6 +190,65 @@ theorem no_explainer_is_ungrounded :
   | over => exact False.elim hExplain
   | root => exact root_not_ungrounded
   | node n => exact False.elim hExplain
+
+/-! ### Against the core accepted on `main`
+
+`CompleteScopedExplanationAxioms` is no longer the deepest accepted package.
+The same model inhabits the weaker `TotalityExplanationCore`, which asserts no
+sufficient-explanation principle at all, so the reading below is stated against
+the current core rather than against a superseded one. -/
+
+/-- The model inhabits the EF4-free core. -/
+def explanationCore : TotalityExplanationCore M F G E R where
+  explains_source_actual := by
+    intro a hExplain
+    cases a with
+    | over => exact False.elim hExplain
+    | root => exact root_actual
+    | node n => exact False.elim hExplain
+  adequate_members := by
+    intro a hExplain x hInside _hx
+    cases a with
+    | over => exact False.elim hExplain
+    | root =>
+        cases x with
+        | over => exact False.elim hInside
+        | root => exact False.elim hInside
+        | node n =>
+            refine ⟨True.intro, ?_⟩
+            intro _ hEq
+            cases hEq
+    | node n => exact False.elim hExplain
+  covers_nonNecessary := by
+    intro x _ hNotNecessary
+    cases x with
+    | over => exact False.elim (hNotNecessary over_necessary)
+    | root => exact False.elim (hNotNecessary root_necessary)
+    | node n => exact True.intro
+
+/-- Which disjunct of the accepted trichotomy this model realizes: the second.
+The totality fact is not necessary and it is explained, so the model is not a
+contingent explanatory absolute. -/
+theorem core_trichotomy_second_disjunct :
+    ∃ a, Actual M a ∧ Necessary M a ∧ ActualExplainsFact G a R.totality := by
+  rcases totality_necessary_or_necessary_explainer_or_contingent_absolute
+      explanationCore with hFact | hEntity | hAbsolute
+  · exact False.elim (totality_not_necessary hFact)
+  · exact hEntity
+  · exact False.elim (hAbsolute.2.2 ⟨Entity.root, root_explains⟩)
+
+/-- The load-bearing reading of this cut, stated against the current core.
+
+`totality_explainer_is_necessary_from_core` fixes the modal status of any source
+that explains the totality fact. It fixes nothing about that source's position
+in the grounding order: here the source is necessary and derived at once. -/
+theorem core_fixes_necessity_not_grounding :
+    (∀ a, ActualExplainsFact G a R.totality → Necessary M a) ∧
+    (∀ a, ActualExplainsFact G a R.totality → ¬ Ungrounded M a) := by
+  constructor
+  · intro a hExplain
+    exact totality_explainer_is_necessary_from_core explanationCore hExplain
+  · exact no_explainer_is_ungrounded
 
 end GroundedExplainer
 

@@ -17,7 +17,9 @@ brute contingent entity   an actual, non-necessary, underived entity
 brute contingent fact     the totality fact is actual, non-necessary and unexplained
 ```
 
-The note asserts that an argument against the first does not transfer to the second. That assertion is currently prose. This cut pins it.
+The note reads these as two positions rather than as variants of one thesis. Formally that reading has a precise and much narrower content, and only that content is pinned here: under the shared hypothesis schema of section 4, neither of the two principles below entails the other.
+
+Nothing about arguments is pinned. A countermodel bears on entailment. Whether a particular argument against one position happens to reach the other depends on that argument's own premises, which no model can settle.
 
 The two positions are excluded by two different principles already on `main`:
 
@@ -36,13 +38,15 @@ countermodel   EntityBruteFactRegular   (new)
 proved theorem a4_and_localEF4_are_independent
 ```
 
-No new language, no new axiom record, no new carrier, no bridge, no interpretation.
+No new language, no new axiom record, no new `ScopeCarrier`, no new bridge assumption, and no interpretation of `Explains` for a fresh carrier.
+
+Two qualifications, so the line is not read more widely than it holds. Each model declares its own inductive entity and fact types; those are model data, not language. And the second model satisfies the existing fact-level bridge `ExplanationImpliesGrounding` rather than dispensing with it, which is a property of the model and not an assumption added to the core.
 
 ## 3. Language
 
 None introduced. The cut is stated entirely in vocabulary already on `main`: `RegressTotality`, `TotalityExplanationCore`, `NonNecessaryIsDerived`, `LocalFactSufficientExplanation`, `Derived`, `Necessary`, `NecessaryFact`.
 
-A static CI guard enforces that the cut's only source file declares no `structure`, `class` or `axiom`, so it cannot introduce a record or a commitment. Local inductive carriers for a model are permitted; they are model data, not language. The entity carrier of the second model is not finite: `node : Nat → Entity` supplies the required infinite descending chain.
+A static CI guard enforces that the cut's model source file, `Logos/Models/Grounding/A4FactIndependence.lean`, declares no `structure`, `class` or `axiom`, so it cannot introduce a record or a commitment. That file is where a record could enter; the cut also touches an audit file, the workflow and this contract, and the guard says nothing about those. Local inductive carriers for a model are permitted; they are model data, not language. The entity carrier of the second model is not finite: `node : Nat → Entity` supplies the required infinite descending chain.
 
 ## 4. Assumptions
 
@@ -106,7 +110,7 @@ Both directions in one theorem, both under the shared hypothesis schema, and eac
 
 ### 5.4 The load-bearing gap in the second direction
 
-The second direction relies on the current language having no entity-level bridge from adequate explanation to ontological grounding. `root` adequately explains `stray` and does not ground it, which is exactly why `TotalityExplanationCore` can hold while A4 and A4' fail. `root_explains_stray_without_grounding` states that gap directly rather than leaving it implicit.
+The second direction relies on the current language having no entity-level bridge from adequate explanation to ontological grounding. `root` adequately explains `stray` and does not ground it, which is exactly why `TotalityExplanationCore` can hold while A4 and A4' fail. `root_explains_stray_without_grounding` states that gap directly in its type, with adequacy rather than raw explanation on the left, so the statement cannot be satisfied by an explanation that would already be improper.
 
 No independence result under such a future bridge is claimed. If an entity-level bridge from adequate explanation to grounding were added, this direction would have to be re-examined.
 
@@ -133,7 +137,9 @@ It does not establish that the two are the only relevant principles, or that tog
 
 It says nothing about carrier extension. That is a manoeuvre about where explanatory sources may be drawn from, not an object position, and it is deliberately outside this cut.
 
-The precise situation is this. `ScopeCarrier` alone has an uninterpreted `Explains` predicate. `entityScopeCarrier` interprets it as `ActualExplainsFact`, but no such interpretation is supplied for an arbitrary fresh carrier, and there is no bridge to `licensesFailure`. Treating carrier extension as a third independent axis was considered and rejected on that ground: `ConditionedBrute` already carries a contingent unexplained totality fact and a licensing modal condition at the same time, so the two layers do not substitute for each other, and bidirectional models could be produced only by taking a product of unrelated structures. That is syntactic freedom, not philosophical independence.
+The precise situation is this. `ScopeCarrier` alone has an uninterpreted `Explains` predicate. `entityScopeCarrier` interprets it as `ActualExplainsFact`, but no such interpretation is supplied for an arbitrary fresh carrier, and there is no bridge to `licensesFailure`. Treating carrier extension as a third independent axis was considered and dropped on that ground: `ConditionedBrute` already carries a contingent unexplained totality fact and a licensing modal condition at the same time, so the two layers do not substitute for each other and there is nothing for an independence result to separate.
+
+The candidate constructions that were examined all amounted to placing unrelated structures side by side, which is syntactic freedom rather than philosophical independence. No claim is made that every possible construction must take that shape. The axis was dropped for want of a candidate that passes the new-axis test, not refuted.
 
 It does not weaken anything accepted. No premise, record or theorem changes.
 
@@ -174,9 +180,9 @@ Both are live. Answering the first leaves the second open, and the formal layer 
 6. in it local EF4 holds, and non-vacuity is exhibited as two separate facts;
 7. in it an actual underived entity is exhibited that is both non-necessary and contingent, refuting `NonNecessaryIsDerived` and the original A4;
 7a. in it `ExplanationImpliesGrounding` holds, so the direction does not turn on the absence of the fact-level bridge;
-7b. `root_explains_stray_without_grounding` states the entity-level gap the direction does rely on;
+7b. `root_explains_stray_without_grounding` states the entity-level gap the direction does rely on, with `AdequateExplainsEntity` in its type and not merely `ActualExplainsEntity`;
 8. `a4_and_localEF4_are_independent` states both directions under the shared hypothesis schema, for both A4 and A4';
-9. the cut's source file declares no `structure`, `class` or `axiom`, enforced by static CI guard;
+9. the cut's model source file declares no `structure`, `class` or `axiom`, enforced by static CI guard;
 10. dedicated axiom audit is green;
 11. no new premise enters any accepted axiom record;
 12. no theological interpretation enters the proof core.

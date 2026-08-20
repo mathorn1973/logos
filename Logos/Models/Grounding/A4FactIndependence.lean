@@ -221,13 +221,16 @@ theorem explanation_implies_grounding : ExplanationImpliesGrounding G := by
   | node n => cases p; exact False.elim hExplain
   | stray => cases p; exact False.elim hExplain
 
-/-- `root` adequately explains `stray` without grounding it.  That gap is what
-lets the core hold while A4' fails, and it exists because the current language
-has no entity-level bridge from adequate explanation to ontological grounding. -/
+/-- `root` adequately explains `stray` without grounding it.  Adequacy is in the
+statement, not only raw explanation: `root` explains `stray` and is distinct from
+it, so the explanation is proper in the sense of `AdequateExplainsEntity`, and
+`root` still does not ground `stray`.  That gap is what lets the core hold while
+A4' fails, and it exists because the current language has no entity-level bridge
+from adequate explanation to ontological grounding. -/
 theorem root_explains_stray_without_grounding :
-    ActualExplainsEntity E Entity.root Entity.stray ∧
+    AdequateExplainsEntity M E Entity.root Entity.stray ∧
       ¬ ActualGrounds M Entity.root Entity.stray :=
-  ⟨True.intro, by intro h; exact h⟩
+  ⟨⟨True.intro, by intro _ hEq; cases hEq⟩, by intro h; exact h⟩
 
 theorem stray_actual : Actual M Entity.stray := True.intro
 
@@ -270,9 +273,16 @@ end EntityBruteFactRegular
 the other are independent.  Both the original A4 and the cleaner A4' are stated,
 so the result is not confined to the reformulated principle.
 
-An argument excluding brute contingent entities therefore does not exclude a
-brute contingent totality fact, and an argument excluding the brute fact does not
-exclude brute entities. -/
+What this says is exactly two non-entailments, both under that schema:
+
+```text
+A4 and A4' do not entail local EF4
+local EF4 does not entail A4 or A4'
+```
+
+Nothing about arguments follows.  A countermodel bears on entailment; whether a
+particular argument against one position also reaches the other depends on that
+argument's own premises, which no model here settles. -/
 theorem a4_and_localEF4_are_independent :
     (TotalityExplanationCore
         TotalityRegress.InternalGround.IM

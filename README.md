@@ -6,7 +6,7 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 
 ## Accepted main line
 
-`main` currently contains ten accepted formal cuts:
+`main` currently contains eleven accepted formal cuts:
 
 1. `modal-foundation-1` - Kripke semantics for necessity, possibility, contingency, and standard modal principles under exact frame hypotheses;
 2. `finite-countermodels-2` - explicit finite frames, pointed refutations, and a genuine contingency witness;
@@ -17,7 +17,8 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 7. `fact-sufficient-explanation-1` - removal of EF4 from the core, and the resulting three-way fork in which a contingent explanatory absolute is a live option;
 8. `contingent-absolute-1` - the modal reading of that option, and the recorded finding that deriving necessity from explanatory ultimacy is equivalent to local EF4;
 9. `grounded-modality-1` - modal conditions as a carrier separate from entities and explanatory sources, with the recorded finding that the axis does not close the fork;
-10. `carrier-schema-1` - the closure argument stated for an arbitrary carrier, with the accepted route shown to be an instance of it.
+10. `carrier-schema-1` - the closure argument stated for an arbitrary carrier, with the accepted route shown to be an instance of it;
+11. `route-seam-1` - the relation between the foundation route and the totality route, and the deflation of the `RegressTotality` record.
 
 The load-bearing grounding theorem remains:
 
@@ -41,7 +42,7 @@ OR
 an actual necessary entity grounds the totality fact from outside the regress
 ```
 
-It does not prove that the necessary witness is ungrounded, and it does not eliminate A2 from the stronger foundation theorem.
+It does not prove that the necessary witness is ungrounded, and it does not eliminate A2 from the stronger foundation theorem. `route-seam-1` pins both points; see below.
 
 `totality-externality-1` then audits the externality route more finely. It introduces a primitive `explainsFact` relation alongside constitutive support and distinguishes:
 
@@ -107,17 +108,62 @@ A contingent item can explain the target only at a carrier exempted from complet
 
 The open question is consequently no longer "can the unexplained item always be moved". It is: for a proposed carrier, which condition is it exempt from, and is that exemption principled or merely stipulated.
 
-## Current research frontier
+## How the two routes are related
 
-One research cut is open. It is not on `main` and nothing in it is accepted.
+`route-seam-1` settles a question the two routes had left open by never being compared.
+
+### The record is weak
+
+`RegressTotality` carries an infinite descending grounding chain. Beyond that, its fact
+layer, its designated totality fact and its `inside` predicate are largely free data, so any
+actual infinite descent can be dressed as one over a single always-obtaining fact. The record
+captures a chain plus a label. Every substantive claim of the totality route arrives with the
+premises stated over it, never from the record itself.
+
+The point is made concrete rather than asserted: in the freely constructed witness the
+totality fact obtains at every world, so the totality conclusion holds by its first disjunct
+with no explanatory premise doing any work.
+
+### The presuppositions are incompatible
+
+A2 is a field of the foundation package and is refuted by the mere presence of the record.
 
 ```text
-#16  route-seam-1  -> main
+RegressTotality M F -> not WellFounded (ActualGrounds M)
+RegressTotality M F -> not NecessaryExistenceAxioms M
 ```
 
-It relates the two accepted routes to each other and asks whether the totality route's necessary explanatory source is ungrounded. Branch topology and promotion order are recorded in `STATUS.md`.
+No model carries both premise packages, and a theorem stated over both is vacuous, which
+`seam_bridge_is_vacuous` states outright. These theorems depend on no axioms at all.
 
-Beyond it the remaining work on the explanation line is philosophical rather than formal. The two judgments the machine has isolated and cannot settle are whether an identity citation can count as an adequate explanation of contingent existence, and whether exempting a carrier from completeness, scope or adequacy can ever be principled.
+This is a statement about presuppositions, not about conclusions. Well-foundedness against
+the availability of a bare regress record is an exhaustive **structural** dichotomy. The
+full premise packages of the two arguments are **not** exhaustive and may fail together:
+well-founded grounding by itself supplies neither A0, A1, A4 nor A5, and the availability of
+a regress record by itself supplies neither local sufficient explanation, nor adequacy, nor
+completeness. "One route or the other applies" is not proved and is not true in general.
+
+### The core fixes modality, not grounding
+
+Against `TotalityExplanationCore` the cut exhibits a model in which the explanatory source of
+the totality fact is actual, necessary and outside the regress, and is nevertheless grounded
+by a further necessary entity. The accepted positive model gives the opposite reading. So the
+core determines the modal status of any source that explains the totality fact and determines
+nothing about that source's position in the grounding order.
+
+`AbsoluteGround`, which builds in `Ungrounded`, is therefore reachable only on the foundation
+side. Whether the totality route's middle disjunct deserves the same name is a human question
+the formal layer leaves open.
+
+## Current research frontier
+
+No research cut is open. The formal programme has reached a stable state and the remaining
+work on this line is philosophical rather than formal.
+
+The judgments the machine has isolated and cannot settle are whether an identity citation can
+count as an adequate explanation of contingent existence, whether exempting a carrier from
+completeness, scope or adequacy can ever be principled, and whether a necessary explanatory
+source that is itself grounded deserves the name the foundation route earns.
 
 Goedel-Scott is a separate formal branch of the LOGOS program, not a step in the grounding/totality sequence. TWIST-J is likewise not a dependency of the general ontology core.
 
@@ -133,9 +179,10 @@ See also:
 - `TOTALITY-REGRESS-CONTRACT.md` for the accepted totality route;
 - `TOTALITY-EXTERNALITY-CONTRACT.md` for the accepted externality/premise-order cut;
 - `SELF-EXPLANATION-CONTRACT.md`, `FACT-SUFFICIENT-EXPLANATION-CONTRACT.md`, `CONTINGENT-ABSOLUTE-CONTRACT.md`, `GROUNDED-MODALITY-CONTRACT.md` and `CARRIER-SCHEMA-CONTRACT.md` for the accepted explanation line;
+- `ROUTE-SEAM-CONTRACT.md` for the relation between the two routes;
 - `A2-A3-A4-ATTACK.md` for the foundation route's philosophical attack surface;
 - `DESIGN-CONTRACT.md` for the historical CUT 1 design contract.
 
-Status: **FORMAL LABORATORY - EXPLANATION LINE ON MAIN**.
+Status: **FORMAL LABORATORY - EXPLANATION LINE AND ROUTE SEAM ON MAIN**.
 
 License: MIT, copyright 2026 A. M. Thorn.

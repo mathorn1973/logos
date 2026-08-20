@@ -1,6 +1,6 @@
 # ROUTE-SEAM-1 DESIGN CONTRACT
 
-Status: **RESEARCH CUT, IN REVIEW**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 Base: `main` (accepted through `totality-externality-1`).
 

@@ -1,8 +1,13 @@
 # A2–A3–A4 ATTACK
 
-Status: **NON-CANONICAL ATTACK NOTE**.
+Status: **NON-CANONICAL ATTACK NOTE, REVISED AFTER THE EXPLANATION LINE**.
 
-This note freezes the next philosophical target of `ABSOLUTE-GROUND-1`.
+This note was written before the totality/explanation line existed. It has been revised
+against `main` as of `route-seam-1`. Two of its three targets changed shape; one did not.
+The original agenda is corrected in place rather than deleted, and each section says what
+the later cuts did to it.
+
+This note freezes the philosophical targets of `ABSOLUTE-GROUND-1`.
 The program does not attempt to define divine attributes.  Its central question is narrower:
 
 > If anything at all exists, is some necessary ungrounded reality forced, or can reality be bottomless or brute?
@@ -33,6 +38,15 @@ Therefore the minimal existence claim does not depend on a monist or common-grou
 A3 enters only when asking for uniqueness and universal grounding ancestry.
 
 ## 2. A2 — genuine infinite regress attack
+
+**Revision note.** Partly superseded. The totality line was built to work without A2, so the
+question is no longer whether a bottomless order can be refuted, but what a bottomless order
+costs once the totality premises are added on top of it. `route-seam-1` also deflated the
+regress record itself: a `RegressTotality` carries an infinite descending chain plus a
+designated fact, and its fact layer, that designated fact and its `inside` predicate are
+largely free data. A bare infinite regress is a chain plus a label, not an explanation and
+not by itself an opponent position. The section below stands as the independence result it
+always was; the philosophical question at its end is restated accordingly.
 
 The old finite cycle is retained as a simple independence check, but it is not the serious philosophical opponent.
 
@@ -75,7 +89,24 @@ The philosophical question is now exact:
 
 Rejecting A2 means answering yes, or at least allowing that possibility.
 
+**As the question now stands.** Rejecting A2 is not by itself a position. It makes the
+foundation route unavailable and nothing more; the bare record that replaces it discharges
+the totality conclusion trivially, by `bare_totality_necessary`. The live question is
+therefore the conjunction:
+
+> Can an order made entirely of derivative members, together with source actuality, local
+> explanatory adequacy and completeness over a represented totality, avoid a necessary
+> explanatory source without accepting a contingent explanatory absolute?
+
+`fact-sufficient-explanation-1` answers that this is exactly the third disjunct of the
+accepted trichotomy, and `carrier-schema-1` answers that reaching it always requires
+exempting some carrier from completeness, scope or adequacy.
+
 ## 3. A3 — unity is not existence
+
+**Revision note.** Unchanged by the later cuts. A3 remains a question about plurality of
+foundations on the foundation side only. The totality route has no unity premise and says
+nothing about how many explanatory sources there are.
 
 The disconnected two-root model has been upgraded to satisfy `NecessaryExistenceAxioms`.
 
@@ -106,6 +137,28 @@ The philosophical question is separate from the existence argument:
 This question should not be used to burden the prior question whether any necessary foundation exists at all.
 
 ## 4. A4 — brute contingency
+
+**Revision note.** Still live, but the original formulation is too narrow. The later cuts
+separated three distinct positions that A4 as written treats as one:
+
+```text
+brute contingent entity      an actual, ungrounded, non-necessary entity
+                             refuted by A4; the original target of this section
+
+brute contingent fact        the totality fact is actual, non-necessary and unexplained
+                             untouched by A4; the third disjunct of the accepted
+                             trichotomy, and equivalent to denying local sufficient
+                             explanation for that fact
+
+relocation to a carrier      the unexplained item moved onto a fresh carrier, for
+                             instance a modal condition licensing failure
+                             untouched by A4; available exactly when the new carrier is
+                             exempt from completeness, scope or adequacy
+```
+
+The three are not variants of one thesis. A4 governs only the first. Arguments against it do
+not transfer to the other two, and the later cuts show the other two are where the surviving
+opponent position actually lives.
 
 The original A4 is:
 
@@ -139,7 +192,12 @@ The philosophical question is now exact:
 
 > Is a contingent ungrounded fact a genuine stopping point, or does its contingency itself prevent it from being ultimate?
 
+Stated for the entity case only. For the fact case and the carrier case the corresponding
+questions are recorded in `STATUS.md` as live commitments, not here.
+
 ## 5. Current logical map
+
+### Foundation side
 
 ```text
 A0 + A1 + A2
@@ -160,6 +218,35 @@ one universal ungrounded root
 
 A6 and later creation vocabulary are not needed for the central question in this note.
 
+### Totality side
+
+```text
+TotalityExplanationCore = source actuality + local adequacy + completeness
+        |
+        v
+NecessaryFact(totality)
+  or an actual necessary explanatory source
+  or a contingent explanatory absolute totality fact
+```
+
+The middle disjunct yields a necessary explanatory source that need not be ungrounded, so it
+does not reach `AbsoluteGround`. The third disjunct is the surviving opponent position, and
+is equivalent to denying local sufficient explanation for the totality fact.
+
+### The seam
+
+The two sides do not stack. A2 is a field of the foundation package and is refuted by the
+mere presence of a regress record, so no model carries both premise packages and any theorem
+stated over both is vacuous.
+
+Well-foundedness against the availability of a bare regress record is an exhaustive
+**structural** dichotomy. The full premise packages are **not** exhaustive and may fail
+together: well-founded grounding by itself supplies neither A0, A1, A4 nor A5, and the
+availability of a regress record by itself supplies neither source actuality, nor local
+adequacy, nor completeness.
+
+Nothing in this map licenses the reading that one route applies whenever the other does not.
+
 ## 6. What is not being attempted
 
 This attack does not try to derive or define properties of God.
@@ -167,22 +254,26 @@ It does not formalize personality, intelligence, goodness, will, omnipotence, om
 
 The only target is whether reality can terminate in anything less than necessary ungrounded being — or avoid termination through an infinite regress.
 
-## 7. Next work
+## 7. Where the questions now live
 
-The next work should attack the three escape routes rather than add conclusions:
+The original three-item agenda is superseded. Two of its items were absorbed by the totality
+line and one was not, and the live list is no longer a list of escape routes to attack but a
+list of commitments the formal layer states without establishing, plus one interpretive
+question. That list is maintained in `STATUS.md` under
+`Current live philosophical commitments and questions`, and this note should not duplicate
+it.
+
+What remains specific to this note:
 
 ```text
-A2  Is bottomless derivative grounding explanatory or merely endless deferral?
-A4  Is contingent brute ultimacy coherent as an ontological stopping point?
-A3  If necessary foundations exist, can more than one be genuinely independent?
+A3   only on the foundation side: can more than one necessary foundation be
+     genuinely independent? Untouched by the later cuts.
+
+A4   only for the entity case: is a contingent ungrounded entity a genuine
+     stopping point? The fact case and the carrier case are separate questions
+     and are tracked in STATUS.
 ```
 
-Order of work:
-
-```text
-1  A2 — strongest case for infinite regress
-2  A4 — strongest case for brute contingency
-3  A3 — only after existence is settled, investigate fundamental plurality
-```
-
-No promotion of the metaphysical premises themselves follows from Lean success.  Lean has isolated the forks; human argument must now address them.
+No promotion of the metaphysical premises themselves follows from Lean success. Lean has
+isolated the forks; human argument must now address them. What the later cuts changed is
+which forks are the real ones.

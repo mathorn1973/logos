@@ -1,6 +1,6 @@
 # DESIGN CONTRACT — ABSOLUTE-GROUND-1
 
-Status: **NON-CANONICAL DESIGN CONTRACT**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 This contract governs the grounding-based metaphysical branch of LOGOS. It is independent of Gödel–Scott and TWIST-J. Its central question is deliberately minimal:
 

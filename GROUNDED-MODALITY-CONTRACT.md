@@ -1,6 +1,6 @@
 # DESIGN CONTRACT — GROUNDED-MODALITY-1
 
-Status: **NON-CANONICAL DESIGN CONTRACT**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 This cut attacks the final `brute modal asymmetry` left by `CONTINGENT-ABSOLUTE-1`.
 

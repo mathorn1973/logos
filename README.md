@@ -6,13 +6,18 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 
 ## Accepted main line
 
-`main` currently contains five accepted formal cuts:
+`main` currently contains ten accepted formal cuts:
 
 1. `modal-foundation-1` - Kripke semantics for necessity, possibility, contingency, and standard modal principles under exact frame hypotheses;
 2. `finite-countermodels-2` - explicit finite frames, pointed refutations, and a genuine contingency witness;
 3. `absolute-ground-1` - a grounding language, explicit A0-A8 assumption records, the minimal necessary-ground theorem, and independence/countermodels delimiting its assumptions;
 4. `totality-regress-1` - a separate fact carrier and an A2-free totality route showing that pure contingency is impossible under explicit fact-sufficient-ground, externality, and completeness commitments;
-5. `totality-externality-1` - a role split between constitution and explanation, a premise-order audit for F4/EF4 and E/E_expl, and a derived-externality theorem from explanatory scope plus irreflexivity.
+5. `totality-externality-1` - a role split between constitution and explanation, a premise-order audit for F4/EF4 and E/E_expl, and a derived-externality theorem from explanatory scope plus irreflexivity;
+6. `self-explanation-1` - reduction of explanatory irreflexivity first to contingent propriety and then to a local adequacy condition on the totality explanation alone;
+7. `fact-sufficient-explanation-1` - removal of EF4 from the core, and the resulting three-way fork in which a contingent explanatory absolute is a live option;
+8. `contingent-absolute-1` - the modal reading of that option, and the recorded finding that deriving necessity from explanatory ultimacy is equivalent to local EF4;
+9. `grounded-modality-1` - modal conditions as a carrier separate from entities and explanatory sources, with the recorded finding that the axis does not close the fork;
+10. `carrier-schema-1` - the closure argument stated for an arbitrary carrier, with the accepted route shown to be an instance of it.
 
 The load-bearing grounding theorem remains:
 
@@ -71,22 +76,48 @@ where `S` is explanatory scope coverage and `I` is explanatory irreflexivity. Fr
 
 Dedicated comparison, scope, type-boundary, and static CI audits pin these boundaries.
 
-## Current research frontier
+## Where the explanation line ended
 
-Six research cuts are open beyond the accepted externality layer. None of them is on `main`, and nothing below is accepted.
+Cuts 6 to 10 took the totality route as far as the present language allows. The outcome is a mapped fork, not a closure, and two attempts at closing it are recorded as failures rather than removed.
+
+EF4 is no longer a premise of the core. `TotalityExplanationCore` contains only source actuality, local explanatory adequacy and completeness, and asserts no principle that an explanation must exist. From it Lean proves:
 
 ```text
-#7   self-explanation-1             -> main
-#8   fact-sufficient-explanation-1  -> #7
-#9   contingent-absolute-1          -> #8
-#10  grounded-modality-1            -> #9
-#14  carrier-schema-1               -> #8
-#16  route-seam-1                   -> main
+NecessaryFact(totality)
+OR
+an actual necessary explanatory source explains the totality fact
+OR
+the totality fact is a contingent explanatory absolute:
+  actual, non-necessary, and unexplained
 ```
 
-`#7` reduces explanatory irreflexivity to a local adequacy condition, leaving the narrow question whether an identity citation such as `P because P` can count as an adequate explanation of contingent existence within a claimed complete explanation. `#8` removes the sufficient-explanation principle from the core and exposes a third disjunct, a contingent explanatory absolute. `#9` gives that disjunct a modal reading and tests whether necessity can be derived from explanatory ultimacy. `#10` separates metaphysically licensed modal variation from raw Kripke accessibility. `#14` states the closure argument for an arbitrary carrier and asks what relocating the unexplained item onto a fresh carrier costs. `#16` relates the two accepted routes to each other and asks whether the totality route's necessary explanatory source is ungrounded.
+The third disjunct is the surviving opponent position. Two routes to removing it were tried:
 
-`#14` and `#16` are not further floors on the `#7` to `#10` chain. Branch topology, real dependencies and promotion order are recorded in `STATUS.md`.
+- `contingent-absolute-1` tested the claim that an explanatorily ultimate fact must be necessary. At the designated actual fact that claim is provably equivalent to local EF4. It is not an independent route around EF4; it is EF4 restated in modal-stability form. Any future argument from ultimacy to necessity must add genuinely new structure rather than rename the old premise.
+- `grounded-modality-1` tested whether refusing to identify raw Kripke accessibility with metaphysically licensed possibility closes the position. It does not. The cut's own `ConditionedBrute` model satisfies no-brute-modality together with an unexplained, non-necessary totality fact. The cut's main implication also partitions necessity rather than deriving it: no-brute-modality together with modal unconditionedness is equivalent to actuality together with necessity.
+
+`carrier-schema-1` then answers the general form of the worry those two cuts raise. The engine of the accepted route consults only five predicates of its sources, so it can be stated for an arbitrary carrier:
+
+```text
+escape_requires_exemption
+    K.Explains a -> not K.Necessary a -> not ScopeClosureAxioms K
+```
+
+A contingent item can explain the target only at a carrier exempted from completeness, scope or adequacy. Relocating the unexplained item onto a fresh carrier therefore never dissolves the fork. Three one-item countermodels show each of the three conditions is separately load-bearing, and `TotalityExplanationCore` is proved to be an instance of the schema rather than an analogy to it.
+
+The open question is consequently no longer "can the unexplained item always be moved". It is: for a proposed carrier, which condition is it exempt from, and is that exemption principled or merely stipulated.
+
+## Current research frontier
+
+One research cut is open. It is not on `main` and nothing in it is accepted.
+
+```text
+#16  route-seam-1  -> main
+```
+
+It relates the two accepted routes to each other and asks whether the totality route's necessary explanatory source is ungrounded. Branch topology and promotion order are recorded in `STATUS.md`.
+
+Beyond it the remaining work on the explanation line is philosophical rather than formal. The two judgments the machine has isolated and cannot settle are whether an identity citation can count as an adequate explanation of contingent existence, and whether exempting a carrier from completeness, scope or adequacy can ever be principled.
 
 Goedel-Scott is a separate formal branch of the LOGOS program, not a step in the grounding/totality sequence. TWIST-J is likewise not a dependency of the general ontology core.
 
@@ -101,9 +132,10 @@ See also:
 - `ABSOLUTE-GROUND-CONTRACT.md` for the accepted foundation route;
 - `TOTALITY-REGRESS-CONTRACT.md` for the accepted totality route;
 - `TOTALITY-EXTERNALITY-CONTRACT.md` for the accepted externality/premise-order cut;
+- `SELF-EXPLANATION-CONTRACT.md`, `FACT-SUFFICIENT-EXPLANATION-CONTRACT.md`, `CONTINGENT-ABSOLUTE-CONTRACT.md`, `GROUNDED-MODALITY-CONTRACT.md` and `CARRIER-SCHEMA-CONTRACT.md` for the accepted explanation line;
 - `A2-A3-A4-ATTACK.md` for the foundation route's philosophical attack surface;
 - `DESIGN-CONTRACT.md` for the historical CUT 1 design contract.
 
-Status: **FORMAL LABORATORY - TOTALITY-EXTERNALITY-1 ON MAIN**.
+Status: **FORMAL LABORATORY - EXPLANATION LINE ON MAIN**.
 
 License: MIT, copyright 2026 A. M. Thorn.

@@ -235,9 +235,13 @@ NO claim that the substantive totality premises are available whenever A2 fails
 NO new axiom record; enforced by a static CI guard over the seam layer
 ```
 
-## Current live philosophical premises
+## Current live philosophical commitments and questions
 
-The machine has not established these as true of reality.
+The first four items are commitments: principles the formal layer states and does not
+establish. The last is an interpretive question about how to read an accepted result, and
+no theorem depends on how it is answered.
+
+The machine has not established any of the commitments as true of reality.
 
 ### Local sufficient explanation for the totality fact
 
@@ -255,16 +259,18 @@ The countermodel shows exactly what answering yes permits: a wholly contingent r
 
 `carrier-schema-1` shows every relocation of the unexplained item requires exempting a carrier from completeness, scope or adequacy. Whether such an exemption can be principled is a philosophical question the formal layer deliberately leaves open. For the modal condition of `ConditionedBrute` the exemption is known to be completeness.
 
+### No brute modality
+
+`grounded-modality-1` states it precisely: every accessible failure of a fact has an actual condition licensing it. It is a premise of a new axis, not a new route to the conclusion, and on its own it does not close the fork.
+
 ### Whether the middle disjunct deserves the name
+
+*Interpretive question, not a premise. No theorem depends on how it is answered.*
 
 `route-seam-1` shows the totality route's necessary explanatory source may itself be grounded,
 while the foundation route's witness is ungrounded by construction. `AbsoluteGround` is
 reachable only on the foundation side. Whether a necessary explanatory source that is itself
 grounded is an absolute in the intended sense is a human judgment, not a formal one.
-
-### No brute modality
-
-`grounded-modality-1` states it precisely: every accessible failure of a fact has an actual condition licensing it. It is a premise of a new axis, not a new route to the conclusion, and on its own it does not close the fork.
 
 ## Interpretation firewall
 

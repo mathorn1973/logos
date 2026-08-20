@@ -10,7 +10,7 @@ A feasibility spike confirmed both directions of section 5 before this contract 
 
 ## 1. Motivation
 
-The revised `A2-A3-A4-ATTACK.md` separates two object positions that A4 as written treats as one:
+The revised `A2-A3-A4-ATTACK.md` separates two object positions. The original discussion grouped them under the broad heading of brute contingency. Formal A4 itself governs only the entity position; it quantifies over entities and never mentioned facts.
 
 ```text
 brute contingent entity   an actual, non-necessary, underived entity
@@ -31,7 +31,7 @@ Nothing so far shows these are two commitments rather than one.
 ## 2. Claim type
 
 ```text
-countermodel   FactBruteEntityRegular   (the accepted BruteTotality model, read for A4')
+countermodel   FactBruteEntityRegular   (the accepted BruteTotality model, read for A4 and A4')
 countermodel   EntityBruteFactRegular   (new)
 proved theorem a4_and_localEF4_are_independent
 ```
@@ -42,11 +42,11 @@ No new language, no new axiom record, no new carrier, no bridge, no interpretati
 
 None introduced. The cut is stated entirely in vocabulary already on `main`: `RegressTotality`, `TotalityExplanationCore`, `NonNecessaryIsDerived`, `LocalFactSufficientExplanation`, `Derived`, `Necessary`, `NecessaryFact`.
 
-A static CI guard enforces that the cut's only source file declares no `structure`, `class` or `axiom`, so it cannot introduce a record or a commitment. Inductive carriers for a finite model are permitted; they are model data, not language.
+A static CI guard enforces that the cut's only source file declares no `structure`, `class` or `axiom`, so it cannot introduce a record or a commitment. Local inductive carriers for a model are permitted; they are model data, not language. The entity carrier of the second model is not finite: `node : Nat → Entity` supplies the required infinite descending chain.
 
 ## 4. Assumptions
 
-None added. Both directions are models, and the shared environment is fixed in advance:
+None added. The two directions are two different models. What they share is the same fixed hypothesis schema, fixed in advance:
 
 ```text
 RegressTotality M F
@@ -54,7 +54,7 @@ TotalityExplanationCore M F G E R
 ¬ NecessaryFact F R.totality
 ```
 
-Every model below satisfies all three. The independence is therefore stated inside the accepted environment, not by varying it.
+Both models satisfy all three. The independence is therefore stated under the accepted hypotheses, not by changing them.
 
 ## 5. Results
 
@@ -64,12 +64,13 @@ The accepted `BruteTotality` model already on `main` is reused unchanged. In it 
 
 ```text
 NonNecessaryIsDerived IM                              holds
+∀ x, Actual → Contingent → Derived                    holds (the original A4)
 ¬ NecessaryFact IFM IR.totality                       holds
 ¬ LocalFactSufficientExplanation BG IR.totality       holds
 TotalityExplanationCore                               inhabited by bruteCore
 ```
 
-A4' can therefore hold while the fact-level principle fails. No new model is needed for this direction; only the A4' reading of the existing one.
+The original A4 is derived from A4' through the accepted equivalence; the actual world of this model accesses itself, so that equivalence applies. Both forms therefore hold while the fact-level principle fails. No new model is needed for this direction, only the A4 reading of the existing one.
 
 ### 5.2 Fact level regular, entity level brute
 
@@ -80,10 +81,16 @@ LocalFactSufficientExplanation G R.totality            holds, non-vacuously
 ¬ NecessaryFact F R.totality                           holds, so the antecedent is met
 ActualExplainsFact G root R.totality                   holds, so the consequent is met
 ¬ NonNecessaryIsDerived M                              holds, witnessed at stray
+¬ (∀ x, Actual → Contingent → Derived)                 holds, same witness
+ExplanationImpliesGrounding G                          holds
 TotalityExplanationCore                                inhabited by explanationCore
 ```
 
 Non-vacuity is stated as two separate facts rather than asserted, so the direction cannot be satisfied by a model in which the principle holds only because its antecedent fails.
+
+`stray` is contingent in the original sense and not merely non-necessary, so the original A4 fails at the same witness.
+
+The fact-level bridge `ExplanationImpliesGrounding` is deliberately made to hold: `root` is admitted as a generic fact ground as well as an explanatory source. The direction therefore does not turn on the absence of that bridge.
 
 ### 5.3 The joint statement
 
@@ -95,23 +102,38 @@ a4_and_localEF4_are_independent
        ∧ ¬ NecessaryFact ... ∧ ¬ NonNecessaryIsDerived ...)
 ```
 
-Both directions in one theorem, both inside the shared environment.
+Both directions in one theorem, both under the shared hypothesis schema, and each stated for the original A4 as well as A4'.
+
+### 5.4 The load-bearing gap in the second direction
+
+The second direction relies on the current language having no entity-level bridge from adequate explanation to ontological grounding. `root` adequately explains `stray` and does not ground it, which is exactly why `TotalityExplanationCore` can hold while A4 and A4' fail. `root_explains_stray_without_grounding` states that gap directly rather than leaving it implicit.
+
+No independence result under such a future bridge is claimed. If an entity-level bridge from adequate explanation to grounding were added, this direction would have to be re-examined.
 
 ## 6. What this establishes
 
 A4' and local EF4 are two commitments, not one. Inside `RegressTotality` plus `TotalityExplanationCore` with a non-necessary totality fact, either can hold while the other fails.
 
-Consequently an argument that excludes brute contingent entities does not thereby exclude a brute contingent totality fact, and an argument that excludes the brute fact does not thereby exclude brute entities. The attack note's claim that the two positions are not variants of one thesis is now a theorem rather than a reading.
+What is proved is exactly two non-entailments, under the shared hypothesis schema:
+
+```text
+A4 and A4' do not entail local EF4        witnessed by FactBruteEntityRegular
+local EF4 does not entail A4 or A4'       witnessed by EntityBruteFactRegular
+```
+
+Nothing broader. The attack note's reading that the two positions are not variants of one thesis is supported by these two non-entailments; it is not itself a formal statement.
 
 This also fixes the scope of `absolute-ground-1`. Its A4 governs the entity level only, and the fact-level position it leaves open is exactly the third disjunct of the accepted trichotomy.
 
 ## 7. What this does not establish
 
-It does not establish either principle. Both remain live commitments recorded in `STATUS.md`.
+It does not establish either principle. Both remain live commitments. Local EF4 is listed in `STATUS.md`; A4' is stated in `absolute-ground-1` and discussed in the attack note, and the closure for this cut adds it to the `STATUS.md` list.
 
 It does not establish that the two are the only relevant principles, or that together they exhaust brute positions.
 
-It says nothing about carrier extension. That is a manoeuvre about where explanatory sources may be drawn from, not an object position, and it is deliberately outside this cut. `ScopeCarrier` records that an item explains the designated target and does not record that the item is itself unexplained; it has no bridge to `ActualExplainsFact`. Treating carrier extension as a third independent axis was considered and rejected: `ConditionedBrute` already carries a contingent unexplained totality fact and a licensing modal condition at the same time, so the two layers do not substitute for each other, and bidirectional models could be produced only by taking a product of unrelated structures. That is syntactic freedom, not philosophical independence.
+It says nothing about carrier extension. That is a manoeuvre about where explanatory sources may be drawn from, not an object position, and it is deliberately outside this cut.
+
+The precise situation is this. `ScopeCarrier` alone has an uninterpreted `Explains` predicate. `entityScopeCarrier` interprets it as `ActualExplainsFact`, but no such interpretation is supplied for an arbitrary fresh carrier, and there is no bridge to `licensesFailure`. Treating carrier extension as a third independent axis was considered and rejected on that ground: `ConditionedBrute` already carries a contingent unexplained totality fact and a licensing modal condition at the same time, so the two layers do not substitute for each other, and bidirectional models could be produced only by taking a product of unrelated structures. That is syntactic freedom, not philosophical independence.
 
 It does not weaken anything accepted. No premise, record or theorem changes.
 
@@ -119,12 +141,14 @@ It does not weaken anything accepted. No premise, record or theorem changes.
 
 ```text
 NO new axiom record, structure, class or axiom; enforced by static CI guard
-NO new ontological language and NO new carrier
+NO new ontological language
+NO new ScopeCarrier or cross-carrier bridge
 NO modification of any accepted theorem, record or model
 NO claim that either principle is true
 NO claim that the two principles exhaust the brute positions
 NO claim about carrier extension in either direction
-NO variation of the shared environment to obtain independence
+NO change of the shared hypothesis schema to obtain independence
+NO independence claim under a future entity-level explanation-to-grounding bridge
 NO theological or physical predicate
 ```
 
@@ -144,12 +168,14 @@ Both are live. Answering the first leaves the second open, and the formal layer 
 
 1. whole project builds under the pinned Lean toolchain;
 2. no `sorry` or `sorryAx` occurs;
-3. `NonNecessaryIsDerived` is proved for the accepted `BruteTotality` model;
+3. `NonNecessaryIsDerived` and the original A4 are both proved for the accepted `BruteTotality` model;
 4. that same model is confirmed to have a non-necessary totality fact and to fail local EF4;
 5. `EntityBruteFactRegular` inhabits `TotalityExplanationCore`;
 6. in it local EF4 holds, and non-vacuity is exhibited as two separate facts;
-7. in it an actual non-necessary underived entity is exhibited, refuting `NonNecessaryIsDerived`;
-8. `a4_and_localEF4_are_independent` states both directions inside the shared environment;
+7. in it an actual underived entity is exhibited that is both non-necessary and contingent, refuting `NonNecessaryIsDerived` and the original A4;
+7a. in it `ExplanationImpliesGrounding` holds, so the direction does not turn on the absence of the fact-level bridge;
+7b. `root_explains_stray_without_grounding` states the entity-level gap the direction does rely on;
+8. `a4_and_localEF4_are_independent` states both directions under the shared hypothesis schema, for both A4 and A4';
 9. the cut's source file declares no `structure`, `class` or `axiom`, enforced by static CI guard;
 10. dedicated axiom audit is green;
 11. no new premise enters any accepted axiom record;

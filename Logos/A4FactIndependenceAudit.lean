@@ -7,6 +7,7 @@ axiom, and every model must be exhibited rather than assumed. -/
 
 -- 5.1 entity level regular, fact level brute
 #print axioms Logos.GroundingModels.A4FactIndependence.FactBruteEntityRegular.a4_holds
+#print axioms Logos.GroundingModels.A4FactIndependence.FactBruteEntityRegular.original_a4_holds
 #print axioms Logos.GroundingModels.A4FactIndependence.FactBruteEntityRegular.totality_not_necessary
 #print axioms Logos.GroundingModels.A4FactIndependence.FactBruteEntityRegular.local_ef4_fails
 
@@ -18,7 +19,11 @@ axiom, and every model must be exhibited rather than assumed. -/
 #print axioms Logos.GroundingModels.A4FactIndependence.EntityBruteFactRegular.stray_actual
 #print axioms Logos.GroundingModels.A4FactIndependence.EntityBruteFactRegular.stray_not_necessary
 #print axioms Logos.GroundingModels.A4FactIndependence.EntityBruteFactRegular.stray_not_derived
+#print axioms Logos.GroundingModels.A4FactIndependence.EntityBruteFactRegular.explanation_implies_grounding
+#print axioms Logos.GroundingModels.A4FactIndependence.EntityBruteFactRegular.root_explains_stray_without_grounding
+#print axioms Logos.GroundingModels.A4FactIndependence.EntityBruteFactRegular.stray_contingent
 #print axioms Logos.GroundingModels.A4FactIndependence.EntityBruteFactRegular.a4_fails
+#print axioms Logos.GroundingModels.A4FactIndependence.EntityBruteFactRegular.original_a4_fails
 
 -- 5.3 joint statement
 #print axioms Logos.GroundingModels.A4FactIndependence.a4_and_localEF4_are_independent

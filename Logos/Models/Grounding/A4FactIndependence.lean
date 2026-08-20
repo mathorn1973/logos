@@ -1,4 +1,4 @@
-import Logos.Systems.AbsoluteGround.Axioms
+import Logos.Systems.AbsoluteGround.Theorems
 import Logos.Models.Grounding.FactSufficientExplanation
 
 namespace Logos
@@ -9,7 +9,8 @@ open Grounding
 
 /-! # A4' and local EF4 are two commitments, not one
 
-Both directions are stated inside one fixed environment:
+The two directions are two different models.  What they share is the same fixed
+hypothesis schema:
 
 ```text
 RegressTotality M F
@@ -17,8 +18,8 @@ TotalityExplanationCore M F G E R
 ¬ NecessaryFact F R.totality
 ```
 
-so the independence is exhibited within the accepted setting rather than by
-varying it. -/
+so the independence is exhibited under the accepted hypotheses rather than by
+changing them. -/
 
 /-! ## Direction 1: entity level regular, fact level brute
 
@@ -41,6 +42,12 @@ theorem a4_holds : NonNecessaryIsDerived IM := by
 theorem totality_not_necessary : ¬ NecessaryFact IFM IR.totality :=
   internal_totality_not_necessary
 
+/-- The original A4, not only A4'.  The actual world of this model accesses
+itself, so the accepted equivalence applies. -/
+theorem original_a4_holds :
+    ∀ x, Actual IM x → Contingent IM x → Derived IM x :=
+  contingent_is_derived_of_nonNecessary a4_holds
+
 theorem local_ef4_fails : ¬ LocalFactSufficientExplanation BG IR.totality :=
   local_totality_EF4_fails
 
@@ -61,7 +68,7 @@ inductive World where
   | stripped
   deriving Repr, DecidableEq
 
-/-- `stray` is the entity-level brute fact: actual, contingent, underived. -/
+/-- `stray` is the brute contingent entity: actual, contingent, underived. -/
 inductive Entity where
   | root
   | node (n : Nat)
@@ -99,8 +106,13 @@ def holdsAt : World → Fact → Prop
   | .actual, .totality => True
   | .stripped, .totality => False
 
+/-- `root` is admitted as a generic fact ground as well as an explanatory source,
+so the fact-level bridge `ExplanationImpliesGrounding` holds here.  The result
+then depends only on the absence of an entity-level bridge from adequate
+explanation to ontological grounding. -/
 def groundsFact : World → Entity → Fact → Prop
   | .actual, .node _, .totality => True
+  | .actual, .root, .totality => True
   | _, _, _ => False
 
 def facts : FactModel M where
@@ -163,7 +175,7 @@ theorem totality_not_necessary : ¬ NecessaryFact F R.totality := by
   intro hNecessary
   exact hNecessary World.stripped True.intro
 
-/-- The shared environment is satisfied. -/
+/-- The shared hypothesis schema is satisfied. -/
 def explanationCore : TotalityExplanationCore M F G E R where
   explains_source_actual := by
     intro a hExplain
@@ -200,6 +212,23 @@ theorem local_ef4_antecedent_met : ¬ NecessaryFact F R.totality :=
 theorem local_ef4_consequent_met : ExplainedFact G R.totality :=
   ⟨Entity.root, root_explains⟩
 
+/-- The fact-level bridge is present, so nothing in this direction turns on its
+absence. -/
+theorem explanation_implies_grounding : ExplanationImpliesGrounding G := by
+  intro a p hExplain
+  cases a with
+  | root => cases p; exact True.intro
+  | node n => cases p; exact False.elim hExplain
+  | stray => cases p; exact False.elim hExplain
+
+/-- `root` adequately explains `stray` without grounding it.  That gap is what
+lets the core hold while A4' fails, and it exists because the current language
+has no entity-level bridge from adequate explanation to ontological grounding. -/
+theorem root_explains_stray_without_grounding :
+    ActualExplainsEntity E Entity.root Entity.stray ∧
+      ¬ ActualGrounds M Entity.root Entity.stray :=
+  ⟨True.intro, by intro h; exact h⟩
+
 theorem stray_actual : Actual M Entity.stray := True.intro
 
 theorem stray_not_necessary : ¬ Necessary M Entity.stray := by
@@ -217,17 +246,29 @@ theorem stray_not_derived : ¬ Derived M Entity.stray := by
       | succ k => exact hGrounds
   | stray => exact hGrounds
 
+/-- `stray` is contingent in the original sense, not merely non-necessary. -/
+theorem stray_contingent : Contingent M Entity.stray :=
+  ⟨⟨World.actual, True.intro, True.intro⟩,
+    ⟨World.stripped, True.intro, by intro h; exact h⟩⟩
+
 /-- A4' fails, witnessed at `stray`. -/
 theorem a4_fails : ¬ NonNecessaryIsDerived M := by
   intro hA4
   exact stray_not_derived (hA4 Entity.stray stray_actual stray_not_necessary)
 
+/-- The original A4 fails too, at the same witness. -/
+theorem original_a4_fails :
+    ¬ (∀ x, Actual M x → Contingent M x → Derived M x) := by
+  intro hA4
+  exact stray_not_derived (hA4 Entity.stray stray_actual stray_contingent)
+
 end EntityBruteFactRegular
 
 /-! ## The joint statement -/
 
-/-- Inside `RegressTotality` plus `TotalityExplanationCore` with a non-necessary
-totality fact, A4' and local EF4 are independent.
+/-- Under the shared hypothesis schema, A4 and A4' on one side and local EF4 on
+the other are independent.  Both the original A4 and the cleaner A4' are stated,
+so the result is not confined to the reformulated principle.
 
 An argument excluding brute contingent entities therefore does not exclude a
 brute contingent totality fact, and an argument excluding the brute fact does not
@@ -240,6 +281,9 @@ theorem a4_and_localEF4_are_independent :
         FactSufficientExplanation.BruteTotality.BE
         TotalityRegress.InternalGround.IR ∧
       NonNecessaryIsDerived TotalityRegress.InternalGround.IM ∧
+      (∀ x, Actual TotalityRegress.InternalGround.IM x →
+        Contingent TotalityRegress.InternalGround.IM x →
+        Derived TotalityRegress.InternalGround.IM x) ∧
       ¬ NecessaryFact TotalityRegress.InternalGround.IFM
           TotalityRegress.InternalGround.IR.totality ∧
       ¬ LocalFactSufficientExplanation
@@ -253,15 +297,20 @@ theorem a4_and_localEF4_are_independent :
           EntityBruteFactRegular.R.totality ∧
       ¬ NecessaryFact EntityBruteFactRegular.F
           EntityBruteFactRegular.R.totality ∧
-      ¬ NonNecessaryIsDerived EntityBruteFactRegular.M) :=
+      ¬ NonNecessaryIsDerived EntityBruteFactRegular.M ∧
+      ¬ (∀ x, Actual EntityBruteFactRegular.M x →
+          Contingent EntityBruteFactRegular.M x →
+          Derived EntityBruteFactRegular.M x)) :=
   ⟨⟨FactSufficientExplanation.BruteTotality.bruteCore,
       FactBruteEntityRegular.a4_holds,
+      FactBruteEntityRegular.original_a4_holds,
       FactBruteEntityRegular.totality_not_necessary,
       FactBruteEntityRegular.local_ef4_fails⟩,
     ⟨EntityBruteFactRegular.explanationCore,
       EntityBruteFactRegular.local_ef4_holds,
       EntityBruteFactRegular.totality_not_necessary,
-      EntityBruteFactRegular.a4_fails⟩⟩
+      EntityBruteFactRegular.a4_fails,
+      EntityBruteFactRegular.original_a4_fails⟩⟩
 
 end A4FactIndependence
 end GroundingModels

@@ -73,9 +73,20 @@ Dedicated comparison, scope, type-boundary, and static CI audits pin these bound
 
 ## Current research frontier
 
-The next open cut is `self-explanation-1`. Its target is not a blanket ban on self-reference, but the exact adequacy question left by the accepted externality analysis: whether an identity citation such as `P because P` can count as an adequate explanation of contingent existence within a claimed complete explanation.
+Six research cuts are open beyond the accepted externality layer. None of them is on `main`, and nothing below is accepted.
 
-Later stacked cuts address fact sufficient explanation, contingent explanatory absolutes, and grounded modality.
+```text
+#7   self-explanation-1             -> main
+#8   fact-sufficient-explanation-1  -> #7
+#9   contingent-absolute-1          -> #8
+#10  grounded-modality-1            -> #9
+#14  carrier-schema-1               -> #8
+#16  route-seam-1                   -> main
+```
+
+`#7` reduces explanatory irreflexivity to a local adequacy condition, leaving the narrow question whether an identity citation such as `P because P` can count as an adequate explanation of contingent existence within a claimed complete explanation. `#8` removes the sufficient-explanation principle from the core and exposes a third disjunct, a contingent explanatory absolute. `#9` gives that disjunct a modal reading and tests whether necessity can be derived from explanatory ultimacy. `#10` separates metaphysically licensed modal variation from raw Kripke accessibility. `#14` states the closure argument for an arbitrary carrier and asks what relocating the unexplained item onto a fresh carrier costs. `#16` relates the two accepted routes to each other and asks whether the totality route's necessary explanatory source is ungrounded.
+
+`#14` and `#16` are not further floors on the `#7` to `#10` chain. Branch topology, real dependencies and promotion order are recorded in `STATUS.md`.
 
 Goedel-Scott is a separate formal branch of the LOGOS program, not a step in the grounding/totality sequence. TWIST-J is likewise not a dependency of the general ontology core.
 

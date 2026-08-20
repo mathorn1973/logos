@@ -39,3 +39,12 @@ jobs:
             echo 'Deep TOTALITY-EXTERNALITY theorem reintroduced a forbidden premise or record.'
             exit 1
           fi
+      - name: Run route seam audit
+        run: lake env lean Logos/RouteSeamAudit.lean
+      - name: Reject new assumption records in the seam layer
+        run: |
+          if grep -rnE '^\s*(structure|class|axiom)\b' Logos/Systems/RouteSeam/; then
+            echo 'ROUTE-SEAM: the seam layer declared a new record or axiom.'
+            echo 'This cut must be a consequence of records already accepted on main.'
+            exit 1
+          fi

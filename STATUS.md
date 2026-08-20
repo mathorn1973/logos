@@ -6,7 +6,8 @@ STATE       FORMAL LABORATORY
 MAIN        modal-foundation-1 + finite-countermodels-2 + absolute-ground-1 + totality-regress-1
             + totality-externality-1 + self-explanation-1 + fact-sufficient-explanation-1
             + contingent-absolute-1 + grounded-modality-1 + carrier-schema-1
-FOCUS       route-seam-1; the explanation line is closed formally and the residue is philosophical
+            + route-seam-1
+FOCUS       none open; the formal programme is stable and the residue is philosophical
 AUTHORITY   none; no released theorem catalogue exists yet
 CANON       none
 LICENSE     MIT; copyright 2026 A. M. Thorn
@@ -50,7 +51,7 @@ OR
 exists an actual necessary entity outside the regress grounding the totality fact
 ```
 
-No A2/well-foundedness or A3/unity premise occurs in this theorem. This route does not prove that the necessary witness is ungrounded.
+No A2/well-foundedness or A3/unity premise occurs in this theorem. This route does not prove that the necessary witness is ungrounded; `route-seam-1` pins that by countermodel.
 
 The accepted independence suite shows that pure contingency survives if any one of F4, E, or C is removed.
 
@@ -177,6 +178,63 @@ NO joining of the modal layer to the totality argument
 NO theological or physical predicate anywhere in the line
 ```
 
+## Accepted route seam
+
+`route-seam-1` is on protected `main`.
+
+Three findings, in order of weight.
+
+**The record is weak.** `RegressTotality` carries an infinite descending grounding chain and
+little else; its fact layer, designated fact and `inside` predicate are largely free data.
+
+```text
+exists_descending_chain_of_not_wellFounded
+    not WellFounded (ActualGrounds M)
+      -> exists f, forall n, ActualGrounds M (f (n+1)) (f n)
+
+wellFounded_or_regressTotality
+    WellFounded (ActualGrounds M) or Nonempty (RegressTotality M (bareFactModel M))
+
+bare_totality_necessary
+    NecessaryFact (bareFactModel M) R.totality
+```
+
+The last line is the deflation: the freely constructed witness satisfies the totality
+conclusion by its first disjunct with no explanatory premise doing work.
+
+**The presuppositions of the two routes are incompatible.**
+
+```text
+regressTotality_refutes_wellFoundedness      no axioms
+regressTotality_refutes_foundationAxioms     no axioms
+regressTotality_refutes_necessaryExistenceAxioms   no axioms
+seam_bridge_is_vacuous                       no axioms
+```
+
+**The core fixes modality, not grounding.** `GroundedExplainer` inhabits
+`TotalityExplanationCore`, sits on the middle disjunct of the accepted trichotomy, and has a
+necessary explanatory source that is itself grounded.
+
+```text
+core_fixes_necessity_not_grounding
+    every explainer of the totality fact is necessary
+    and none of them is ungrounded, in that model
+```
+
+The accepted positive model gives the opposite grounding reading, so `Ungrounded(explainer)`
+is undetermined by the core.
+
+Negative boundary:
+
+```text
+NO claim that the two premise packages are exhaustive; both may fail
+NO claim that either route applies whenever the other does not
+NO unqualified reading of the totality conclusion as a necessary explanatory source
+NO claim that the structural dichotomy supports either route
+NO claim that the substantive totality premises are available whenever A2 fails
+NO new axiom record; enforced by a static CI guard over the seam layer
+```
+
 ## Current live philosophical premises
 
 The machine has not established these as true of reality.
@@ -197,6 +255,13 @@ The countermodel shows exactly what answering yes permits: a wholly contingent r
 
 `carrier-schema-1` shows every relocation of the unexplained item requires exempting a carrier from completeness, scope or adequacy. Whether such an exemption can be principled is a philosophical question the formal layer deliberately leaves open. For the modal condition of `ConditionedBrute` the exemption is known to be completeness.
 
+### Whether the middle disjunct deserves the name
+
+`route-seam-1` shows the totality route's necessary explanatory source may itself be grounded,
+while the foundation route's witness is ungrounded by construction. `AbsoluteGround` is
+reachable only on the foundation side. Whether a necessary explanatory source that is itself
+grounded is an absolute in the intended sense is a human judgment, not a formal one.
+
 ### No brute modality
 
 `grounded-modality-1` states it precisely: every accessible failure of a fact has an actual condition licensing it. It is a premise of a new axis, not a new route to the conclusion, and on its own it does not close the fork.
@@ -209,15 +274,12 @@ Goedel-Scott remains a separate research branch.
 
 ## Open stack
 
-One research cut is open.
+Empty. No research cut is open.
 
-```text
-#16  route-seam-1  -> main
-```
-
-`route-seam-1` is based directly on `main` and imports nothing from any other cut. It may be promoted at any time.
-
-The `#7` to `#10` chain and `#14` were promoted in one session on 2026-08-20, in the order `#7`, `#8`, `#9`, `#10`, then `#14` after a union merge of `main` into its branch. `#14` was superseded by `#18` because GitHub closed it automatically when its base branch was deleted on merge; the head is the same plus that merge.
+The `#7` to `#10` chain and `#14` were promoted on 2026-08-20, followed by `#16 route-seam-1`
+after review required it to be rebased on the promoted state, to drop two interpretive
+overreaches and to be restated against `TotalityExplanationCore` rather than the superseded
+`CompleteScopedExplanationAxioms`.
 
 ## Promotion and closure rule
 

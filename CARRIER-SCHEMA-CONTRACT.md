@@ -2,15 +2,25 @@
 
 Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
+**Amended after acceptance.** Review found that this contract, and the documentation written from it, stated the result more strongly than the type supports. Three corrections, kept visible rather than rewritten away.
+
+First, `ScopeCarrier` alone has an uninterpreted `Explains` predicate. `entityScopeCarrier` interprets it as `ActualExplainsFact`, but no such interpretation is supplied for an arbitrary fresh carrier, and there is no bridge to `licensesFailure`. The schema therefore records that an item explains the designated target; it does not record that the item is itself unexplained.
+
+Second, and consequently, "the unexplained item is relocated onto a fresh carrier" is not what is proved. What is proved is that a contingent item can be offered as an explainer of the target only at a carrier exempted from completeness, scope or adequacy.
+
+Third, `CompletenessExempt` is an abstract one-item carrier. Without an interpretation of `Explains` for the modal-condition carrier it is not an instance of `ConditionedBrute`, so the claim that the exemption of that modal condition is formally known to be completeness does not hold. `ConditionedBrute` carries a contingent unexplained totality fact and a licensing modal condition at the same time; the licence does not explain the fact's actuality and does not relocate its explanatory absoluteness.
+
+Sections 1, 7 and 9 are corrected accordingly. The theorems are unchanged.
+
 Base: `fact-sufficient-explanation-1`.
 
 This contract is a local record for one cut. Project-wide governance is in `PROJECT-RULES.md`.
 
 ## 1. Motivation
 
-`FACT-SUFFICIENT-EXPLANATION-1` left one opponent position standing: the contingent totality fact may be accepted as a contingent explanatory absolute. `GROUNDED-MODALITY-1` then showed, in its own `ConditionedBrute` model, that licensing every modal contrast does not dislodge that position; it relocates the unexplained item onto a modal condition that nothing yet constrains.
+`FACT-SUFFICIENT-EXPLANATION-1` left one opponent position standing: the contingent totality fact may be accepted as a contingent explanatory absolute. `GROUNDED-MODALITY-1` then showed, in its own `ConditionedBrute` model, that licensing every modal contrast does not dislodge that position. That model carries the unexplained totality fact and a licensing modal condition at once, and the licence constrains neither the fact's actuality nor its explanatory absoluteness.
 
-That suggests a general worry rather than a local one. If the unexplained item can always be moved onto a fresh carrier, the accepted route proves nothing durable and each cut is a rearrangement.
+That suggests a general worry rather than a local one. If a contingent item drawn from some fresh carrier can always be offered as an explainer of the target, the accepted route proves nothing durable and each cut is a rearrangement.
 
 This cut asks whether the move helps, once and for all carriers, instead of building another floor by hand.
 
@@ -96,7 +106,7 @@ AdequacyExempt       the item counts as its own adequate explanation
 
 `each_condition_is_separately_load_bearing` states the suite as one theorem.
 
-`CompletenessExempt` is the abstract shape of the `ConditionedBrute` escape of `GROUNDED-MODALITY-1`. `AdequacyExempt` is contingent self-citation one level up, that is, the question `SELF-EXPLANATION-1` isolated for entities, now visible at an arbitrary carrier.
+`CompletenessExempt` is the abstract shape a completeness exemption takes. It is an uninterpreted one-item carrier and is not an instance of `ConditionedBrute`; no interpretation of `Explains` for the modal-condition carrier is supplied anywhere. `AdequacyExempt` is contingent self-citation one level up, that is, the question `SELF-EXPLANATION-1` isolated for entities, now visible at an arbitrary carrier.
 
 ## 8. What this does not establish
 
@@ -110,11 +120,11 @@ It introduces no new premise into the accepted main line. Nothing under `Systems
 
 ## 9. Remaining philosophical boundary
 
-The fork is stable under carrier extension. That converts an open-ended worry, namely that the unexplained item can always be relocated, into a fixed question:
+The fork is stable under carrier extension. That converts an open-ended worry, namely that a contingent explainer can always be drawn from somewhere fresh, into a fixed question:
 
 > For a proposed new carrier, which of completeness, scope or adequacy is it exempt from, and why is that exemption principled rather than stipulated?
 
-`CONDITION-SCOPE-1` was proposed as a cut asking that question of the modal condition in `ConditionedBrute`. Under this schema that cut is no longer open-ended: by `CompletenessExempt` its answer is already known to be completeness, so the remaining work is the philosophical defence of that exemption, not further formalization.
+`CONDITION-SCOPE-1` was proposed as a cut asking that question of the modal condition in `ConditionedBrute`. Under this schema the question has a fixed shape rather than an open-ended one, but its answer for that particular condition is **not** settled here: without an interpretation of `Explains` for the modal-condition carrier, `CompletenessExempt` is not an instance of it. Naming completeness as the exemption in that case would need a bridge that does not exist.
 
 ## 10. Acceptance tests
 

@@ -147,7 +147,8 @@ This question should not be used to burden the prior question whether any necess
 **Revision note.** Still live, but the original formulation is too narrow. The later cuts
 separated **two object positions**, which are claims about what reality contains, from **one
 carrier-extension manoeuvre**, which is a move about where explanatory sources are allowed to
-come from. A4 as written treats all three as one.
+come from. A4 speaks about entities only. It is this section as originally written that ran
+all three together under it.
 
 The two object positions:
 
@@ -295,9 +296,9 @@ What remains specific to this note:
 A3   only on the foundation side: can more than one necessary foundation be
      genuinely independent? Untouched by the later cuts.
 
-A4   only for the entity case: is a contingent ungrounded entity a genuine
-     stopping point? The fact case and the carrier case are separate questions
-     and are tracked in STATUS.
+A4   only for the entity position: is a contingent ungrounded entity a genuine
+     stopping point? The fact position and the carrier-extension manoeuvre are
+     separate questions and are tracked in STATUS.
 ```
 
 No promotion of the metaphysical premises themselves follows from Lean success. Lean has

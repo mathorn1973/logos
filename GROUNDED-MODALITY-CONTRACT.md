@@ -2,6 +2,8 @@
 
 Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
+**Amended after acceptance.** Review found one sentence of §10.2 stronger than this cut's own model supports. It said that choosing A relocates the unexplained item. It does not. `ConditionedBrute` carries the unexplained contingent totality fact and the licensing modal condition at the same time: the fact remains actual, non-necessary and without a local sufficient explanation, and the licence stands beside it. The licence explains neither the fact's actuality nor its explanatory absoluteness, so nothing is moved and the model gains an item rather than shifting one. §10.2 is corrected accordingly, the correction is kept visible rather than rewritten away, and no theorem changes.
+
 This cut attacks the final `brute modal asymmetry` left by `CONTINGENT-ABSOLUTE-1`.
 
 The target is not to redefine necessity as unconditionedness and not to reintroduce EF4 under another name.  It separates raw Kripke accessibility from metaphysically licensed modal variation and tests the exact bridge between them.
@@ -257,7 +259,7 @@ or
 B  reality contains brute modal alternatives.
 ```
 
-Choosing A does not exclude B's substance.  It relocates the unexplained item.  Instead of a bare accessibility edge the opponent now carries an actual modal condition licensing the failure of the total contingent reality, and nothing yet requires that condition to be explained, to be covered by the totality, or to lie outside it.
+Choosing A does not exclude B's substance.  It adds to the opponent's model rather than moving anything inside it.  The unexplained contingent totality fact stays exactly where it was, and beside it the opponent now carries an actual modal condition licensing that totality's failure.  That licence does not explain the fact's actuality and does not touch its explanatory absoluteness, and nothing yet requires the condition itself to be explained, to be covered by the totality, or to lie outside it.
 
 ### 10.3 What is actually open after this cut
 
@@ -288,4 +290,5 @@ The open question is therefore the status of the licensing condition.  Is a moda
 13. the contract states that the no-brute/unconditioned pair is equivalent to necessity and is therefore a partition, not a derivation;
 14. the contract states that no-brute-modality is compatible with a contingent explanatory absolute totality, and names the model that witnesses it;
 15. that compatibility is pinned by a single audited Lean statement forcing all four properties onto one fact of one carrier, not only asserted in prose;
-16. a static CI guard rejects the modal layer appearing in any `Systems/` module outside `GroundedModality`.
+16. a static CI guard rejects the modal layer appearing in any `Systems/` module outside `GroundedModality`;
+17. the contract does not claim that licensing every modal contrast relocates the unexplained item, and states instead that `ConditionedBrute` carries the unexplained fact and the licensing condition at the same time.

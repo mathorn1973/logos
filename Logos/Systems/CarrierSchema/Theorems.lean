@@ -45,9 +45,10 @@ Introducing a new kind of item and letting a contingent one of them explain the
 target does not dissolve the fork.  It can only be done by exempting the new
 carrier from the very conditions the argument imposes on the old one.
 
-This is the precise sense in which moving the unexplained item to a fresh
-carrier buys nothing: the move is available exactly when the new carrier is not
-held to completeness, scope and adequacy. -/
+Read it no more strongly than that.  `Explains` here is uninterpreted, so this
+says a contingent item can be offered as an explainer of the target only at an
+exempt carrier.  It does not say the item is itself unexplained, and it supplies
+no interpretation of `Explains` for any particular fresh carrier. -/
 theorem escape_requires_exemption
     {S : Type u} {K : ScopeCarrier S} {a : S}
     (hExplains : K.Explains a) (hNotNecessary : ¬ K.Necessary a) :

@@ -229,6 +229,65 @@ theorem explainer_groundedness_undetermined :
       TotalityExternalityComparison.MixedRoles.Entity.root :=
   ⟨GroundedExplainer.no_explainer_is_ungrounded, UngroundedExplainer.root_ungrounded⟩
 
+/-! ## The regress-totality structure is cheap
+
+`regressTotality_refutes_wellFoundedness` makes the two routes exclusive.  This
+section makes the dichotomy exhaustive as well, and then shows immediately why
+that costs the argument nothing: the witness it constructs satisfies the
+totality route's conclusion by its trivial disjunct. -/
+
+namespace BareRegress
+
+open Grounding
+
+universe u v
+
+/-- A fact layer supplying nothing but one always-obtaining fact.  Nothing
+grounds it and nothing explains it. -/
+def bareFactModel (M : Grounding.Model.{u, v}) : FactModel.{u, v, 0} M where
+  Fact := Unit
+  holdsAt := fun _ _ => True
+  groundsFact := fun _ _ _ => False
+
+/-- Any actual descending chain can be dressed as a regress totality.  The fact
+carrier, the designated totality fact and the `inside` predicate are free data,
+so a negation does not have to supply them. -/
+def regressOfChain {M : Grounding.Model.{u, v}}
+    (f : Nat → M.Entity) (hf : ∀ n, ActualGrounds M (f (n + 1)) (f n)) :
+    RegressTotality M (bareFactModel M) where
+  node := f
+  step := hf
+  totality := ()
+  actual_totality := True.intro
+  inside := fun _ => True
+  node_inside := fun _ => True.intro
+
+/-- Structural dichotomy.  Exclusive by `regressTotality_refutes_wellFoundedness`,
+exhaustive by this theorem. -/
+theorem wellFounded_or_regressTotality (M : Grounding.Model.{u, v}) :
+    WellFounded (ActualGrounds M) ∨
+      Nonempty (RegressTotality M (bareFactModel M)) := by
+  by_cases hWellFounded : WellFounded (ActualGrounds M)
+  · exact Or.inl hWellFounded
+  · right
+    rcases exists_descending_chain_of_not_wellFounded hWellFounded with ⟨f, hf⟩
+    exact ⟨regressOfChain f hf⟩
+
+/-- The deflation.  In the freely constructed witness the totality fact is
+necessary, so the totality route's disjunctive conclusion holds by its first
+disjunct without any explanatory premise doing work.
+
+Exhaustiveness of the structural dichotomy therefore carries no argumentative
+weight: all the content of the totality route sits in EF4, S, I and C, not in
+the availability of a regress totality. -/
+theorem bare_totality_necessary
+    {M : Grounding.Model.{u, v}} (R : RegressTotality M (bareFactModel M)) :
+    NecessaryFact (bareFactModel M) R.totality := by
+  intro _ _
+  exact True.intro
+
+end BareRegress
+
 end RouteSeam
 end GroundingModels
 end Logos

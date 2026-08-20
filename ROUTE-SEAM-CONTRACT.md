@@ -8,6 +8,8 @@ This contract is a local record for one cut. Project-wide governance is in `PROJ
 
 A feasibility spike confirmed that the two load-bearing statements of section 5 are provable before this contract was frozen. No statement below is asserted on the strength of that spike alone; each is an acceptance test in section 10.
 
+**Amended during review.** Section 7 originally claimed that the exclusivity result could not be turned into an exhaustive dichotomy, on the ground that a negation supplies neither a descending chain nor the fact-layer data. The first half of that reason was right and the second was wrong: the fact layer is free data. Section 5.4 now proves the dichotomy, and section 7 records what the correction does and does not buy. The amendment is kept visible rather than rewritten away.
+
 ## 1. Motivation
 
 `main` carries two routes to necessary reality that have never been related to each other.
@@ -35,8 +37,12 @@ proved theorem   regressTotality_refutes_wellFoundedness
                  regressTotality_refutes_foundationAxioms
                  regressTotality_refutes_necessaryExistenceAxioms
                  seam_bridge_is_vacuous
+                 exists_descending_chain_of_not_wellFounded
+                 wellFounded_or_regressTotality
+                 bare_totality_necessary
 countermodel     GroundedExplainer
 consistency witness  UngroundedExplainer (read off the accepted positive model)
+                     BareRegress (cheapest regress totality)
 ```
 
 No new language, no new axiom record, no bridge, no interpretation, no confession.
@@ -112,6 +118,48 @@ The accepted positive model already on `main` gives the opposite reading: its ex
 ungrounded. Stating both makes `Ungrounded(explainer)` neither forced nor forbidden by the
 deep package. It is simply not determined by it.
 
+### 5.4 The dichotomy is exhaustive, and that is worth nothing
+
+The converse direction holds at the level of entities:
+
+```text
+exists_descending_chain_of_not_wellFounded
+    ¬ WellFounded (ActualGrounds M)
+      -> ∃ f : Nat → Entity, ∀ n, ActualGrounds M (f (n+1)) (f n)
+```
+
+by classical choice. The remaining fields of `RegressTotality`, namely the fact
+carrier, the designated totality fact and the `inside` predicate, are free data and
+can simply be supplied:
+
+```text
+bareFactModel        one always-obtaining fact, grounded by nothing
+regressOfChain       dresses any actual descending chain as a RegressTotality
+
+wellFounded_or_regressTotality
+    WellFounded (ActualGrounds M)
+      or Nonempty (RegressTotality M (bareFactModel M))
+```
+
+Together with 5.1 the dichotomy is therefore both exclusive and exhaustive.
+
+It is also empty. In the witness just constructed the totality fact obtains at every
+world:
+
+```text
+bare_totality_necessary
+    NecessaryFact (bareFactModel M) R.totality
+```
+
+so the totality route's disjunctive conclusion holds by its first disjunct with no
+explanatory premise doing any work. Availability of a regress totality is a cheap
+structural fact. Everything the totality route actually claims sits in EF4, S, I and C,
+not in the existence of the structure they are stated over.
+
+The right reading of 5.1 to 5.4 together is therefore: the two routes partition the
+possible shapes of actual grounding between them, and neither the partition nor its
+exhaustiveness is an argument for anything.
+
 ## 6. What this establishes about the program
 
 The two routes are **alternatives, not stages**. The foundation route treats well-founded
@@ -124,11 +172,16 @@ reachable only on the foundation side. Nothing on the totality side supports it.
 
 ## 7. What this does not establish
 
-It does not show that the two cases are exhaustive. `¬ WellFounded (ActualGrounds M)` does
-not by itself deliver a `RegressTotality`: extracting a descending chain needs a choice
-principle, and the fact carrier, the designated totality fact and the `inside` predicate are
-further structure that no negation supplies. "Either A2 or a regress totality" is not a
-theorem of this cut and must not be read into it.
+It does not show that the exhaustive dichotomy of 5.4 has argumentative force. The
+disjunction "A2, or a regress totality is available" is a theorem, but 5.4 also shows the
+second disjunct is satisfiable by a witness in which the totality route's conclusion is
+trivially true. Anyone reading the dichotomy as "so necessary reality follows either way"
+has read the structure and skipped the premises.
+
+It does not show that a regress totality satisfying EF4, S, I and C is available whenever
+A2 fails. Only the bare structure is constructed. Whether the substantive premises can be
+met is exactly the open question the totality route leaves standing, and nothing here
+touches it.
 
 It does not show that the totality explainer is grounded. `GroundedExplainer` shows only
 that it may be.
@@ -146,7 +199,8 @@ NO new axiom record
 NO new ontological language
 NO modification of any accepted theorem or record
 NO A3, A6, A7, A8 anywhere in the cut
-NO claim that the A2 case and the regress case are exhaustive
+NO claim that the exhaustive dichotomy supports either route
+NO claim that EF4, S, I and C are available whenever A2 fails
 NO claim that the totality explainer is grounded, only that it may be
 ```
 
@@ -176,7 +230,11 @@ converge on one object.
 6. `GroundedExplainer` inhabits `CompleteScopedExplanationAxioms`;
 7. in `GroundedExplainer` the totality fact is non-necessary and no explainer of it is ungrounded;
 8. the accepted positive model is shown to have an ungrounded explainer, giving the other direction;
-9. the seam layer declares no `structure`, enforced by static CI guard;
-10. dedicated axiom audit is green;
-11. no new premise enters any accepted axiom record;
-12. no theological interpretation enters the proof core.
+9. a descending chain is extracted from failure of A2, using only classical choice;
+10. `wellFounded_or_regressTotality` elaborates, making the dichotomy exhaustive;
+11. `bare_totality_necessary` elaborates, showing the constructed witness satisfies the
+    totality conclusion by its trivial disjunct;
+12. the seam layer declares no `structure`, enforced by static CI guard;
+13. dedicated axiom audit is green;
+14. no new premise enters any accepted axiom record;
+15. no theological interpretation enters the proof core.

@@ -26,5 +26,11 @@ assumed. -/
 #print axioms Logos.GroundingModels.RouteSeam.UngroundedExplainer.root_ungrounded
 #print axioms Logos.GroundingModels.RouteSeam.UngroundedExplainer.explainer_is_ungrounded_here
 
+-- 5.4: exhaustiveness at the entity level, and its deflation
+#print axioms Logos.Grounding.exists_descending_chain_of_not_wellFounded
+#print axioms Logos.GroundingModels.RouteSeam.BareRegress.regressOfChain
+#print axioms Logos.GroundingModels.RouteSeam.BareRegress.wellFounded_or_regressTotality
+#print axioms Logos.GroundingModels.RouteSeam.BareRegress.bare_totality_necessary
+
 -- summary
 #print axioms Logos.GroundingModels.RouteSeam.explainer_groundedness_undetermined

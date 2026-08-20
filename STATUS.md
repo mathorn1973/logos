@@ -3,8 +3,10 @@
 ```text
 PROGRAM     LOGOS
 STATE       FORMAL LABORATORY
-MAIN        modal-foundation-1 + finite-countermodels-2 + absolute-ground-1 + totality-regress-1 + totality-externality-1
-FOCUS       self-explanation-1; live premises now include EF4 and adequacy of contingent self-citation
+MAIN        modal-foundation-1 + finite-countermodels-2 + absolute-ground-1 + totality-regress-1
+            + totality-externality-1 + self-explanation-1 + fact-sufficient-explanation-1
+            + contingent-absolute-1 + grounded-modality-1 + carrier-schema-1
+FOCUS       route-seam-1; the explanation line is closed formally and the residue is philosophical
 AUTHORITY   none; no released theorem catalogue exists yet
 CANON       none
 LICENSE     MIT; copyright 2026 A. M. Thorn
@@ -108,23 +110,96 @@ NO A6-A8
 
 Dedicated type-level and static CI audits enforce this boundary.
 
+## Accepted explanation line
+
+Cuts `self-explanation-1` through `carrier-schema-1` are on protected `main`.
+
+The core no longer asserts that an explanation exists:
+
+```text
+TotalityExplanationCore
+    ES   a source explaining the actual totality fact is itself actual
+    LA   the totality explanation adequately explains each actual member in scope
+    C    every actual non-necessary entity is inside the represented totality
+```
+
+Lean proves the three-way fork:
+
+```text
+NecessaryFact(totality)
+OR  an actual necessary explanatory source explains the totality fact
+OR  ContingentExplanatoryAbsoluteFact(totality)
+```
+
+and the equivalence that fixes the cost of the third disjunct:
+
+```text
+local EF4 at the totality fact
+    IFF
+no contingent explanatory absolute at the totality fact
+```
+
+Two recorded failures, kept because they are results:
+
+```text
+contingent-absolute-1
+    explanatory ultimacy -> necessity  IFF  local EF4
+    so that route is not independent of EF4
+
+grounded-modality-1
+    no-brute-modality + modal unconditionedness  IFF  actual + necessary
+    so the implication partitions necessity rather than deriving it
+    and ConditionedBrute satisfies no-brute-modality together with a
+    contingent explanatory absolute
+```
+
+The carrier-neutral engine:
+
+```text
+closure_explainer_is_necessary
+    ScopeClosureAxioms K -> K.Explains a -> K.Necessary a
+
+escape_requires_exemption
+    K.Explains a -> not K.Necessary a -> not ScopeClosureAxioms K
+```
+
+with `TotalityExplanationCore` proved to instantiate `ScopeClosureAxioms`, and three one-item countermodels showing completeness, scope and adequacy are each separately load-bearing.
+
+Negative boundary of the line:
+
+```text
+NO closure of the fork; a contingent explanatory absolute remains available
+NO claim that any particular carrier exemption is illegitimate
+NO claim that the three closure conditions are exhaustive
+NO derivation of necessity from explanatory ultimacy
+NO joining of the modal layer to the totality argument
+     (enforced by a static CI guard)
+NO theological or physical predicate anywhere in the line
+```
+
 ## Current live philosophical premises
 
 The machine has not established these as true of reality.
 
-### EF4 / sufficient explanation
+### Local sufficient explanation for the totality fact
 
-The totality/explanation line now requires the explanation-specific principle that an actual non-necessary fact has an explanatory source. Under G this is strictly stronger than the earlier generic fact-grounding F4.
-
-The next cuts must therefore attack EF4 rather than silently treating it as inherited from F4.
+Global EF4 is gone from the core. What remains is the local principle for the one designated fact, and it is provably equivalent to excluding a contingent explanatory absolute there. Accepting it is therefore the same commitment as rejecting the third disjunct, and it cannot be argued for by way of that rejection.
 
 ### Adequacy of contingent self-citation
 
-The accepted deep theorem uses explanatory irreflexivity I. The next cut `self-explanation-1` is tasked with reducing this as far as possible and isolating the narrower human judgment:
+`self-explanation-1` reduced irreflexivity to a local adequacy condition. The residue is normative, not structural:
 
 > Can an identity citation `P because P` count as an adequate complete explanation of why contingent P obtains?
 
-This is a normative adequacy question, not a logical contradiction.
+The countermodel shows exactly what answering yes permits: a wholly contingent reality closed by circular self-citation.
+
+### Principled versus stipulated carrier exemption
+
+`carrier-schema-1` shows every relocation of the unexplained item requires exempting a carrier from completeness, scope or adequacy. Whether such an exemption can be principled is a philosophical question the formal layer deliberately leaves open. For the modal condition of `ConditionedBrute` the exemption is known to be completeness.
+
+### No brute modality
+
+`grounded-modality-1` states it precisely: every accessible failure of a fact has an actual condition licensing it. It is a premise of a new axis, not a new route to the conclusion, and on its own it does not close the fork.
 
 ## Interpretation firewall
 
@@ -134,19 +209,15 @@ Goedel-Scott remains a separate research branch.
 
 ## Open stack
 
-Five research cuts are open beyond the accepted externality layer.
+One research cut is open.
 
 ```text
-#7   self-explanation-1             -> main
-#8   fact-sufficient-explanation-1  -> #7
-#9   contingent-absolute-1          -> #8
-#10  grounded-modality-1            -> #9
-#14  carrier-schema-1               -> #8
+#16  route-seam-1  -> main
 ```
 
-The `#7` to `#10` chain is a real dependency order at current PR granularity, because each later cut imports types or theorems introduced by the preceding one. Promotion along that chain should remain sequential unless the cuts are deliberately repartitioned.
+`route-seam-1` is based directly on `main` and imports nothing from any other cut. It may be promoted at any time.
 
-`carrier-schema-1` is not a further floor on that chain. Its only real dependency is `TotalityExplanationCore`, so under PROJECT-RULES section 4 it is based on `#8` and is a sibling of `#9`, not a successor to `#10`. It may be promoted after `#8` independently of `#9` and `#10`.
+The `#7` to `#10` chain and `#14` were promoted in one session on 2026-08-20, in the order `#7`, `#8`, `#9`, `#10`, then `#14` after a union merge of `main` into its branch. `#14` was superseded by `#18` because GitHub closed it automatically when its base branch was deleted on merge; the head is the same plus that merge.
 
 ## Promotion and closure rule
 

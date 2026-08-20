@@ -39,8 +39,32 @@ jobs:
             echo 'Deep TOTALITY-EXTERNALITY theorem reintroduced a forbidden premise or record.'
             exit 1
           fi
+      - name: Run self-explanation audit
+        run: lake env lean Logos/SelfExplanationAudit.lean
+      - name: Run fact sufficient explanation audit
+        run: lake env lean Logos/FactSufficientExplanationAudit.lean
+      - name: Run contingent absolute audit
+        run: lake env lean Logos/ContingentAbsoluteAudit.lean
+      - name: Run grounded modality audit
+        run: lake env lean Logos/GroundedModalityAudit.lean
+      - name: Run carrier schema audit
+        run: lake env lean Logos/CarrierSchemaAudit.lean
       - name: Run route seam audit
         run: lake env lean Logos/RouteSeamAudit.lean
+      - name: Reject modal layer leaking into the totality argument
+        run: |
+          if grep -rnE 'ModalVariationModel|NoBruteModalVariationAt|ModallyUnconditionedFact|GroundedFailurePossible' Logos/Systems --include='*.lean' | grep -v '^Logos/Systems/GroundedModality/'; then
+            echo 'GROUNDED-MODALITY contract 10.3: the modal layer entered a Systems module outside GroundedModality.'
+            echo 'Either the modal axis was joined to the totality argument, which needs an explicit reviewed bridge, or 10.3 must be rewritten.'
+            exit 1
+          fi
+      - name: Reject carrier assumptions in the schema layer
+        run: |
+          if grep -rnE 'Model\.|FactModel|RegressTotality|EntityExplanationModel|FactGroundingRoles' Logos/Ontology/Grounding/ScopeCarrier.lean Logos/Systems/CarrierSchema/Axioms.lean Logos/Systems/CarrierSchema/Theorems.lean; then
+            echo 'CARRIER-SCHEMA: the carrier-neutral layer referred to entity, fact or regress structure.'
+            echo 'That layer must stay independent of what populates the carrier; put the dependency in EntityInstance.lean instead.'
+            exit 1
+          fi
       - name: Reject new assumption records in the seam layer
         run: |
           if grep -rnE '^\s*(structure|class|axiom)\b' Logos/Systems/RouteSeam/; then

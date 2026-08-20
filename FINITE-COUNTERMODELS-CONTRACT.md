@@ -1,6 +1,6 @@
 # DESIGN CONTRACT — CUT 2: FINITE FRAMES AND COUNTERMODELS
 
-Status: **NON-CANONICAL DESIGN CONTRACT**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 This contract governs the second LOGOS cut. It extends the modal semantic core
 with explicit finite frames and pointed refutations. It introduces no theology

@@ -1,0 +1,23 @@
+import Logos
+
+#print axioms Logos.Grounding.necessary_implies_modallyUnconditioned
+#print axioms Logos.Grounding.modallyUnconditioned_implies_necessary_of_noBrute
+#print axioms Logos.Grounding.modallyUnconditioned_iff_modallyAbsolute_of_noBrute
+#print axioms Logos.Grounding.fullyUnconditioned_implies_necessary_of_noBrute
+#print axioms Logos.Grounding.nonNecessary_yields_modalCondition_of_noBrute
+
+#print axioms Logos.GroundingModels.GroundedModality.BruteUnlicensed.modally_unconditioned
+#print axioms Logos.GroundingModels.GroundedModality.BruteUnlicensed.explanatorily_absolute
+#print axioms Logos.GroundingModels.GroundedModality.BruteUnlicensed.fully_unconditioned
+#print axioms Logos.GroundingModels.GroundedModality.BruteUnlicensed.not_necessary
+#print axioms Logos.GroundingModels.GroundedModality.BruteUnlicensed.noBruteModalVariation_fails
+
+#print axioms Logos.GroundingModels.GroundedModality.ConditionedBrute.no_brute_modal_variation
+#print axioms Logos.GroundingModels.GroundedModality.ConditionedBrute.grounded_failure_possible
+#print axioms Logos.GroundingModels.GroundedModality.ConditionedBrute.explanatorily_absolute
+#print axioms Logos.GroundingModels.GroundedModality.ConditionedBrute.local_EF4_fails
+#print axioms Logos.GroundingModels.GroundedModality.ConditionedBrute.not_necessary
+#print axioms Logos.GroundingModels.GroundedModality.ConditionedBrute.no_brute_modality_permits_contingent_explanatory_absolute
+
+#print axioms Logos.GroundingModels.GroundedModality.ExplainedButBruteModal.local_EF4_holds
+#print axioms Logos.GroundingModels.GroundedModality.ExplainedButBruteModal.noBruteModalVariation_fails

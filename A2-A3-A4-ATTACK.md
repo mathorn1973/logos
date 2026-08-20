@@ -87,20 +87,26 @@ The philosophical question is now exact:
 
 > Can an order made entirely of derivative members be an adequate ultimate explanation merely because the regress has no first member?
 
-Rejecting A2 means answering yes, or at least allowing that possibility.
+Rejecting A2 does not amount to answering yes. It permits the structure and nothing more.
+Whether an order of that shape is explanatorily adequate is a separate claim, and one the
+record by itself does not support: a bare regress is a chain plus a designated fact.
 
 **As the question now stands.** Rejecting A2 is not by itself a position. It makes the
 foundation route unavailable and nothing more; the bare record that replaces it discharges
-the totality conclusion trivially, by `bare_totality_necessary`. The live question is
-therefore the conjunction:
+the totality conclusion trivially by its first disjunct, by `bare_totality_necessary`. The
+live question must therefore fix that disjunct too:
 
-> Can an order made entirely of derivative members, together with source actuality, local
-> explanatory adequacy and completeness over a represented totality, avoid a necessary
-> explanatory source without accepting a contingent explanatory absolute?
+> Can an order made entirely of derivative members, whose represented totality fact is
+> non-necessary, avoid a necessary explanatory source without leaving that fact unexplained?
 
-`fact-sufficient-explanation-1` answers that this is exactly the third disjunct of the
-accepted trichotomy, and `carrier-schema-1` answers that reaching it always requires
-exempting some carrier from completeness, scope or adequacy.
+Under `TotalityExplanationCore` the answer is no. With the first disjunct excluded by
+non-necessity, the trichotomy leaves only a necessary explanatory source or an unexplained
+totality fact.
+
+Note what this does and does not need. A carrier exemption is **not** required to reach the
+unexplained-fact disjunct; that disjunct is simply what the trichotomy leaves. The exemption
+is what an opponent needs in order to *escape* it, by offering a contingent explainer drawn
+from a fresh carrier.
 
 ## 3. A3 — unity is not existence
 
@@ -139,7 +145,11 @@ This question should not be used to burden the prior question whether any necess
 ## 4. A4 — brute contingency
 
 **Revision note.** Still live, but the original formulation is too narrow. The later cuts
-separated three distinct positions that A4 as written treats as one:
+separated **two object positions**, which are claims about what reality contains, from **one
+carrier-extension manoeuvre**, which is a move about where explanatory sources are allowed to
+come from. A4 as written treats all three as one.
+
+The two object positions:
 
 ```text
 brute contingent entity      an actual, ungrounded, non-necessary entity
@@ -149,16 +159,31 @@ brute contingent fact        the totality fact is actual, non-necessary and unex
                              untouched by A4; the third disjunct of the accepted
                              trichotomy, and equivalent to denying local sufficient
                              explanation for that fact
+```
 
-relocation to a carrier      the unexplained item moved onto a fresh carrier, for
-                             instance a modal condition licensing failure
+The manoeuvre:
+
+```text
+carrier extension            a contingent item on a fresh carrier is offered as an
+                             explainer of the designated target
                              untouched by A4; available exactly when the new carrier is
                              exempt from completeness, scope or adequacy
 ```
 
-The three are not variants of one thesis. A4 governs only the first. Arguments against it do
-not transfer to the other two, and the later cuts show the other two are where the surviving
-opponent position actually lives.
+The manoeuvre is stated no more strongly than the formalization supports. `ScopeCarrier`
+records that an item explains the designated target; it does not record that the item is
+itself unexplained, and it has no bridge to `ActualExplainsFact` or to `licensesFailure`.
+So "the unexplained item is moved onto a fresh carrier" is not what is proved. What is proved
+is that a contingent item can be offered as an explainer only at an exempt carrier.
+
+`ConditionedBrute` shows the two layers do not substitute for each other: it carries a
+contingent unexplained totality fact and a modal condition licensing that fact's failure at
+the same time. The licence does not explain the fact's actuality and does not relocate its
+explanatory absoluteness.
+
+The two object positions are not variants of one thesis. A4 governs only the first. Arguments
+against it do not transfer to the second, and the second is where the surviving opponent
+position actually lives.
 
 The original A4 is:
 
@@ -186,14 +211,15 @@ is ungrounded
 is not necessary
 ```
 
-and therefore witnesses exactly what denial of A4 permits: an unexplained contingent ultimate fact.
+and therefore witnesses exactly what denial of A4 permits: an ungrounded contingent ultimate
+**entity**. The fact-level position is a separate matter and is not what this model exhibits.
 
 The philosophical question is now exact:
 
-> Is a contingent ungrounded fact a genuine stopping point, or does its contingency itself prevent it from being ultimate?
+> Is a contingent ungrounded entity a genuine stopping point, or does its contingency itself prevent it from being ultimate?
 
-Stated for the entity case only. For the fact case and the carrier case the corresponding
-questions are recorded in `STATUS.md` as live commitments, not here.
+Stated for the entity case only. For the fact case and for the carrier-extension manoeuvre the
+corresponding questions are recorded in `STATUS.md` as live commitments, not here.
 
 ## 5. Current logical map
 

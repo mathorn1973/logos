@@ -1,8 +1,8 @@
 # A4-FACT-INDEPENDENCE-1 DESIGN CONTRACT
 
-Status: **RESEARCH CUT, IN REVIEW**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
-Base: `main` after the route-seam closure and the attack-note revision.
+Base: `main` after the route-seam closure, the attack-note revision, and the carrier and modality amendments of the claim-correction PR.
 
 This contract is a local record for one cut. Project-wide governance is in `PROJECT-RULES.md`.
 
@@ -131,7 +131,7 @@ This also fixes the scope of `absolute-ground-1`. Its A4 governs the entity leve
 
 ## 7. What this does not establish
 
-It does not establish either principle. Both remain live commitments. Local EF4 is listed in `STATUS.md`; A4' is stated in `absolute-ground-1` and discussed in the attack note, and the closure for this cut adds it to the `STATUS.md` list.
+It does not establish either principle. Both remain live commitments. Local EF4 is listed in `STATUS.md`; A4' is stated in `absolute-ground-1` and discussed in the attack note, and the closure for this cut added it to the `STATUS.md` list.
 
 It does not establish that the two are the only relevant principles, or that together they exhaust brute positions.
 

@@ -6,7 +6,7 @@ STATE       FORMAL LABORATORY
 MAIN        modal-foundation-1 + finite-countermodels-2 + absolute-ground-1 + totality-regress-1
             + totality-externality-1 + self-explanation-1 + fact-sufficient-explanation-1
             + contingent-absolute-1 + grounded-modality-1 + carrier-schema-1
-            + route-seam-1
+            + route-seam-1 + a4-fact-independence-1
 FOCUS       none open; the formal programme is stable and the residue is philosophical
 AUTHORITY   none; no released theorem catalogue exists yet
 CANON       none
@@ -235,9 +235,55 @@ NO claim that the substantive totality premises are available whenever A2 fails
 NO new axiom record; enforced by a static CI guard over the seam layer
 ```
 
+## Accepted A4 fact independence
+
+`a4-fact-independence-1` is on protected `main`.
+
+Two countermodels under one hypothesis schema, fixed before the models were built:
+
+```text
+RegressTotality M F
+TotalityExplanationCore M F G E R
+not NecessaryFact F R.totality
+```
+
+What is proved is exactly two non-entailments under that schema:
+
+```text
+A4 and A4' do not entail local EF4       witnessed by FactBruteEntityRegular
+local EF4 does not entail A4 or A4'      witnessed by EntityBruteFactRegular
+```
+
+Both forms of the entity-level principle appear in both directions, the original A4 as well
+as `NonNecessaryIsDerived`. The second model exhibits non-vacuity of local EF4 as two
+separate facts, so the direction cannot be met by a principle that holds only because its
+antecedent fails, and it satisfies the fact-level bridge `ExplanationImpliesGrounding`
+rather than dispensing with it.
+
+The gap the second direction does rely on is at the entity level:
+
+```text
+root_explains_stray_without_grounding
+    AdequateExplainsEntity M E root stray and not ActualGrounds M root stray
+```
+
+The current language has no bridge from adequate explanation to ontological grounding for
+entities. If one were added, that direction would have to be re-examined.
+
+Negative boundary:
+
+```text
+NO claim that either principle is true
+NO claim that the two principles exhaust the brute positions
+NO claim about what any argument against one position reaches
+NO claim about carrier extension in either direction
+NO independence claim under a future entity-level explanation-to-grounding bridge
+NO new axiom record, structure, class or axiom; enforced by a static CI guard
+```
+
 ## Current live philosophical commitments and questions
 
-The first four items are commitments: principles the formal layer states and does not
+The first five items are commitments: principles the formal layer states and does not
 establish. The last is an interpretive question about how to read an accepted result, and
 no theorem depends on how it is answered.
 
@@ -246,6 +292,17 @@ The machine has not established any of the commitments as true of reality.
 ### Local sufficient explanation for the totality fact
 
 Global EF4 is gone from the core. What remains is the local principle for the one designated fact, and it is provably equivalent to excluding a contingent explanatory absolute there. Accepting it is therefore the same commitment as rejecting the third disjunct, and it cannot be argued for by way of that rejection.
+
+### A4' at the entity level
+
+Stated in `absolute-ground-1` as `NonNecessaryIsDerived`:
+
+> what actually exists but need not exist is not ontologically ultimate.
+
+Under A5 it is equivalent to the original A4. `a4-fact-independence-1` shows it is a separate
+commitment from the fact-level principle above: each can hold while the other fails, under the
+shared hypothesis schema. So neither can be argued for by way of the other, and the brute-fact
+position survives every argument that only rules out brute entities.
 
 ### Adequacy of contingent self-citation
 
@@ -288,6 +345,12 @@ The `#7` to `#10` chain and `#14` were promoted on 2026-08-20, followed by `#16 
 after review required it to be rebased on the promoted state, to drop two interpretive
 overreaches and to be restated against `TotalityExplanationCore` rather than the superseded
 `CompleteScopedExplanationAxioms`.
+
+`#24 a4-fact-independence-1` followed on the same day, after `#25` had corrected four
+documents that still stated the carrier result and the modal-licensing result more strongly
+than the types support. Review of `#24` also required adequacy to be put into the type of
+`root_explains_stray_without_grounding`, and required the contract to claim two
+non-entailments rather than anything about the reach of arguments.
 
 ## Promotion and closure rule
 

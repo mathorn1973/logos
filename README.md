@@ -6,7 +6,7 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 
 ## Accepted main line
 
-`main` currently contains eleven accepted formal cuts:
+`main` currently contains twelve accepted formal cuts:
 
 1. `modal-foundation-1` - Kripke semantics for necessity, possibility, contingency, and standard modal principles under exact frame hypotheses;
 2. `finite-countermodels-2` - explicit finite frames, pointed refutations, and a genuine contingency witness;
@@ -18,7 +18,8 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 8. `contingent-absolute-1` - the modal reading of that option, and the recorded finding that deriving necessity from explanatory ultimacy is equivalent to local EF4;
 9. `grounded-modality-1` - modal conditions as a carrier separate from entities and explanatory sources, with the recorded finding that the axis does not close the fork;
 10. `carrier-schema-1` - the closure argument stated for an arbitrary carrier, with the accepted route shown to be an instance of it;
-11. `route-seam-1` - the relation between the foundation route and the totality route, and the deflation of the `RegressTotality` record.
+11. `route-seam-1` - the relation between the foundation route and the totality route, and the deflation of the `RegressTotality` record;
+12. `a4-fact-independence-1` - two countermodels under one hypothesis schema showing that A4 at the entity level and local sufficient explanation for the totality fact are two commitments, neither entailing the other.
 
 The load-bearing grounding theorem remains:
 
@@ -167,6 +168,10 @@ count as an adequate explanation of contingent existence, whether exempting a ca
 completeness, scope or adequacy can ever be principled, and whether a necessary explanatory
 source that is itself grounded deserves the name the foundation route earns.
 
+`a4-fact-independence-1` divides the brute-contingency question rather than answering it.
+A4 at the entity level and local sufficient explanation for the totality fact are two
+commitments, so a defence of one is not a defence of the other. Both are listed in `STATUS`.
+
 Goedel-Scott is a separate formal branch of the LOGOS program, not a step in the grounding/totality sequence. TWIST-J is likewise not a dependency of the general ontology core.
 
 ## Project-wide rules
@@ -182,6 +187,7 @@ See also:
 - `TOTALITY-EXTERNALITY-CONTRACT.md` for the accepted externality/premise-order cut;
 - `SELF-EXPLANATION-CONTRACT.md`, `FACT-SUFFICIENT-EXPLANATION-CONTRACT.md`, `CONTINGENT-ABSOLUTE-CONTRACT.md`, `GROUNDED-MODALITY-CONTRACT.md` and `CARRIER-SCHEMA-CONTRACT.md` for the accepted explanation line;
 - `ROUTE-SEAM-CONTRACT.md` for the relation between the two routes;
+- `A4-FACT-INDEPENDENCE-CONTRACT.md` for the independence of the entity-level and fact-level principles;
 - `A2-A3-A4-ATTACK.md` for the foundation route's philosophical attack surface;
 - `DESIGN-CONTRACT.md` for the historical CUT 1 design contract.
 

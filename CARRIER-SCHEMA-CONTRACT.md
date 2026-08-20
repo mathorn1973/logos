@@ -1,6 +1,6 @@
 # CARRIER-SCHEMA-1 DESIGN CONTRACT
 
-Status: **RESEARCH CUT, IN REVIEW**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 Base: `fact-sufficient-explanation-1`.
 

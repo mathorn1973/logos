@@ -1,6 +1,6 @@
 # DESIGN CONTRACT — FACT-SUFFICIENT-EXPLANATION-1
 
-Status: **NON-CANONICAL DESIGN CONTRACT**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 This cut attacks the remaining fact-level sufficient-explanation principle EF4.
 Its purpose is to determine exactly what the totality argument needs, and what

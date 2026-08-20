@@ -1,6 +1,6 @@
 # DESIGN CONTRACT — SELF-EXPLANATION-1
 
-Status: **NON-CANONICAL DESIGN CONTRACT**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 This cut attacks the irreflexivity principle `I` used by the totality-explanation route. Its purpose is to determine how much anti-self-explanation content is actually needed to refute pure contingency.
 

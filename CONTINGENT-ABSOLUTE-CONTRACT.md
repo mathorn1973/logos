@@ -1,6 +1,6 @@
 # DESIGN CONTRACT — CONTINGENT-ABSOLUTE-1
 
-Status: **NON-CANONICAL DESIGN CONTRACT**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 This cut attacks the residual `ContingentExplanatoryAbsoluteFact` option left by `FACT-SUFFICIENT-EXPLANATION-1`.
 

@@ -72,3 +72,12 @@ jobs:
             echo 'This cut must be a consequence of records already accepted on main.'
             exit 1
           fi
+      - name: Run A4 fact independence audit
+        run: lake env lean Logos/A4FactIndependenceAudit.lean
+      - name: Reject new records in the A4 fact independence cut
+        run: |
+          if grep -nE '^\s*(structure|class|axiom)\b' Logos/Models/Grounding/A4FactIndependence.lean; then
+            echo 'A4-FACT-INDEPENDENCE: the cut declared a record, class or axiom.'
+            echo 'This cut must be models and one theorem over language already accepted on main.'
+            exit 1
+          fi

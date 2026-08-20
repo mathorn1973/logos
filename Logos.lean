@@ -50,3 +50,4 @@ import Logos.Models.Grounding.GroundedModality
 import Logos.Models.Grounding.CarrierSchema
 import Logos.Systems.RouteSeam.Theorems
 import Logos.Models.Grounding.RouteSeam
+import Logos.Models.Grounding.A4FactIndependence

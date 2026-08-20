@@ -278,10 +278,64 @@ theorem explainer_is_ungrounded_here :
     ActualExplainsFact G Entity.root R.totality ∧ Ungrounded M Entity.root :=
   ⟨root_explains, root_ungrounded⟩
 
+/-- The accepted positive model also inhabits the core accepted on `main`, using
+the entity-explanation relation the externality cut already defines for it. -/
+def explanationCore :
+    TotalityExplanationCore M F G TotalityExternality.Positive.E R where
+  explains_source_actual := by
+    intro a hExplain
+    cases a with
+    | root => exact TotalityExternality.Positive.root_actual
+    | node n => exact False.elim hExplain
+  adequate_members := by
+    intro a hExplain x hInside _hx
+    cases a with
+    | root =>
+        cases x with
+        | root => exact False.elim hInside
+        | node n =>
+            refine ⟨TotalityExternality.Positive.root_explains_each_node n, ?_⟩
+            intro _ hEq
+            cases hEq
+    | node n => exact False.elim hExplain
+  covers_nonNecessary := TotalityExternality.Positive.coverage
+
+/-- The direction the cut previously left to be assembled by a reader: against
+the current core, an explainer of the totality fact can be ungrounded. -/
+theorem current_core_has_ungrounded_explainer :
+    TotalityExplanationCore M F G TotalityExternality.Positive.E R ∧
+      ActualExplainsFact G Entity.root R.totality ∧
+      Ungrounded M Entity.root :=
+  ⟨explanationCore, root_explains, root_ungrounded⟩
+
 end UngroundedExplainer
 
-/-- Summary of the independence: the deep package neither forces nor forbids
-groundedness of the explanatory source it delivers. -/
+/-- The independence stated against the core accepted on `main`, in both
+directions and in one theorem.
+
+Each conjunct exhibits a model of `TotalityExplanationCore`. In the first no
+explainer of the totality fact is ungrounded; in the second one is. The core
+therefore determines the modal status of an explainer and determines nothing
+about its position in the grounding order. -/
+theorem core_leaves_explainer_groundedness_undetermined :
+    (TotalityExplanationCore GroundedExplainer.M GroundedExplainer.F
+        GroundedExplainer.G GroundedExplainer.E GroundedExplainer.R ∧
+      ∀ a, ActualExplainsFact GroundedExplainer.G a GroundedExplainer.R.totality →
+        ¬ Ungrounded GroundedExplainer.M a) ∧
+    (TotalityExplanationCore TotalityExternalityComparison.MixedRoles.M
+        TotalityExternalityComparison.MixedRoles.F
+        TotalityExternalityComparison.MixedRoles.G
+        TotalityExternality.Positive.E
+        TotalityExternalityComparison.MixedRoles.R ∧
+      ActualExplainsFact TotalityExternalityComparison.MixedRoles.G
+        TotalityExternalityComparison.MixedRoles.Entity.root
+        TotalityExternalityComparison.MixedRoles.R.totality ∧
+      Ungrounded TotalityExternalityComparison.MixedRoles.M
+        TotalityExternalityComparison.MixedRoles.Entity.root) :=
+  ⟨⟨GroundedExplainer.explanationCore, GroundedExplainer.no_explainer_is_ungrounded⟩,
+    UngroundedExplainer.current_core_has_ungrounded_explainer⟩
+
+/-- Earlier form, kept because the accepted audit refers to it. -/
 theorem explainer_groundedness_undetermined :
     (∀ a, ActualExplainsFact GroundedExplainer.G a GroundedExplainer.R.totality →
         ¬ Ungrounded GroundedExplainer.M a) ∧
@@ -338,8 +392,8 @@ necessary, so the totality route's disjunctive conclusion holds by its first
 disjunct without any explanatory premise doing work.
 
 Exhaustiveness of the structural dichotomy therefore carries no argumentative
-weight: all the content of the totality route sits in EF4, S, I and C, not in
-the availability of a regress totality. -/
+weight.  Every substantive conclusion arrives only with the further premises
+stated over the record; none follows from availability of the record alone. -/
 theorem bare_totality_necessary
     {M : Grounding.Model.{u, v}} (R : RegressTotality M (bareFactModel M)) :
     NecessaryFact (bareFactModel M) R.totality := by

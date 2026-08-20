@@ -2,7 +2,10 @@
 
 Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
-Base: `main` (accepted through `totality-externality-1`).
+Base, original: `main` accepted through `totality-externality-1` (`d9519f5`).
+Base, final: `main` after the explanation-line promotion (`9dd17c5`). The cut was rebased
+onto the promoted state during review, and sections 1, 5.3 and 7 were restated against
+`TotalityExplanationCore` accordingly.
 
 This contract is a local record for one cut. Project-wide governance is in `PROJECT-RULES.md`.
 
@@ -17,6 +20,14 @@ source without its remaining disjuncts. Section 5.3 was stated against
 `CompleteScopedExplanationAxioms`, which the promotion of the explanation line superseded.
 Sections 5.3, 5.4, 6, 7, 8, 9 and the acceptance tests are corrected, and the countermodel
 is now also a witness for `TotalityExplanationCore`. Both amendments stay on the record.
+
+**Amended a third time after promotion.** Post-merge review found four residues of the
+superseded package that the second amendment had claimed to remove: the base line, the
+closing sentence of 5.4, the "partition" phrasing, and two sentences in 7. All four are
+corrected here. The same review found that the ungrounded-explainer direction existed only
+as pieces a reader had to assemble; `current_core_has_ungrounded_explainer` and
+`core_leaves_explainer_groundedness_undetermined` now state it against the current core.
+All three amendments stay on the record.
 
 ## 1. Motivation
 
@@ -181,12 +192,12 @@ bare_totality_necessary
 
 so the totality route's disjunctive conclusion holds by its first disjunct with no
 explanatory premise doing any work. Availability of a regress totality is a cheap
-structural fact. Everything the totality route actually claims sits in EF4, S, I and C,
-not in the existence of the structure they are stated over.
+structural fact. Every substantive conclusion arrives only with the further premises stated
+over the record; none follows from availability of the record alone.
 
-The right reading of 5.1 to 5.4 together is therefore: the two routes partition the
-possible shapes of actual grounding between them, and neither the partition nor its
-exhaustiveness is an argument for anything.
+The right reading of 5.1 to 5.4 together is therefore: the grounding-shape presuppositions
+of the two routes lie on opposite sides of an exhaustive structural dichotomy, and neither
+that placement nor its exhaustiveness is an argument for anything.
 
 ## 6. What this establishes about the program
 
@@ -241,16 +252,17 @@ second disjunct is satisfiable by a witness in which the totality route's conclu
 trivially true. Anyone reading the dichotomy as "so necessary reality follows either way"
 has read the structure and skipped the premises.
 
-It does not show that a regress totality satisfying EF4, S, I and C is available whenever
-A2 fails. Only the bare structure is constructed. Whether the substantive premises can be
-met is exactly the open question the totality route leaves standing, and nothing here
-touches it.
+It does not show that a regress totality satisfying the substantive premises of the current
+core, that is source actuality, local adequacy and completeness, is available whenever A2
+fails. Only the bare structure is constructed. Whether those premises can be met is exactly
+the open question the totality route leaves standing, and nothing here touches it.
 
 It does not show that the totality explainer is grounded. `GroundedExplainer` shows only
 that it may be.
 
 It does not weaken either accepted route. Neither `NecessaryExistenceAxioms` nor
-`CompleteScopedExplanationAxioms` changes, and no accepted theorem is restated.
+`TotalityExplanationCore` changes, no accepted theorem is restated, and the superseded
+`CompleteScopedExplanationAxioms` is left exactly as it stands on `main`.
 
 It does not identify any formal object with God, and it attributes no positive property to
 anything necessary.
@@ -308,6 +320,9 @@ and the program should stop writing as though the two routes converge on one obj
 13. dedicated axiom audit is green;
 14. no new premise enters any accepted axiom record;
 15. `core_fixes_necessity_not_grounding` elaborates against the current core;
+15a. `current_core_has_ungrounded_explainer` elaborates, pinning the opposite direction
+    against the same core, and `core_leaves_explainer_groundedness_undetermined` states
+    both directions as one theorem;
 16. no statement in this contract reads the totality conclusion as a necessary explanatory
     source without its remaining disjuncts;
 17. no theological interpretation enters the proof core.

@@ -37,5 +37,10 @@ assumed. -/
 #print axioms Logos.GroundingModels.RouteSeam.BareRegress.wellFounded_or_regressTotality
 #print axioms Logos.GroundingModels.RouteSeam.BareRegress.bare_totality_necessary
 
+-- the independence pinned in both directions against the current core
+#print axioms Logos.GroundingModels.RouteSeam.UngroundedExplainer.explanationCore
+#print axioms Logos.GroundingModels.RouteSeam.UngroundedExplainer.current_core_has_ungrounded_explainer
+#print axioms Logos.GroundingModels.RouteSeam.core_leaves_explainer_groundedness_undetermined
+
 -- summary
 #print axioms Logos.GroundingModels.RouteSeam.explainer_groundedness_undetermined

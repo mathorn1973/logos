@@ -257,7 +257,9 @@ The countermodel shows exactly what answering yes permits: a wholly contingent r
 
 ### Principled versus stipulated carrier exemption
 
-`carrier-schema-1` shows every relocation of the unexplained item requires exempting a carrier from completeness, scope or adequacy. Whether such an exemption can be principled is a philosophical question the formal layer deliberately leaves open. For the modal condition of `ConditionedBrute` the exemption is known to be completeness.
+`carrier-schema-1` shows that a contingent item can be offered as an explainer of the target only at a carrier exempted from completeness, scope or adequacy. Whether such an exemption can be principled is a philosophical question the formal layer deliberately leaves open.
+
+The exemption is not identified for any particular proposal. In particular it is **not** established that the modal condition of `ConditionedBrute` is exempt from completeness: `CompletenessExempt` is an uninterpreted one-item carrier, no interpretation of `Explains` is supplied for the modal-condition carrier, and there is no bridge to `licensesFailure`.
 
 ### No brute modality
 

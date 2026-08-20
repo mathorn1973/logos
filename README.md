@@ -104,9 +104,11 @@ escape_requires_exemption
     K.Explains a -> not K.Necessary a -> not ScopeClosureAxioms K
 ```
 
-A contingent item can explain the target only at a carrier exempted from completeness, scope or adequacy. Relocating the unexplained item onto a fresh carrier therefore never dissolves the fork. Three one-item countermodels show each of the three conditions is separately load-bearing, and `TotalityExplanationCore` is proved to be an instance of the schema rather than an analogy to it.
+A contingent item can be offered as an explainer of the target only at a carrier exempted from completeness, scope or adequacy. Offering one from a fresh carrier therefore never dissolves the fork. Three one-item countermodels show each of the three conditions is separately load-bearing, and `TotalityExplanationCore` is proved to be an instance of the schema rather than an analogy to it.
 
-The open question is consequently no longer "can the unexplained item always be moved". It is: for a proposed carrier, which condition is it exempt from, and is that exemption principled or merely stipulated.
+The schema records that an item explains the designated target. It does not record that the item is itself unexplained, and it supplies no interpretation of `Explains` for an arbitrary fresh carrier, so it does not license the stronger reading that an unexplained item is being relocated.
+
+The open question is consequently no longer "can a contingent explainer always be found somewhere fresh". It is: for a proposed carrier, which condition is it exempt from, and is that exemption principled or merely stipulated.
 
 ## How the two routes are related
 

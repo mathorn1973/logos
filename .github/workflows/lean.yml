@@ -49,6 +49,8 @@ jobs:
         run: lake env lean Logos/GroundedModalityAudit.lean
       - name: Run carrier schema audit
         run: lake env lean Logos/CarrierSchemaAudit.lean
+      - name: Run route seam audit
+        run: lake env lean Logos/RouteSeamAudit.lean
       - name: Reject modal layer leaking into the totality argument
         run: |
           if grep -rnE 'ModalVariationModel|NoBruteModalVariationAt|ModallyUnconditionedFact|GroundedFailurePossible' Logos/Systems --include='*.lean' | grep -v '^Logos/Systems/GroundedModality/'; then
@@ -61,5 +63,12 @@ jobs:
           if grep -rnE 'Model\.|FactModel|RegressTotality|EntityExplanationModel|FactGroundingRoles' Logos/Ontology/Grounding/ScopeCarrier.lean Logos/Systems/CarrierSchema/Axioms.lean Logos/Systems/CarrierSchema/Theorems.lean; then
             echo 'CARRIER-SCHEMA: the carrier-neutral layer referred to entity, fact or regress structure.'
             echo 'That layer must stay independent of what populates the carrier; put the dependency in EntityInstance.lean instead.'
+            exit 1
+          fi
+      - name: Reject new assumption records in the seam layer
+        run: |
+          if grep -rnE '^\s*(structure|class|axiom)\b' Logos/Systems/RouteSeam/; then
+            echo 'ROUTE-SEAM: the seam layer declared a new record or axiom.'
+            echo 'This cut must be a consequence of records already accepted on main.'
             exit 1
           fi

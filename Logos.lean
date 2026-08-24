@@ -51,3 +51,7 @@ import Logos.Models.Grounding.CarrierSchema
 import Logos.Systems.RouteSeam.Theorems
 import Logos.Models.Grounding.RouteSeam
 import Logos.Models.Grounding.A4FactIndependence
+import Logos.Ontology.Semantics.Language
+import Logos.Systems.InternalTruth.Axioms
+import Logos.Systems.InternalTruth.Theorems
+import Logos.Models.Semantics.InternalTruthIndependence

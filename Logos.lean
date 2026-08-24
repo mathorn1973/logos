@@ -55,3 +55,6 @@ import Logos.Ontology.Semantics.Language
 import Logos.Systems.InternalTruth.Axioms
 import Logos.Systems.InternalTruth.Theorems
 import Logos.Models.Semantics.InternalTruthIndependence
+import Logos.Systems.SelfClosure.Axioms
+import Logos.Systems.SelfClosure.Theorems
+import Logos.Models.Semantics.SelfClosure

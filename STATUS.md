@@ -7,8 +7,9 @@ MAIN        modal-foundation-1 + finite-countermodels-2 + absolute-ground-1 + to
             + totality-externality-1 + self-explanation-1 + fact-sufficient-explanation-1
             + contingent-absolute-1 + grounded-modality-1 + carrier-schema-1
             + route-seam-1 + a4-fact-independence-1
-            + internal-truth-1 (separate line, shares no vocabulary with the above)
-FOCUS       grounding line stable, residue philosophical; semantic self-reference line open
+            + internal-truth-1 + self-closure-1 (separate line, shares no vocabulary
+              with the above)
+FOCUS       none open; both lines stable, residue philosophical
 AUTHORITY   none; no released theorem catalogue exists yet
 CANON       none
 LICENSE     MIT; copyright 2026 A. M. Thorn
@@ -315,11 +316,17 @@ The countermodel shows exactly what answering yes permits: a wholly contingent r
 
 ### Whether the truth carrier is a new axis
 
-Untested. Two non-entailments between `RegressTotality` and the language structure of
-`internal-truth-1` would be worthless, since the signatures are disjoint and any two such
-models glue as unrelated worlds. The renaming worry is a definability worry and needs an
-explicit bridge, hence a separate seam cut. `INTERNAL-TRUTH-CONTRACT.md` section 9 records
-the test shape. Until it exists, nothing is claimed either way.
+Untested, and the most concrete open item on either line. Two non-entailments between
+`RegressTotality` and the language structure of `internal-truth-1` would be worthless, since
+the signatures are disjoint and any two such models glue as unrelated worlds. The renaming
+worry is a definability worry and needs an explicit bridge, hence a separate seam cut.
+`INTERNAL-TRUTH-CONTRACT.md` section 9 records the test shape. Until it exists, nothing is
+claimed either way, and `self-closure-1` does not bear on it.
+
+### Whether maximality needs choice at arbitrary size
+
+`SELF-CLOSURE-CONTRACT.md` section 9. Choice-free at finite size, not in the proof given at
+`Nat`.
 
 ### Principled versus stipulated carrier exemption
 
@@ -379,6 +386,46 @@ particular it is not Tarski's undefinability theorem, it says nothing about mean
 experience or physicalism, and it does not show that no absolute standpoint exists: an
 external valuation is granted by assumption in the signature.
 
+## Accepted self closure
+
+`self-closure-1` is on protected `main`, on the same separate line as `internal-truth-1`.
+
+It introduces no carrier and no premise. `SelfClosed L` is `Scope L` and `Disq L`;
+`Bivalent TV` is `NoGap TV` and `NoGlut TV`. Both are named conjunctions of premises frozen
+in `INTERNAL-TRUTH-CONTRACT.md`.
+
+Two of the five results carry no new mathematical content and are typed that way in the
+contract. `selfClosed_excludes_exprNegT` is the contrapositive of `no_internal_truth`.
+`self_closure_possible` re-presents a witness already in the independence set of the previous
+cut, stated by what holds in it rather than by what fails.
+
+The new content is that the bound is tight:
+
+```text
+MaxLang    self-closed, bivalent, diagonalisation holds, and its predicate carrier
+           realises every function Code -> V except exactly one
+           that one is the negated internal truth predicate, stated as three
+           separate lemmas rather than one
+SimpleLang the other failure mode: the predicate carrier is empty, so expressibility
+           fails because there are no internal predicates rather than because one
+           returns the wrong value
+OmegaLang  infinitely many sentences
+OmegaMaxLang  infinite and maximal at once
+```
+
+So the cost of self-closure in this setting is a single nameable function.
+
+`omegaMax_diag` is the only result on this line that uses `Classical.choice`. The step from
+"no sentence diagonalises the predicate" to "the predicate is the negated truth predicate
+everywhere" needs a classical existence step at infinite size and does not at finite size.
+That asymmetry is recorded rather than absorbed.
+
+Nothing here concerns an absolute, a God, simplicity, or any theological notion, and no name
+may be read that way. The direction of the cost is recorded in the contract section 9:
+self-closure is bought with expressive poverty rather than plenitude, so anything wanting to
+be both maximally articulate about itself and semantically self-closed is asking for the
+combination `no_internal_truth` rules out.
+
 ## Interpretation firewall
 
 The accepted grounding/totality core contains no formal `God` predicate and no theorem identifying a formal root, fact, external ground, or explanatory source with God. It must not depend on Goedel-Scott predicates, positive divine attributes, revelation or confessional premises, TWIST-J physics, essay prose, metaphor, or a hidden global project axiom.
@@ -387,13 +434,15 @@ Goedel-Scott remains a separate research branch.
 
 ## Open stack
 
-`#28 self-closure-1`, on the semantic self-reference line, stacked on the promoted
-`internal-truth-1`. It introduces no carrier and no premise; `SelfClosed` and `Bivalent` are
-named conjunctions of premises frozen in `INTERNAL-TRUTH-CONTRACT.md`.
+Empty. No research cut is open on either line.
 
-Nothing is open on the grounding line.
+`#27 internal-truth-1` was promoted on 2026-08-24, followed by its closure `#29`, then
+`#28 self-closure-1` after rebasing onto the promoted state. While `#28` was stacked it
+showed no checks at all, because `.github/workflows/lean.yml` triggers only on `main` and
+`cut/**`; the workflow was dispatched manually and the gap recorded in the PR. Whether the
+trigger list should cover stacked branches is an open repository question, not a result.
 
-`#27 internal-truth-1` was promoted on 2026-08-24. Review of it required the cut contract to
+`#27` Review of it required the cut contract to
 be committed before the implementation, with an explicit provenance note recording that an
 experimental implementation existed first, so the run is not a blind preregistration. Review
 also rejected a compile-failure experiment that had been reported as an independence

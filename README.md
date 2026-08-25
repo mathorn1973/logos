@@ -6,7 +6,7 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 
 ## Accepted main line
 
-`main` currently contains twelve accepted formal cuts:
+`main` currently contains twelve accepted formal cuts on the grounding line:
 
 1. `modal-foundation-1` - Kripke semantics for necessity, possibility, contingency, and standard modal principles under exact frame hypotheses;
 2. `finite-countermodels-2` - explicit finite frames, pointed refutations, and a genuine contingency witness;
@@ -20,6 +20,14 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 10. `carrier-schema-1` - the closure argument stated for an arbitrary carrier, with the accepted route shown to be an instance of it;
 11. `route-seam-1` - the relation between the foundation route and the totality route, and the deflation of the `RegressTotality` record;
 12. `a4-fact-independence-1` - two countermodels under one hypothesis schema showing that A4 at the entity level and local sufficient explanation for the totality fact are two commitments, neither entailing the other.
+
+### Second line: semantic self-reference
+
+`main` also contains one cut that is not part of the grounding sequence above and shares no vocabulary with it:
+
+- `internal-truth-1` - seven separately droppable conditions on a language and its truth-value carrier, shown jointly unsatisfiable, with an independence witness and a non-redundancy theorem for each. Truth-value gaps and truth-value gluts are separated over one and the same value carrier and negation, so they are distinct exits rather than one condition. It is not Tarski's undefinability theorem: there is no arithmetic, no coding, no representability and no theory, and the coding and diagonalisation assumptions are primitive and visible. It says nothing about meaning, experience, physicalism, necessary reality, grounding or the totality fact, and it does not show that there is no absolute standpoint.
+
+This line uses no `Entity`, `Fact` or `World` carrier and no grounding, explanation or modality vocabulary, and no module of the grounding line imports it. Whether its truth carrier is a genuinely new axis relative to the `Fact` carrier of `totality-regress-1` is untested; see `INTERNAL-TRUTH-CONTRACT.md` section 9 for the test that would settle it.
 
 The load-bearing grounding theorem remains:
 
@@ -160,8 +168,12 @@ the formal layer leaves open.
 
 ## Current research frontier
 
-No research cut is open. The formal programme has reached a stable state and the remaining
-work on this line is philosophical rather than formal.
+No cut is open on the grounding line. That programme has reached a stable state and the
+remaining work on it is philosophical rather than formal.
+
+One cut is open on the semantic self-reference line: `self-closure-1`, which asks how rich a
+semantically self-closed language can be. It is stacked on `internal-truth-1` and introduces
+no carrier and no premise of its own.
 
 The judgments the machine has isolated and cannot settle are whether an identity citation can
 count as an adequate explanation of contingent existence, whether exempting a carrier from
@@ -188,6 +200,7 @@ See also:
 - `SELF-EXPLANATION-CONTRACT.md`, `FACT-SUFFICIENT-EXPLANATION-CONTRACT.md`, `CONTINGENT-ABSOLUTE-CONTRACT.md`, `GROUNDED-MODALITY-CONTRACT.md` and `CARRIER-SCHEMA-CONTRACT.md` for the accepted explanation line;
 - `ROUTE-SEAM-CONTRACT.md` for the relation between the two routes;
 - `A4-FACT-INDEPENDENCE-CONTRACT.md` for the independence of the entity-level and fact-level principles;
+- `INTERNAL-TRUTH-CONTRACT.md` for the semantic self-reference line;
 - `A2-A3-A4-ATTACK.md` for the foundation route's philosophical attack surface;
 - `DESIGN-CONTRACT.md` for the historical CUT 1 design contract.
 

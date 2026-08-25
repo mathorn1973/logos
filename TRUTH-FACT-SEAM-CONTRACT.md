@@ -142,3 +142,25 @@ T7   S2's naming map is proved surjective
 T8   no module imports the seam module
 T9   no grounding-line theorem signature changes
 ```
+
+## 10. Outcome
+
+Added after implementation. Section 5 is unchanged and section 6 was written before any Lean existed.
+
+```text
+S1a   holds
+S1b   holds
+S2    holds
+```
+
+By section 6 that is the first row: **the axis is conditionally new.** It collapses into the fact carrier exactly when the carrier is bivalent and the language is self-closed, and not otherwise. This is a boundary, not a victory for either side, and the collapse half is the renaming worry confirmed rather than refuted.
+
+Two departures from what section 5 sketched, both recorded rather than absorbed.
+
+**S1a came out more general.** The sharing hypothesis needed is only that two sentences name the same fact, not that the two models share sentence and code types. The statement is therefore stronger than the target.
+
+**S1a is partial in a second way the contract did not anticipate.** `s1a_T` concludes only about codes in the image of `q`. Off that image the bridge is silent and `Scope` and `Disq` are silent, so `T` stays free even under bivalence. `s1a_scope_differ_off_image` witnesses two bridged, self-closed models over `TwoValued` that agree on the image of `q` and differ off it. Had this been noticed before implementation it would have belonged in section 5; it is stated here instead of being left to a reader to infer from the shape of the conclusion.
+
+Every result of this cut depends on no axioms at all.
+
+What the cut does not license is unchanged and section 7 governs it. In particular `Bridge` is a commitment, not a discovery, and someone who rejects that reading of the relation between a sentence's fact and its designation is untouched by any of this.

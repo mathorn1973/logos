@@ -58,3 +58,4 @@ import Logos.Models.Semantics.InternalTruthIndependence
 import Logos.Systems.SelfClosure.Axioms
 import Logos.Systems.SelfClosure.Theorems
 import Logos.Models.Semantics.SelfClosure
+import Logos.Models.Seam.TruthFact

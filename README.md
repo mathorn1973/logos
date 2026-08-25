@@ -29,7 +29,9 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 
 - `self-closure-1` - the bound implied by the previous cut, shown tight. A language is semantically self-closed when its internal truth predicate applies to every one of its own sentences and returns exactly the external value there. Self-closure is satisfiable classically, survives an infinite sentence type, and is compatible with a predicate carrier realising every function on codes except exactly one, that one being the negated internal truth predicate. So the cost of self-closure is a single nameable function rather than a knife edge. The cut introduces no carrier and no premise; two of its five results are typed as a restatement and a re-presentation and carry no new content.
 
-This line uses no `Entity`, `Fact` or `World` carrier and no grounding, explanation or modality vocabulary, and no module of the grounding line imports it. Whether its truth carrier is a genuinely new axis relative to the `Fact` carrier of `totality-regress-1` is untested; see `INTERNAL-TRUTH-CONTRACT.md` section 9 for the test that would settle it.
+- `truth-fact-seam-1` - the first module in the repository to mention both lines, joined by one explicit bridge saying that a sentence's fact obtains exactly when the sentence is designated true. The truth carrier turns out to be **conditionally** new. Under a two-valued carrier and a self-closed language it collapses into the fact carrier on the image of the naming map, which is the renaming worry confirmed for that case. Under a carrier with two distinct values both designated true it does not collapse. The fact carrier is in turn not a function of the language side, with the naming map proved surjective, so the residual freedom there is modal rather than extensional. The bridge is a commitment, not a discovery, and anyone who rejects that reading is untouched by the result.
+
+This line uses no `Entity`, `Fact` or `World` carrier outside the seam module, and no module of the grounding line imports any of it. The seam module is a leaf: nothing imports it either.
 
 Nothing on this line concerns an absolute, a God, simplicity, or any theological notion, and no name in it may be read that way. Self-closure where it holds is bought with expressive poverty rather than plenitude: the language is self-closed because it cannot express one specific thing about itself.
 
@@ -175,10 +177,11 @@ the formal layer leaves open.
 No cut is open on the grounding line. That programme has reached a stable state and the
 remaining work on it is philosophical rather than formal.
 
-No cut is open on the semantic self-reference line either. The open question there is whether
-its truth carrier is a new axis or a renaming of the existing fact carrier. Settling it needs
-an explicit bridge and therefore a separate seam cut, on the precedent of `route-seam-1`;
-until that exists nothing is claimed either way.
+No cut is open on the semantic self-reference line either. Its main open question, whether the
+truth carrier is a new axis or the fact carrier renamed, was settled conditionally by
+`truth-fact-seam-1`: it collapses under bivalence and self-closure and not otherwise. What
+remains open there is smaller and stated in `SELF-CLOSURE-CONTRACT.md` section 9 and
+`TRUTH-FACT-SEAM-CONTRACT.md` section 10.
 
 The judgments the machine has isolated and cannot settle are whether an identity citation can
 count as an adequate explanation of contingent existence, whether exempting a carrier from
@@ -205,7 +208,7 @@ See also:
 - `SELF-EXPLANATION-CONTRACT.md`, `FACT-SUFFICIENT-EXPLANATION-CONTRACT.md`, `CONTINGENT-ABSOLUTE-CONTRACT.md`, `GROUNDED-MODALITY-CONTRACT.md` and `CARRIER-SCHEMA-CONTRACT.md` for the accepted explanation line;
 - `ROUTE-SEAM-CONTRACT.md` for the relation between the two routes;
 - `A4-FACT-INDEPENDENCE-CONTRACT.md` for the independence of the entity-level and fact-level principles;
-- `INTERNAL-TRUTH-CONTRACT.md` and `SELF-CLOSURE-CONTRACT.md` for the semantic self-reference line;
+- `INTERNAL-TRUTH-CONTRACT.md`, `SELF-CLOSURE-CONTRACT.md` and `TRUTH-FACT-SEAM-CONTRACT.md` for the semantic self-reference line and its seam with the grounding line;
 - `A2-A3-A4-ATTACK.md` for the foundation route's philosophical attack surface;
 - `DESIGN-CONTRACT.md` for the historical CUT 1 design contract.
 

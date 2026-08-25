@@ -1,6 +1,6 @@
 # TRUTH-FACT-SEAM-1 DESIGN CONTRACT
 
-Status: **PROPOSED CUT CONTRACT - NOT ON MAIN**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 Base: `main` after the `self-closure-1` closure.
 

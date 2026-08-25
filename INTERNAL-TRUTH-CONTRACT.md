@@ -1,6 +1,6 @@
 # INTERNAL-TRUTH-1 DESIGN CONTRACT
 
-Status: **PROPOSED CUT CONTRACT - NOT ON MAIN**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 Base: `main` at `6a16b8d`, after the A4 fact-independence closure.
 

@@ -7,7 +7,8 @@ MAIN        modal-foundation-1 + finite-countermodels-2 + absolute-ground-1 + to
             + totality-externality-1 + self-explanation-1 + fact-sufficient-explanation-1
             + contingent-absolute-1 + grounded-modality-1 + carrier-schema-1
             + route-seam-1 + a4-fact-independence-1
-FOCUS       none open; the formal programme is stable and the residue is philosophical
+            + internal-truth-1 (separate line, shares no vocabulary with the above)
+FOCUS       grounding line stable, residue philosophical; semantic self-reference line open
 AUTHORITY   none; no released theorem catalogue exists yet
 CANON       none
 LICENSE     MIT; copyright 2026 A. M. Thorn
@@ -312,6 +313,14 @@ position survives every argument that only rules out brute entities.
 
 The countermodel shows exactly what answering yes permits: a wholly contingent reality closed by circular self-citation.
 
+### Whether the truth carrier is a new axis
+
+Untested. Two non-entailments between `RegressTotality` and the language structure of
+`internal-truth-1` would be worthless, since the signatures are disjoint and any two such
+models glue as unrelated worlds. The renaming worry is a definability worry and needs an
+explicit bridge, hence a separate seam cut. `INTERNAL-TRUTH-CONTRACT.md` section 9 records
+the test shape. Until it exists, nothing is claimed either way.
+
 ### Principled versus stipulated carrier exemption
 
 `carrier-schema-1` shows that a contingent item can be offered as an explainer of the target only at a carrier exempted from completeness, scope or adequacy. Whether such an exemption can be principled is a philosophical question the formal layer deliberately leaves open.
@@ -331,6 +340,45 @@ while the foundation route's witness is ungrounded by construction. `AbsoluteGro
 reachable only on the foundation side. Whether a necessary explanatory source that is itself
 grounded is an absolute in the intended sense is a human judgment, not a formal one.
 
+## Accepted internal truth
+
+`internal-truth-1` is on protected `main`. It belongs to a separate line and shares no
+carrier or vocabulary with the grounding and totality cuts above.
+
+Seven conditions on a language and its truth-value carrier, each a standalone proposition,
+never bundled:
+
+```text
+Diag      diagonalisation over internally expressible predicates
+ExprNegT  the negated internal truth predicate is internally expressible
+Scope     internal truth applies to every sentence of the language
+Disq      where it applies it returns the external value
+NegSwapT  negation swaps the two designations
+NoGap     every value is designated true or designated false
+NoGlut    no value is designated both
+```
+
+What is proved is that the seven are jointly unsatisfiable, plus seven independence
+witnesses and seven non-redundancy theorems of the form
+
+```text
+not (forall TV L, <the other six> -> False)
+```
+
+Those are statements about all proofs, not about one proof term. A compile-failure
+experiment on the existing proof was rejected during review as an independence argument and
+is explicitly forbidden by the contract.
+
+The gap witness and the glut witness share the same value type and the same negation and
+differ only in the designation predicates, so gap and glut are two exits and not one.
+
+`no_internal_truth` depends on no axioms at all.
+
+What the cut does not establish is listed in `INTERNAL-TRUTH-CONTRACT.md` section 7. In
+particular it is not Tarski's undefinability theorem, it says nothing about meaning,
+experience or physicalism, and it does not show that no absolute standpoint exists: an
+external valuation is granted by assumption in the signature.
+
 ## Interpretation firewall
 
 The accepted grounding/totality core contains no formal `God` predicate and no theorem identifying a formal root, fact, external ground, or explanatory source with God. It must not depend on Goedel-Scott predicates, positive divine attributes, revelation or confessional premises, TWIST-J physics, essay prose, metaphor, or a hidden global project axiom.
@@ -339,7 +387,17 @@ Goedel-Scott remains a separate research branch.
 
 ## Open stack
 
-Empty. No research cut is open.
+`#28 self-closure-1`, on the semantic self-reference line, stacked on the promoted
+`internal-truth-1`. It introduces no carrier and no premise; `SelfClosed` and `Bivalent` are
+named conjunctions of premises frozen in `INTERNAL-TRUTH-CONTRACT.md`.
+
+Nothing is open on the grounding line.
+
+`#27 internal-truth-1` was promoted on 2026-08-24. Review of it required the cut contract to
+be committed before the implementation, with an explicit provenance note recording that an
+experimental implementation existed first, so the run is not a blind preregistration. Review
+also rejected a compile-failure experiment that had been reported as an independence
+argument and required it to be replaced by theorems quantifying over all proofs.
 
 The `#7` to `#10` chain and `#14` were promoted on 2026-08-20, followed by `#16 route-seam-1`
 after review required it to be rebased on the promoted state, to drop two interpretive

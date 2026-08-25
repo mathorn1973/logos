@@ -27,7 +27,11 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 
 - `internal-truth-1` - seven separately droppable conditions on a language and its truth-value carrier, shown jointly unsatisfiable, with an independence witness and a non-redundancy theorem for each. Truth-value gaps and truth-value gluts are separated over one and the same value carrier and negation, so they are distinct exits rather than one condition. It is not Tarski's undefinability theorem: there is no arithmetic, no coding, no representability and no theory, and the coding and diagonalisation assumptions are primitive and visible. It says nothing about meaning, experience, physicalism, necessary reality, grounding or the totality fact, and it does not show that there is no absolute standpoint.
 
+- `self-closure-1` - the bound implied by the previous cut, shown tight. A language is semantically self-closed when its internal truth predicate applies to every one of its own sentences and returns exactly the external value there. Self-closure is satisfiable classically, survives an infinite sentence type, and is compatible with a predicate carrier realising every function on codes except exactly one, that one being the negated internal truth predicate. So the cost of self-closure is a single nameable function rather than a knife edge. The cut introduces no carrier and no premise; two of its five results are typed as a restatement and a re-presentation and carry no new content.
+
 This line uses no `Entity`, `Fact` or `World` carrier and no grounding, explanation or modality vocabulary, and no module of the grounding line imports it. Whether its truth carrier is a genuinely new axis relative to the `Fact` carrier of `totality-regress-1` is untested; see `INTERNAL-TRUTH-CONTRACT.md` section 9 for the test that would settle it.
+
+Nothing on this line concerns an absolute, a God, simplicity, or any theological notion, and no name in it may be read that way. Self-closure where it holds is bought with expressive poverty rather than plenitude: the language is self-closed because it cannot express one specific thing about itself.
 
 The load-bearing grounding theorem remains:
 
@@ -171,9 +175,10 @@ the formal layer leaves open.
 No cut is open on the grounding line. That programme has reached a stable state and the
 remaining work on it is philosophical rather than formal.
 
-One cut is open on the semantic self-reference line: `self-closure-1`, which asks how rich a
-semantically self-closed language can be. It is stacked on `internal-truth-1` and introduces
-no carrier and no premise of its own.
+No cut is open on the semantic self-reference line either. The open question there is whether
+its truth carrier is a new axis or a renaming of the existing fact carrier. Settling it needs
+an explicit bridge and therefore a separate seam cut, on the precedent of `route-seam-1`;
+until that exists nothing is claimed either way.
 
 The judgments the machine has isolated and cannot settle are whether an identity citation can
 count as an adequate explanation of contingent existence, whether exempting a carrier from
@@ -200,7 +205,7 @@ See also:
 - `SELF-EXPLANATION-CONTRACT.md`, `FACT-SUFFICIENT-EXPLANATION-CONTRACT.md`, `CONTINGENT-ABSOLUTE-CONTRACT.md`, `GROUNDED-MODALITY-CONTRACT.md` and `CARRIER-SCHEMA-CONTRACT.md` for the accepted explanation line;
 - `ROUTE-SEAM-CONTRACT.md` for the relation between the two routes;
 - `A4-FACT-INDEPENDENCE-CONTRACT.md` for the independence of the entity-level and fact-level principles;
-- `INTERNAL-TRUTH-CONTRACT.md` for the semantic self-reference line;
+- `INTERNAL-TRUTH-CONTRACT.md` and `SELF-CLOSURE-CONTRACT.md` for the semantic self-reference line;
 - `A2-A3-A4-ATTACK.md` for the foundation route's philosophical attack surface;
 - `DESIGN-CONTRACT.md` for the historical CUT 1 design contract.
 

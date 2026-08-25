@@ -1,8 +1,8 @@
 # SELF-CLOSURE-1 DESIGN CONTRACT
 
-Status: **PROPOSED CUT CONTRACT - NOT ON MAIN**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
-Base: `feat/internal-truth-1`, on top of `main` at `6a16b8d`. This cut is stacked; it does not build against `main` alone.
+Base: promoted `internal-truth-1`. Written against the branch, rebased onto `main` before promotion.
 
 Local record for one cut. Project-wide governance is in `PROJECT-RULES.md`.
 

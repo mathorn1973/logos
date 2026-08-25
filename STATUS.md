@@ -7,8 +7,8 @@ MAIN        modal-foundation-1 + finite-countermodels-2 + absolute-ground-1 + to
             + totality-externality-1 + self-explanation-1 + fact-sufficient-explanation-1
             + contingent-absolute-1 + grounded-modality-1 + carrier-schema-1
             + route-seam-1 + a4-fact-independence-1
-            + internal-truth-1 + self-closure-1 (separate line, shares no vocabulary
-              with the above)
+            + internal-truth-1 + self-closure-1 + truth-fact-seam-1 (separate line;
+              only the seam cut mentions both this line and the above)
 FOCUS       none open; both lines stable, residue philosophical
 AUTHORITY   none; no released theorem catalogue exists yet
 CANON       none
@@ -316,12 +316,12 @@ The countermodel shows exactly what answering yes permits: a wholly contingent r
 
 ### Whether the truth carrier is a new axis
 
-Untested, and the most concrete open item on either line. Two non-entailments between
-`RegressTotality` and the language structure of `internal-truth-1` would be worthless, since
-the signatures are disjoint and any two such models glue as unrelated worlds. The renaming
-worry is a definability worry and needs an explicit bridge, hence a separate seam cut.
-`INTERNAL-TRUTH-CONTRACT.md` section 9 records the test shape. Until it exists, nothing is
-claimed either way, and `self-closure-1` does not bear on it.
+Settled conditionally by `truth-fact-seam-1` and no longer open in the form it had. Under a
+two-valued carrier and a self-closed language the truth side is a function of the fact side
+on the image of the coding map; otherwise it is not. What survives is narrower and is a
+question about the bridge rather than about the carriers: whether
+`ActualFact F (sentenceFact s) <-> isT (val s)` is the right reading of the relation at all.
+That is a philosophical question and the formal work does not touch it.
 
 ### Whether maximality needs choice at arbitrary size
 
@@ -426,6 +426,51 @@ self-closure is bought with expressive poverty rather than plenitude, so anythin
 be both maximally articulate about itself and semantically self-closed is asking for the
 combination `no_internal_truth` rules out.
 
+## Accepted truth-fact seam
+
+`truth-fact-seam-1` is on protected `main`. It is the only module in the repository that
+mentions both the grounding line and the semantic self-reference line, and it is a leaf:
+nothing imports it.
+
+One new structure and one new premise, both confined to the cut:
+
+```text
+LinkedModel   a language named into a fact carrier, no laws
+Bridge K   :=  forall s, ActualFact F (K.sentenceFact s) <-> isT (K.L.val s)
+```
+
+The bridge relates `holdsAt` to `val`, the external valuation, and never to `T`. Relating it
+to `T` would presuppose the identification under test. It is at the actual world only, and it
+uses `isT` rather than equality of values, which is what the results turn on.
+
+`Bridge` is a substantive commitment, not a discovery. Someone who rejects that reading of the
+relation between a sentence's fact and its designation is untouched by any of this.
+
+Three results, all holding:
+
+```text
+S1a  two-valued carrier, self-closed languages: two sentences naming the same fact
+     carry the same value and the same internal verdict. The truth side IS a
+     function of the fact side there.
+S1b  carrier with two distinct values both designated true: two models sharing
+     the fact side, both bridged and both self-closed, differ in val and in T.
+S2   naming map surjective, two fact carriers agreeing at the actual world and
+     differing at a non-actual one, both bridged.
+```
+
+The verdict fixed in advance by the contract for that combination is that **the axis is
+conditionally new**. It collapses into the fact carrier exactly when the carrier is bivalent
+and the language is self-closed, and not otherwise. The collapse half is the renaming worry
+confirmed rather than refuted, and it is recorded that way.
+
+Two departures from what the contract's targets sketched are recorded in its section 10
+rather than absorbed. The realised S1a needs only that two sentences name the same fact, so
+it is more general than the target. And S1a is partial in a second sense the contract did not
+anticipate: it concludes only about codes in the image of the coding map, and off that image
+`T` stays free even under bivalence, witnessed by `s1a_scope_differ_off_image`.
+
+Every result of this cut depends on no axioms at all.
+
 ## Interpretation firewall
 
 The accepted grounding/totality core contains no formal `God` predicate and no theorem identifying a formal root, fact, external ground, or explanatory source with God. It must not depend on Goedel-Scott predicates, positive divine attributes, revelation or confessional premises, TWIST-J physics, essay prose, metaphor, or a hidden global project axiom.
@@ -437,7 +482,10 @@ Goedel-Scott remains a separate research branch.
 Empty. No research cut is open on either line.
 
 `#27 internal-truth-1` was promoted on 2026-08-24, followed by its closure `#29`, then
-`#28 self-closure-1` after rebasing onto the promoted state. While `#28` was stacked it
+`#28 self-closure-1` after rebasing onto the promoted state, then `#31 truth-fact-seam-1`.
+The seam cut is the first in the programme whose contract was written with no prior
+implementation of the cut in existence, and whose contract stated in advance what each
+possible outcome would mean. While `#28` was stacked it
 showed no checks at all, because `.github/workflows/lean.yml` triggers only on `main` and
 `cut/**`; the workflow was dispatched manually and the gap recorded in the PR. Whether the
 trigger list should cover stacked branches is an open repository question, not a result.

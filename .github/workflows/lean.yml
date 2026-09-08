@@ -81,3 +81,23 @@ jobs:
             echo 'This cut must be models and one theorem over language already accepted on main.'
             exit 1
           fi
+      - name: Run semantic line audit
+        run: lake env lean Logos/SemanticLineAudit.lean
+      - name: Reject grounding carriers in the semantic self-reference line
+        run: |
+          if grep -nE '\b(Entity|Fact|World|Grounding)\b' Logos/Ontology/Semantics/Language.lean Logos/Systems/InternalTruth/Axioms.lean Logos/Systems/InternalTruth/Theorems.lean Logos/Systems/SelfClosure/Axioms.lean Logos/Systems/SelfClosure/Theorems.lean Logos/Models/Semantics/InternalTruthIndependence.lean Logos/Models/Semantics/SelfClosure.lean; then
+            echo 'SEMANTIC LINE: a grounding carrier or namespace appeared outside the seam module.'
+            exit 1
+          fi
+      - name: Reject imports of the semantic self-reference line by the grounding line
+        run: |
+          if grep -rlE '^import Logos\.(Ontology\.Semantics|Systems\.InternalTruth|Systems\.SelfClosure|Models\.Semantics)' Logos --include='*.lean' | grep -vE '^Logos/(Ontology/Semantics|Systems/InternalTruth|Systems/SelfClosure|Models/Semantics|Models/Seam)/|^Logos/SemanticLineAudit\.lean'; then
+            echo 'SEMANTIC LINE: a module outside the line and the seam imports it.'
+            exit 1
+          fi
+      - name: Reject imports of the seam module
+        run: |
+          if grep -rlE '^import Logos\.Models\.Seam' Logos --include='*.lean' | grep -vE '^Logos/SemanticLineAudit\.lean'; then
+            echo 'SEMANTIC LINE: the seam module must be a leaf.'
+            exit 1
+          fi

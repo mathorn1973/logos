@@ -312,4 +312,55 @@ T11  the audit file and the static guard are wired into CI in the same PR
 
 ## 10. Outcome
 
-Added after implementation.
+Added after implementation. Sections 5 and 6 are unchanged.
+
+```text
+5.1   holds, axiom-free
+5.2   holds, both forms axiom-free
+5.3   holds; NecessaryFact -> not W axiom-free, the converse classical
+5.4   holds, classical through the accepted trichotomy
+5.5   all four models exhibited; the first three are instances of
+      constitutedFacts; Necessitarian refutes SingleSuccessor
+5.6   holds, all four statements axiom-free
+5.7   holds; see the departure below
+5.8   holds, axiom-free
+```
+
+By section 6 that is the first row. Under the constitution law the first disjunct of the
+trichotomy is necessitarianism about the actual world, `W` removes it, and the totality
+route under law and `W` is the dichotomy between a necessary explanatory source and a
+contingent explanatory absolute. `W` is a presupposition of the programme, not a
+commitment among the others: denying it grants the conclusion trivially and empties the
+question.
+
+Three departures, recorded rather than absorbed.
+
+**The definitions are not in one ontology module.** Section 3 said they would be. The
+ontology layer never imports `Logos.Systems`, and `RegressTotality` is declared there, so
+`ConstitutedTotality` and `TotalityRequiresMembers` live in
+`Logos.Systems.TotalityConstitution.Law` together with the constructed record.
+`ContingencyWitness`, `SingleSuccessor` and `constitutedFacts` are in
+`Logos.Ontology.Grounding.TotalityConstitution` as planned. This is the import firewall
+overriding a sentence of the contract, and it should have been noticed before freezing.
+
+**The existential form of 5.7 is classical, not axiom-free.** Section 5.7 predicted
+`W -> exists w, access actual w /\ w <> actual` without axioms. A world cannot be
+extracted from a failed necessity constructively. The axiom-free content is
+`not_singleSuccessor_of_contingencyWitness`, which is what 5.6 actually needs; the
+existential form is proved separately through `possible_nonexistence_of_not_necessary`
+and is classical. Both are in the audit under their own headings.
+
+**The law forces `inside` into the actual world, and the construction shows it.**
+5.1 predicted this as a theorem. It is also visible at the construction site:
+`constitutedRegress` cannot be built without the hypothesis `members_actual`, because
+`RegressTotality.actual_totality` demands the totality actually obtain and under the law
+that is the actual existence of every member. The hypothesis is named in the signature
+rather than discharged by a trick.
+
+The proof of `Necessitarian.explanationCore` and its siblings reports `propext`. That is
+the cost of `deriving DecidableEq` and of matching on inductive worlds, and it is inside
+the permitted set.
+
+Nothing in section 7 changes. `W` is not shown true; the law is a commitment about what
+the totality fact is; grounding and explanation of the totality remain free; and the
+remaining fork is where `fact-sufficient-explanation-1` left it.

@@ -509,6 +509,11 @@ differ only in the designation predicates, so gap and glut are two exits and not
 
 `no_internal_truth` depends on no axioms at all.
 
+`Logos/SemanticLineAudit.lean` pins the axiom claims of this line and of the two cuts
+below, and CI enforces that no grounding carrier appears in the line, that no module of
+the grounding line imports it, and that the seam module is a leaf. Before that file the
+same claims were documentation statements only.
+
 What the cut does not establish is listed in `INTERNAL-TRUTH-CONTRACT.md` section 7. In
 particular it is not Tarski's undefinability theorem, it says nothing about meaning,
 experience or physicalism, and it does not show that no absolute standpoint exists: an

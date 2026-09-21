@@ -32,7 +32,7 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 
 - `truth-fact-seam-1` - the first module in the repository to mention both lines, joined by one explicit bridge saying that a sentence's fact obtains exactly when the sentence is designated true. The truth carrier turns out to be **conditionally** new. Under a two-valued carrier and a self-closed language it collapses into the fact carrier on the image of the naming map, which is the renaming worry confirmed for that case. Under a carrier with two distinct values both designated true it does not collapse. The fact carrier is in turn not a function of the language side, with the naming map proved surjective, so the residual freedom there is modal rather than extensional. The bridge is a commitment, not a discovery, and anyone who rejects that reading is untouched by the result.
 
-This line uses no `Entity`, `Fact` or `World` carrier outside the seam module, and no module of the grounding line imports any of it. The seam module is a leaf: nothing imports it either.
+This line uses no `Entity`, `Fact` or `World` carrier outside the seam module, and no module of the grounding line imports any of it. The seam module is a leaf: nothing imports it either. CI enforces all three, and `Logos/SemanticLineAudit.lean` pins the axiom claims.
 
 Nothing on this line concerns an absolute, a God, simplicity, or any theological notion, and no name in it may be read that way. Self-closure where it holds is bought with expressive poverty rather than plenitude: the language is self-closed because it cannot express one specific thing about itself.
 

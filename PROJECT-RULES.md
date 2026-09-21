@@ -70,11 +70,14 @@ Current major research lines are:
 MODAL / GENERAL LOGIC
 GROUNDING / ABSOLUTE-GROUND
 TOTALITY / EXPLANATION
+SEMANTIC SELF-REFERENCE
 GÖDEL–SCOTT
 OPTIONAL INTERPRETATION BRIDGES
 ```
 
 Gödel–Scott is a separate formal branch. It is not a mandatory continuation of the grounding/totality sequence.
+
+Semantic self-reference (`internal-truth-1`, `self-closure-1`) is a separate line that shares no carrier with the grounding and totality cuts. The only module allowed to mention both lines is a seam cut, and a seam module must be a leaf: nothing imports it. CI enforces the carrier separation, the import direction and the leaf condition.
 
 Before restacking or merging a research cut, inspect actual Lean imports and theorem signatures. If a cut does not depend on another cut, prefer rebasing it directly on the weakest accepted `main` state that supplies its real dependencies.
 

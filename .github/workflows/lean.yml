@@ -91,8 +91,9 @@ jobs:
           fi
       - name: Reject imports of the totality constitution cut outside its own modules
         run: |
-          if grep -rlE 'Logos\.(Ontology\.Grounding|Systems|Models\.Grounding)\.TotalityConstitution' Logos --include='*.lean' | grep -vE '^Logos/(Ontology/Grounding|Systems|Models/Grounding)/TotalityConstitution(/|\.lean)|^Logos/TotalityConstitutionAudit\.lean'; then
+          if grep -rlE 'Logos\.(Ontology\.Grounding|Systems|Models\.Grounding)\.TotalityConstitution' Logos --include='*.lean' | grep -vE '^Logos/(Ontology/Grounding|Systems|Models/Grounding)/TotalityConstitution(/|\.lean)|^Logos/TotalityConstitutionAudit\.lean|^Logos/Models/Seam/ScottGrounding\.lean'; then
             echo 'TOTALITY-CONSTITUTION: a module outside the cut imports it.'
+            echo 'The one exemption is the Scott seam, SCOTT-COLLAPSE-CONTRACT.md section 8; it may not use the constitution law.'
             exit 1
           fi
       - name: Run semantic line audit
@@ -113,5 +114,42 @@ jobs:
         run: |
           if grep -rlE '^import Logos\.Models\.Seam' Logos --include='*.lean' | grep -vE '^Logos/SemanticLineAudit\.lean'; then
             echo 'SEMANTIC LINE: the seam module must be a leaf.'
+            exit 1
+          fi
+      - name: Run Scott collapse audit
+        run: lake env lean Logos/ScottCollapseAudit.lean
+      - name: Reject axioms and unexpected records in the Scott collapse cut
+        run: |
+          if grep -nE '^\s*axiom\b' Logos/Ontology/GoedelScott/Language.lean Logos/Systems/GoedelScott/Axioms.lean Logos/Systems/GoedelScott/Theorems.lean Logos/Models/GoedelScott/Independence.lean Logos/Models/Seam/ScottGrounding.lean; then
+            echo 'SCOTT-COLLAPSE: a new file declared an axiom.'
+            exit 1
+          fi
+          COUNT=$(cat Logos/Ontology/GoedelScott/Language.lean Logos/Systems/GoedelScott/Axioms.lean Logos/Systems/GoedelScott/Theorems.lean Logos/Models/GoedelScott/Independence.lean Logos/Models/Seam/ScottGrounding.lean | grep -cE '^\s*(structure|class)\b' || true)
+          if [ "$COUNT" -ne 3 ]; then
+            echo "SCOTT-COLLAPSE: expected exactly three structure declarations (Carrier, ScottCoreAxioms, ScottAxioms), found $COUNT."
+            exit 1
+          fi
+      - name: Reject foreign imports on the GoedelScott line
+        run: |
+          if grep -hE '^import ' Logos/Ontology/GoedelScott/*.lean Logos/Systems/GoedelScott/*.lean Logos/Models/GoedelScott/*.lean | grep -vE '^import Logos\.(Logic\.|(Ontology|Systems|Models)\.GoedelScott\.)'; then
+            echo 'SCOTT-COLLAPSE: a GoedelScott module imports something other than the logic layer and its own line.'
+            exit 1
+          fi
+      - name: Reject imports of the GoedelScott line outside the line and its seam
+        run: |
+          if grep -rlE '^import Logos\.(Ontology|Systems|Models)\.GoedelScott' Logos --include='*.lean' | grep -vE '^Logos/(Ontology|Systems|Models)/GoedelScott/|^Logos/Models/Seam/ScottGrounding\.lean'; then
+            echo 'SCOTT-COLLAPSE: a module outside the GoedelScott line and its seam imports the line.'
+            exit 1
+          fi
+      - name: Reject the constitution law in the Scott seam
+        run: |
+          if grep -nE 'ConstitutedTotality|TotalityRequiresMembers' Logos/Models/Seam/ScottGrounding.lean; then
+            echo 'SCOTT-COLLAPSE: the seam mentions the constitution law, which TOTALITY-CONSTITUTION-CONTRACT.md section 2 confines to its own cut.'
+            exit 1
+          fi
+      - name: Reject theological tokens in the Scott collapse cut
+        run: |
+          if grep -niE '\b(god|godlike|divine|deity|theolog[a-z]*)\b' Logos/Ontology/GoedelScott/Language.lean Logos/Systems/GoedelScott/Axioms.lean Logos/Systems/GoedelScott/Theorems.lean Logos/Models/GoedelScott/Independence.lean Logos/Models/Seam/ScottGrounding.lean Logos/ScottCollapseAudit.lean; then
+            echo 'SCOTT-COLLAPSE: a theological token appeared in the formal layer. Source names belong in the contract only.'
             exit 1
           fi

@@ -9,7 +9,10 @@ MAIN        modal-foundation-1 + finite-countermodels-2 + absolute-ground-1 + to
             + route-seam-1 + a4-fact-independence-1 + totality-constitution-1
             + internal-truth-1 + self-closure-1 + truth-fact-seam-1 (separate line;
               only the seam cut mentions both this line and the above)
-FOCUS       none open; both lines stable, residue philosophical
+            + scott-collapse-1 (Goedel-Scott line; its seam module is the only one
+              that mentions both that line and the grounding line)
+FOCUS       none open; grounding and semantic lines stable, residue philosophical;
+            the Goedel-Scott line has one cut and two named successor questions
 AUTHORITY   none; no released theorem catalogue exists yet
 CANON       none
 LICENSE     MIT; copyright 2026 A. M. Thorn
@@ -378,8 +381,16 @@ NO A2 / A3 / A6-A8 on the totality side
 NO weakening of exists_necessary_ungrounded
 NO result outside the cut depends on the law
 NO new structure, class or axiom; enforced by a static CI guard
-NO import of the cut outside its own modules and its audit; enforced by a static CI guard
+NO import of the cut outside its own modules, its audit and the Scott seam leaf;
+   enforced by a static CI guard
+NO use of the constitution law by that seam; enforced by a second static CI guard
 ```
+
+The seam exemption was added by `scott-collapse-1`, which states its result through
+`ContingencyWitness` and `SingleSuccessor`. `TOTALITY-CONSTITUTION-CONTRACT.md` section 8
+restricts importers "in this cut", so the contract was not broken, but this boundary was
+stricter than the contract until then and is recorded here as amended rather than silently
+relaxed.
 
 ## Current live philosophical commitments and questions
 
@@ -456,6 +467,11 @@ exactly the first disjunct of the trichotomy, so the position grants the totalit
 trivially and empties the question rather than opposing necessary reality. On the foundation
 side `W` is what excludes the frame on which `Necessary` coincides with `Actual`.
 
+`scott-collapse-1` places Scott's axiom package on this position: under full comprehension,
+A1, A2 and A5 with back-access at the actual world force the single-successor frame. That is a
+statement about where the package sits, relative to the comprehension commitment below. It is
+not an argument against `W` and not an argument against the package.
+
 ### The constitution law for the totality fact
 
 Commitment, confined to `totality-constitution-1`. No result outside that cut depends on it.
@@ -465,6 +481,17 @@ member exists there, with membership fixed across worlds. Two choices in it can 
 that membership is rigid, and that the totality is the joint existence of its members. A
 world-relative reading is a different law and has not been attempted. `BareWitness` shows the
 law is load-bearing: without it `W` does not remove the first disjunct.
+
+### Full comprehension in the Goedel-Scott embedding
+
+Commitment, confined to `scott-collapse-1`. No result outside that cut depends on it.
+
+Property variables range over every function from individuals and worlds to propositions,
+including functions that mention a particular world. The placement of Scott's package on the
+denial of `W` turns on it: the argument instantiates Scott's D3 at the property of being a
+given individual at a given world. A reader who holds that property variables range only over
+what the object language of higher-order modal logic can express, where no world is nameable,
+is untouched by that placement. Whether anything of it survives there is not attempted.
 
 ### Whether the middle disjunct deserves the name
 
@@ -604,15 +631,146 @@ anticipate: it concludes only about codes in the image of the coding map, and of
 
 Every result of this cut depends on no axioms at all.
 
+## Accepted Scott collapse
+
+`scott-collapse-1` is on protected `main`. It is the first cut on the Goedel-Scott line, and
+its seam module is the only one that mentions that line together with the grounding line.
+
+The premises come first because none is established. Over a frame `F` and a type of
+individuals, a carrier has a quantification domain `dom` and an uninterpreted predicate
+`positive` on properties. Scott's five axioms are asserted valid:
+
+```text
+A1  PositiveNeg               positive (pNot phi) w  <->  not (positive phi w)
+A2  PositiveMono              positive phi w -> phi necessarily entails psi at w -> positive psi w
+A3  PositiveAllPositive       positive (AllPositive C) w                       D1
+A4  PositiveRigid             positive phi w -> forall v, access w v -> positive phi v
+A5  PositiveNecInstantiated   positive (NecInstantiated C) w                   D3
+
+ScottCoreAxioms   A1, A2, A5
+BackAccess F a    forall v, access a v -> access v a
+```
+
+Two further commitments are not axioms of the package. **Full comprehension**: property
+variables range over every function from individuals and worlds to propositions. It is listed
+among the live commitments above and the whole placement turns on it. **Back-access** at the
+actual world, which is symmetry at one world and strictly weaker than a symmetric frame.
+
+```text
+necInstantiated_iff                                  no axioms, no axiom record in the hypotheses
+    NecInstantiated C x w  <->  forall v, access w v -> (v = w and dom w x)
+
+possibly_exemplified   (T1)                          classical
+    A1 -> A2 -> positive phi w -> exists v, access w v and exists x, dom v x and phi x v
+
+seesOnlyItself_of_scottCore                          classical through T1
+    ScottCoreAxioms C -> BackAccess F a -> a accesses only a, and a accesses a
+
+collapse                                             corollary, not a separate argument
+    ScottCoreAxioms C -> BackAccess F a -> forall p : Formula F, p a -> box F p a
+
+necessarily_allPositive   (T3)
+    ScottCoreAxioms C -> A3 -> BackAccess F a -> box F (exists an all-positive individual) a
+
+necessarily_allPositive_iff_actually                 no A3
+    on the forced frame that box says what the plain existential says
+```
+
+No theorem about the collapse uses A4, and A3 is used only by T3. Outside T3, `PositiveRigid`
+and `PositiveAllPositive` occur only in the models, which prove them for their carriers, and in
+the non-redundancy statements, where they are premises shown not to suffice. That A3, A4 and the
+all-positive predicate are idle in the placement was a prediction of the contract that could
+have failed.
+
+Seam, for a grounding model `M` and any carrier over its frame and entities, for every `dom`:
+
+```text
+singleSuccessor_of_scottCore              SingleSuccessor M
+actual_reflexive_of_scottCore             A5 of the grounding line, as a conclusion
+not_contingencyWitness_of_scottCore       not W
+necessary_iff_actual_of_scottCore         Necessary M x <-> Actual M x
+necessaryExistenceAxioms_of_foundation_of_scottCore     A4 of the grounding line is vacuous
+exists_necessary_ungrounded_iff_exists_ungrounded_of_scottCore
+```
+
+So Scott's package sits on the position that denies `W`. It is not a rival argument for
+necessary reality beside the programme's question; it is on the position that empties the
+question. Because the results hold for every `dom`, that does not depend on whether Scott's
+individual quantifiers are read as possibilist or actualist.
+
+**The conclusion sits close to A5.** By `necInstantiated_iff`, A5 under full comprehension says
+that being at a world which accesses nothing but itself is positive. T1 puts such a world
+within reach and back-access brings it home. The independence set shows A5 is neither redundant
+nor a renaming of the other axioms. It does not show that A5 is far from what it is used to
+prove, and no independence set can.
+
+Independence set. Each model satisfies all five axioms but the one dropped, the idle A3 and A4
+included, and each has a non-redundancy theorem quantifying over all frames, carriers and
+designated worlds:
+
+```text
+OneWorld       full package and BackAccess on one reflexive world          the package is consistent
+NoBackAccess   A1-A5, frame reflexive and transitive, not BackAccess        no collapse
+DropA5         A1-A4, equivalence frame                                     no collapse
+DropA1         A2-A5, equivalence frame                                     no collapse
+DropA2         A1, A3, A4, A5, equivalence frame                            no collapse
+```
+
+`NoBackAccess` also shows that reflexivity at the actual world, which is all the grounding line
+assumes about the frame, does not suffice.
+
+Over one grounding model, root grounding leaf, satisfying `NecessaryExistenceAxioms`, the
+carrier `carrierAt chosen` satisfies the full package for every entity `chosen`. With `leaf`
+chosen the all-positive individual is derived and the root is not all-positive. So the union of
+the two premise packages is consistent and degenerate, and the package does not determine where
+its distinguished individual sits in the grounding order.
+
+Three departures from the frozen contract are recorded in `SCOTT-COLLAPSE-CONTRACT.md` section
+10: 5.7 came out as one family of carriers rather than two, the definition inventory of section
+2 was incomplete by six non-structural definitions, and one sentence of section 3 had no target
+behind it and now has two theorems.
+
+Negative boundary:
+
+```text
+NO claim that Scott's argument is unsound, or that his premises are false or inconsistent
+NO claim about Goedel's original axioms, or about the variants that avoid modal collapse
+NO claim under restricted comprehension
+NO claim that W is true or false
+NO interpretation of positive, and no reading of AllPositive used by any theorem
+NO identification of the all-positive individual with any root, ground or explanatory source
+NO A0-A8 as a premise of any GoedelScott module
+NO new premise on the grounding line or the semantic line
+NO use of the constitution law; enforced by a static CI guard
+NO import of the GoedelScott line by another line, and the seam is a leaf; static CI guards
+NO global axiom; the only new structures are Carrier, ScottCoreAxioms, ScottAxioms; static CI guard
+NO theological token in the line's Lean files; static CI guard
+```
+
 ## Interpretation firewall
 
 The accepted grounding/totality core contains no formal `God` predicate and no theorem identifying a formal root, fact, external ground, or explanatory source with God. It must not depend on Goedel-Scott predicates, positive divine attributes, revelation or confessional premises, TWIST-J physics, essay prose, metaphor, or a hidden global project axiom.
 
-Goedel-Scott remains a separate research branch.
+Goedel-Scott is a separate line with one accepted cut, `scott-collapse-1`. No module of the
+grounding/totality core or of the semantic line imports it, its seam module is a leaf, and CI
+enforces both. Scott's D1 is named `AllPositive` in Lean; the source's name for it appears only
+in the source mapping of `SCOTT-COLLAPSE-CONTRACT.md`, and no theorem uses any reading of it.
 
 ## Open stack
 
-Empty. No research cut is open on either line.
+Empty. No research cut is open on any line.
+
+`#36 scott-collapse-1` was promoted on 2026-09-21 with its three commits unchanged: contract
+first, Lean second, outcome addendum third. The contract commit was pushed and had its own green
+run before any Lean for the cut was pushed, and sections 0 to 9 are unchanged since. One change
+predates freezing and is in section 0 of the contract: the route to the collapse first proposed
+in conversation went through D1, T2 and T3, and the shorter route through D3 alone was found on
+paper while drafting. Two review items were put to the owner in the pull request and the cut was
+promoted with both standing: one added exemption in the totality constitution import guard, for
+the seam module only, and the structural naming of Scott's D1. Before promotion the branch was
+rebuilt from the pinned toolchain on a fresh clone (73 jobs, no unfinished proof), all 31 run
+steps of the workflow were executed locally, and each of the six new guards was checked to fail
+on a seeded violation and to pass on the clean tree.
 
 `#33 totality-constitution-1` was promoted on 2026-09-21 with its three commits unchanged:
 contract first, Lean second, outcome addendum third. Its contract was written with no

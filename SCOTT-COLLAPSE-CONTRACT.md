@@ -394,3 +394,63 @@ T15  git diff on pre-existing files is confined to import lines in Logos.lean an
      .github/workflows/lean.yml
 T16  the audit file and every guard are wired into CI in the same pull request
 ```
+
+## 10. Outcome
+
+Added after implementation. Sections 0 to 9 are unchanged and were committed before any Lean
+for the cut existed.
+
+```text
+5.1   holds; no axioms, and no axiom record among the hypotheses
+5.2   holds; classical
+5.3   holds from ScottCoreAxioms and BackAccess at the designated world; classical through 5.2
+5.4   holds; collapse is a corollary of 5.3; T3 takes A3 as a separate hypothesis;
+      "T3 is free" needs no A3
+5.5   all five carriers exhibited; each independence model satisfies every axiom but the
+      one dropped, A3 and A4 included; four non-redundancy theorems over all frames,
+      carriers and designated worlds
+5.6   all six statements hold, for an arbitrary dom; classical through 5.3
+5.7   holds; see the first departure below
+```
+
+By section 6 that is the first row. Over a LOGOS frame and under full comprehension, A1, A2
+and A5 with back-access at the actual world force the single-successor frame. Scott's package
+sits on the position that denies `W`. The all-positive predicate, A3 and A4 play no part in
+putting it there: `positive_rigid` is referred to by no theorem, and `PositiveAllPositive` only
+by T3. The union with the foundation package is consistent and degenerate, and the position of
+the distinguished individual in the grounding order is undetermined.
+
+Axiom use is as predicted. 5.1 and its corollary depend on no axioms. The consistency witness
+and the three models over the full two-world frame depend on no axioms. `NoBackAccess` and the
+grounding model of 5.7 report `propext`, which is the cost of defining a relation by matching
+on an inductive type and is inside the permitted set.
+
+Three departures, recorded rather than absorbed.
+
+**5.7 is one family of carriers, not two separately defined ones.** `carrierAt chosen` takes
+the entity whose properties are called positive, and `scottAxioms_carrierAt` proves the full
+package for every choice. `RootCarrier` and `LeafCarrier` of section 5.7 are its two instances.
+The statement is therefore more general than the target: over that grounding model any entity
+whatever can be made the all-positive individual.
+
+**The inventory of section 2 was incomplete.** Six definitions were added that it does not
+list: the five named propositions `PositiveNeg`, `PositiveMono`, `PositiveAllPositive`,
+`PositiveRigid` and `PositiveNecInstantiated`, so that an independence statement can name a
+single axiom, and `haecceity`, which names the property section 5.1 wrote inline. None is a
+structure and none adds a premise; the two records are built from the five propositions.
+
+**One sentence of section 3 had no target behind it.** It says back-access is strictly weaker
+than symmetry. `NoBackAccess.backAccess_at_b` and `NoBackAccess.not_symmetric` now witness
+that on the frame the cut already had. It should have been a line of section 5.
+
+One thing the implementation makes plain and the contract understated. By 5.1, A5 under full
+comprehension says that being at a world which accesses nothing but itself is positive. T1
+then puts such a world within reach, and back-access brings it home. So the conclusion sits
+close to the premise, and the distance between them is exactly full comprehension and
+back-access. The independence set shows A5 is not redundant and not a renaming of the other
+axioms; it does not show that A5 is far from what it is used to prove, and no independence
+set can.
+
+Nothing in section 7 changes. The placement depends on full comprehension, `positive` has no
+reading, nothing is shown about the soundness of Scott's argument, about the variants that
+avoid modal collapse, or about whether `W` is true.

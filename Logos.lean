@@ -63,3 +63,8 @@ import Logos.Ontology.Grounding.TotalityConstitution
 import Logos.Systems.TotalityConstitution.Law
 import Logos.Systems.TotalityConstitution.Theorems
 import Logos.Models.Grounding.TotalityConstitution
+import Logos.Ontology.GoedelScott.Language
+import Logos.Systems.GoedelScott.Axioms
+import Logos.Systems.GoedelScott.Theorems
+import Logos.Models.GoedelScott.Independence
+import Logos.Models.Seam.ScottGrounding

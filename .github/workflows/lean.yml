@@ -81,6 +81,20 @@ jobs:
             echo 'This cut must be models and one theorem over language already accepted on main.'
             exit 1
           fi
+      - name: Run totality constitution audit
+        run: lake env lean Logos/TotalityConstitutionAudit.lean
+      - name: Reject new records in the totality constitution cut
+        run: |
+          if grep -nE '^\s*(structure|class|axiom)\b' Logos/Ontology/Grounding/TotalityConstitution.lean Logos/Systems/TotalityConstitution/Law.lean Logos/Systems/TotalityConstitution/Theorems.lean Logos/Models/Grounding/TotalityConstitution.lean; then
+            echo 'TOTALITY-CONSTITUTION: the cut declared a new record or axiom.'
+            exit 1
+          fi
+      - name: Reject imports of the totality constitution cut outside its own modules
+        run: |
+          if grep -rlE 'Logos\.(Ontology\.Grounding|Systems|Models\.Grounding)\.TotalityConstitution' Logos --include='*.lean' | grep -vE '^Logos/(Ontology/Grounding|Systems|Models/Grounding)/TotalityConstitution(/|\.lean)|^Logos/TotalityConstitutionAudit\.lean'; then
+            echo 'TOTALITY-CONSTITUTION: a module outside the cut imports it.'
+            exit 1
+          fi
       - name: Run semantic line audit
         run: lake env lean Logos/SemanticLineAudit.lean
       - name: Reject grounding carriers in the semantic self-reference line

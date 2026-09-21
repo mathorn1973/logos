@@ -6,7 +6,7 @@ STATE       FORMAL LABORATORY
 MAIN        modal-foundation-1 + finite-countermodels-2 + absolute-ground-1 + totality-regress-1
             + totality-externality-1 + self-explanation-1 + fact-sufficient-explanation-1
             + contingent-absolute-1 + grounded-modality-1 + carrier-schema-1
-            + route-seam-1 + a4-fact-independence-1
+            + route-seam-1 + a4-fact-independence-1 + totality-constitution-1
             + internal-truth-1 + self-closure-1 + truth-fact-seam-1 (separate line;
               only the seam cut mentions both this line and the above)
 FOCUS       none open; both lines stable, residue philosophical
@@ -283,13 +283,113 @@ NO independence claim under a future entity-level explanation-to-grounding bridg
 NO new axiom record, structure, class or axiom; enforced by a static CI guard
 ```
 
+## Accepted totality constitution
+
+`totality-constitution-1` is on protected `main`.
+
+`route-seam-1` showed the designated totality fact is free data. This cut says what the
+fact is, and both of its premises come first because neither is established:
+
+```text
+ConstitutedTotality F R    forall w, holdsAt w totality <-> forall x, inside x -> existsAt w x
+ContingencyWitness M       exists x, Actual M x and not Necessary M x                  (W)
+```
+
+The law is a commitment about what the fact carrier records: membership is rigid, and the
+totality is read as the joint existence of its members. It fixes `holdsAt` only and is
+confined to the cut. `W` is the presupposition of the programme's question. A reader who
+rejects the law is untouched by the totality-side results below.
+
+Totality side:
+
+```text
+necessaryFact_iff_members_necessary                         no axioms
+    law -> (NecessaryFact totality <-> forall x, inside x -> Necessary M x)
+
+necessaryFact_iff_not_contingencyWitness                    classical in one direction
+    law -> (forall x, Actual M x -> not Necessary M x -> inside x)
+        -> (NecessaryFact totality <-> not W)
+
+necessary_explainer_or_contingent_absolute                  classical, through the trichotomy
+    TotalityExplanationCore -> TotalityRequiresMembers -> W
+        -> a necessary explanatory source explains the totality fact
+           or the totality fact is a contingent explanatory absolute
+
+necessary_explainer_of_localEF4
+    ... -> LocalFactSufficientExplanation G totality
+        -> a necessary explanatory source explains the totality fact
+```
+
+`NecessaryFact totality -> not W` needs only the forward half of the law and no axioms. The
+converse passes from `not not Necessary` to `Necessary` and is classical.
+
+So under the law the first disjunct of the trichotomy is necessitarianism about the actual
+world, and `W` removes it. This is a reduction of the trichotomy to a dichotomy under two
+explicit premises. The remaining fork is exactly where `fact-sufficient-explanation-1` left
+it, and local sufficient explanation is still what decides it.
+
+Foundation side, all without axioms. `SingleSuccessor M` says the actual world accesses only
+itself; the statements that need `A5` take it as a separate hypothesis:
+
+```text
+necessary_iff_actual_of_singleSuccessor                     Necessary M x <-> Actual M x
+not_contingent_of_singleSuccessor                           not Contingent M x
+necessaryExistenceAxioms_of_foundation_of_singleSuccessor   A0-A2 give the package; A4 is vacuous
+exists_necessary_ungrounded_iff_exists_ungrounded_of_singleSuccessor
+not_singleSuccessor_of_contingencyWitness                   W -> not SingleSuccessor M
+twoRoot_singleSuccessor                                     the accepted A3 witness is such a frame
+```
+
+No accepted premise package excludes that frame, so the modal content of
+`exists_necessary_ungrounded` is supplied by the frame and by nothing in the premises. The
+premises do not force the frame either: the accepted `freeCreationModel` satisfies A0-A7 and
+`free_creation_refutes_actual_implies_necessary` holds there. The theorem is not weakened.
+What is recorded is what its conclusion means on a frame the premises admit, and that the
+two necessary roots of `twoRootModel` are necessary in that degenerate sense. The model
+remains a valid witness for the independence of A3, which is what it was accepted for.
+
+Independence set, all four under `TotalityExplanationCore`:
+
+```text
+Necessitarian        law and core and not W    first disjunct holds; frame is not single-successor
+BareWitness          W and core and not law    first disjunct still holds; the law is load-bearing
+NecessaryExplainer   law and core and W        middle disjunct inhabited; local EF4 holds
+ContingentAbsolute   law and core and W        third disjunct inhabited; local EF4 fails
+```
+
+Three departures from the frozen contract are recorded in
+`TOTALITY-CONSTITUTION-CONTRACT.md` section 10: the definitions are split across the ontology
+and systems layers because the import firewall overrode a sentence of the contract; the
+existential form of "W supplies another accessible world" is classical where the contract
+predicted no axioms, the axiom-free content being `not_singleSuccessor_of_contingencyWitness`;
+and the constraint that members are actual is visible as a named hypothesis of
+`constitutedRegress`.
+
+Negative boundary:
+
+```text
+NO claim that W is true
+NO claim that the constitution law is forced, or that rigid membership is the only reading
+NO claim that necessitarianism is refuted; it is placed on the map, consistent
+NO closure of the fork, and nothing new about it
+NO law on groundsFact, constitutesFact or explainsFact
+NO world-relative membership
+NO A2 / A3 / A6-A8 on the totality side
+NO weakening of exists_necessary_ungrounded
+NO result outside the cut depends on the law
+NO new structure, class or axiom; enforced by a static CI guard
+NO import of the cut outside its own modules and its audit; enforced by a static CI guard
+```
+
 ## Current live philosophical commitments and questions
 
-The first five items are commitments: principles the formal layer states and does not
-establish. The last is an interpretive question about how to read an accepted result, and
-no theorem depends on how it is answered.
+Items are commitments unless marked otherwise: principles the formal layer states and does
+not establish. Items marked as questions are open, and no theorem depends on how they are
+answered. `W` is marked as a presupposition: it is not a commitment among the others but
+the presupposition of the programme's question.
 
-The machine has not established any of the commitments as true of reality.
+The machine has not established any of the commitments, nor the presupposition, as true of
+reality.
 
 ### Local sufficient explanation for the totality fact
 
@@ -316,6 +416,8 @@ The countermodel shows exactly what answering yes permits: a wholly contingent r
 
 ### Whether the truth carrier is a new axis
 
+*Question, not a premise.*
+
 Settled conditionally by `truth-fact-seam-1` and no longer open in the form it had. Under a
 two-valued carrier and a self-closed language the truth side is a function of the fact side
 on the image of the coding map; otherwise it is not. What survives is narrower and is a
@@ -325,10 +427,14 @@ That is a philosophical question and the formal work does not touch it.
 
 ### Whether maximality needs choice at arbitrary size
 
+*Technical question, not a premise.*
+
 `SELF-CLOSURE-CONTRACT.md` section 9. Choice-free at finite size, not in the proof given at
 `Nat`.
 
 ### Principled versus stipulated carrier exemption
+
+*Philosophical question, not a premise.*
 
 `carrier-schema-1` shows that a contingent item can be offered as an explainer of the target only at a carrier exempted from completeness, scope or adequacy. Whether such an exemption can be principled is a philosophical question the formal layer deliberately leaves open.
 
@@ -337,6 +443,28 @@ The exemption is not identified for any particular proposal. In particular it is
 ### No brute modality
 
 `grounded-modality-1` states it precisely: every accessible failure of a fact has an actual condition licensing it. It is a premise of a new axis, not a new route to the conclusion, and on its own it does not close the fork.
+
+### W: something actual is not necessary
+
+*Presupposition of the programme's question, not a commitment among the others.*
+
+Stated in `totality-constitution-1` as `ContingencyWitness`. It is in no accepted premise
+package. Its denial is necessitarianism about the actual world. That position is consistent
+and is not refuted anywhere in the repository: the `Necessitarian` model inhabits it on a
+frame that is not degenerate. Under the constitution law and completeness, denying `W` is
+exactly the first disjunct of the trichotomy, so the position grants the totality conclusion
+trivially and empties the question rather than opposing necessary reality. On the foundation
+side `W` is what excludes the frame on which `Necessary` coincides with `Actual`.
+
+### The constitution law for the totality fact
+
+Commitment, confined to `totality-constitution-1`. No result outside that cut depends on it.
+
+`ConstitutedTotality`: the totality fact obtains at a world exactly when every represented
+member exists there, with membership fixed across worlds. Two choices in it can be rejected:
+that membership is rigid, and that the totality is the joint existence of its members. A
+world-relative reading is a different law and has not been attempted. `BareWitness` shows the
+law is load-bearing: without it `W` does not remove the first disjunct.
 
 ### Whether the middle disjunct deserves the name
 
@@ -485,6 +613,14 @@ Goedel-Scott remains a separate research branch.
 ## Open stack
 
 Empty. No research cut is open on either line.
+
+`#33 totality-constitution-1` was promoted on 2026-09-21 with its three commits unchanged:
+contract first, Lean second, outcome addendum third. Its contract was written with no
+implementation of the cut in existence and stated in advance what each outcome would mean.
+Three departures from the frozen text are recorded in section 10 of the contract rather than
+absorbed. Before promotion the branch was rebuilt from the pinned toolchain on a fresh clone
+(68 jobs, no unfinished proof), the axiom audit was compared line by line with section 10,
+and the required `build` check was green on both the push and the pull request run.
 
 `#27 internal-truth-1` was promoted on 2026-08-24, followed by its closure `#29`, then
 `#28 self-closure-1` after rebasing onto the promoted state, then `#31 truth-fact-seam-1`.

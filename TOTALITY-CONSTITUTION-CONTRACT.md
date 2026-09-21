@@ -1,6 +1,6 @@
 # TOTALITY-CONSTITUTION-1 DESIGN CONTRACT
 
-Status: **PROPOSED CUT CONTRACT - NOT ON MAIN**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 Base: `main` at `25c797b`, after the `truth-fact-seam-1` closure.
 

@@ -6,7 +6,7 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 
 ## Accepted main line
 
-`main` currently contains twelve accepted formal cuts on the grounding line:
+`main` currently contains thirteen accepted formal cuts on the grounding line:
 
 1. `modal-foundation-1` - Kripke semantics for necessity, possibility, contingency, and standard modal principles under exact frame hypotheses;
 2. `finite-countermodels-2` - explicit finite frames, pointed refutations, and a genuine contingency witness;
@@ -19,7 +19,8 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 9. `grounded-modality-1` - modal conditions as a carrier separate from entities and explanatory sources, with the recorded finding that the axis does not close the fork;
 10. `carrier-schema-1` - the closure argument stated for an arbitrary carrier, with the accepted route shown to be an instance of it;
 11. `route-seam-1` - the relation between the foundation route and the totality route, and the deflation of the `RegressTotality` record;
-12. `a4-fact-independence-1` - two countermodels under one hypothesis schema showing that A4 at the entity level and local sufficient explanation for the totality fact are two commitments, neither entailing the other.
+12. `a4-fact-independence-1` - two countermodels under one hypothesis schema showing that A4 at the entity level and local sufficient explanation for the totality fact are two commitments, neither entailing the other;
+13. `totality-constitution-1` - a constitution law saying what the totality fact is, under which the first disjunct of the trichotomy is necessitarianism about the actual world, and the presupposition `W` that removes it.
 
 ### Second line: semantic self-reference
 
@@ -172,6 +173,47 @@ nothing about that source's position in the grounding order.
 side. Whether the totality route's middle disjunct deserves the same name is a human question
 the formal layer leaves open.
 
+## What the totality fact is
+
+`route-seam-1` left the designated totality fact as free data. `totality-constitution-1` makes
+the repair and records what it costs. It states a constitution law, confined to the cut:
+
+```text
+ConstitutedTotality F R
+    forall w, holdsAt w totality <-> forall x, inside x -> existsAt w x
+```
+
+Membership is rigid, so this is the de re reading: the fact that *these* members exist. The
+law fixes when the totality obtains and nothing else; what grounds or explains it stays free.
+It is a commitment about what the fact carrier records, not a discovery, and anyone who
+rejects that reading is untouched by the results.
+
+Under the law the first disjunct of the trichotomy stops being a free option. It is
+member-necessity, and under completeness it is exactly the denial of
+
+```text
+W   something actual is not necessary
+```
+
+`W` is in no accepted premise package. It is the presupposition of the programme's question
+rather than a commitment among the others. Denying it is necessitarianism about the actual
+world, which is a consistent position, is not refuted here, and grants the totality
+conclusion trivially while emptying the question. With the law and `W` the trichotomy reduces
+to the fork between a necessary explanatory source and a contingent explanatory absolute.
+That fork is exactly where `fact-sufficient-explanation-1` left it, and local sufficient
+explanation is still the commitment that decides it. The cut is a reduction under two
+explicit premises, not a new route and not a closure.
+
+The same cut records a fact about the foundation route. Nothing in
+`NecessaryExistenceAxioms` constrains the frame beyond `A5`. On a frame where the actual
+world accesses only itself, `Necessary` coincides with `Actual`, `A4` is vacuous, and
+`exists_necessary_ungrounded` says what `exists_ungrounded` already said from `A0` to `A2`.
+The accepted `twoRootModel` lives on such a frame. The premises do not force that frame,
+as the accepted `free_creation_refutes_actual_implies_necessary` shows, but they do not
+exclude it either: the modal content of the central theorem is supplied by the frame, and
+`W` is what rules the degenerate reading out. This does not weaken the theorem. It records
+what its conclusion means on a frame the premises admit.
+
 ## Current research frontier
 
 No cut is open on the grounding line. That programme has reached a stable state and the
@@ -192,6 +234,10 @@ source that is itself grounded deserves the name the foundation route earns.
 A4 at the entity level and local sufficient explanation for the totality fact are two
 commitments, so a defence of one is not a defence of the other. Both are listed in `STATUS`.
 
+`totality-constitution-1` adds a presupposition and a confined commitment rather than a
+result about the fork. `W` and the constitution law are listed in `STATUS` next to the
+commitments, each under its own kind.
+
 Goedel-Scott is a separate formal branch of the LOGOS program, not a step in the grounding/totality sequence. TWIST-J is likewise not a dependency of the general ontology core.
 
 ## Project-wide rules
@@ -208,6 +254,7 @@ See also:
 - `SELF-EXPLANATION-CONTRACT.md`, `FACT-SUFFICIENT-EXPLANATION-CONTRACT.md`, `CONTINGENT-ABSOLUTE-CONTRACT.md`, `GROUNDED-MODALITY-CONTRACT.md` and `CARRIER-SCHEMA-CONTRACT.md` for the accepted explanation line;
 - `ROUTE-SEAM-CONTRACT.md` for the relation between the two routes;
 - `A4-FACT-INDEPENDENCE-CONTRACT.md` for the independence of the entity-level and fact-level principles;
+- `TOTALITY-CONSTITUTION-CONTRACT.md` for the constitution law, the presupposition `W` and the degenerate-frame reading of the foundation theorem;
 - `INTERNAL-TRUTH-CONTRACT.md`, `SELF-CLOSURE-CONTRACT.md` and `TRUTH-FACT-SEAM-CONTRACT.md` for the semantic self-reference line and its seam with the grounding line;
 - `A2-A3-A4-ATTACK.md` for the foundation route's philosophical attack surface;
 - `DESIGN-CONTRACT.md` for the historical CUT 1 design contract.

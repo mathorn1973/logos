@@ -1,6 +1,6 @@
 # SCOTT-COLLAPSE-1 DESIGN CONTRACT
 
-Status: **PROPOSED CUT CONTRACT - NOT ON MAIN**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 Base: `main` at `4c9b726`, after the `totality-constitution-1` closure and the semantic line audit.
 
@@ -454,3 +454,9 @@ set can.
 Nothing in section 7 changes. The placement depends on full comprehension, `positive` has no
 reading, nothing is shown about the soundness of Scott's argument, about the variants that
 avoid modal collapse, or about whether `W` is true.
+
+**Correction added at closure.** The sentence above saying `positive_rigid` is referred to by no
+theorem, and `PositiveAllPositive` only by T3, is loose. Acceptance test T6 has the exact form.
+The models prove both propositions for their carriers, and the non-redundancy statements take
+them as premises that are shown not to suffice. What holds is that no theorem about the collapse
+uses A4, and that among those theorems only T3 uses A3.

@@ -24,7 +24,7 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 
 ### Second line: semantic self-reference
 
-`main` also contains one cut that is not part of the grounding sequence above and shares no vocabulary with it:
+`main` also contains three cuts that are not part of the grounding sequence above. The first two share no vocabulary with it, and the third is their seam with it:
 
 - `internal-truth-1` - seven separately droppable conditions on a language and its truth-value carrier, shown jointly unsatisfiable, with an independence witness and a non-redundancy theorem for each. Truth-value gaps and truth-value gluts are separated over one and the same value carrier and negation, so they are distinct exits rather than one condition. It is not Tarski's undefinability theorem: there is no arithmetic, no coding, no representability and no theory, and the coding and diagonalisation assumptions are primitive and visible. It says nothing about meaning, experience, physicalism, necessary reality, grounding or the totality fact, and it does not show that there is no absolute standpoint.
 
@@ -35,6 +35,18 @@ LOGOS does not assert theological conclusions unconditionally. Every theorem is 
 This line uses no `Entity`, `Fact` or `World` carrier outside the seam module, and no module of the grounding line imports any of it. The seam module is a leaf: nothing imports it either. CI enforces all three, and `Logos/SemanticLineAudit.lean` pins the axiom claims.
 
 Nothing on this line concerns an absolute, a God, simplicity, or any theological notion, and no name in it may be read that way. Self-closure where it holds is bought with expressive poverty rather than plenitude: the language is self-closed because it cannot express one specific thing about itself.
+
+### Third line: Goedel-Scott
+
+`main` contains one cut on the Goedel-Scott line:
+
+- `scott-collapse-1` - Scott's version of the ontological argument stated over a LOGOS frame, with a leaf seam to the grounding line. Under full comprehension, Scott's definition D3 is a frame condition: it holds of an individual at a world exactly when that world accesses nothing but itself. With possible exemplification from A1 and A2, with A5, and with back-access at the actual world, that forces the single-successor frame recorded by `totality-constitution-1`. So Scott's package sits on the position that denies `W`. It is not a rival argument for necessary reality beside the LOGOS question; it sits on the position that empties the question. A3, A4 and the all-positive predicate play no part in putting it there. The package is consistent, each of A1, A2, A5 and back-access is shown load-bearing by a model satisfying everything else, and over one grounding model any entity whatever, including a derived one, can be made the all-positive individual, so the package says nothing about grounding position.
+
+The placement depends on **full comprehension**: property variables range over every function from individuals and worlds to propositions, including ones that mention a particular world. That is a commitment, not a discovery, and a reader who restricts property variables to what the object language can express is untouched by the result. The conclusion also sits close to A5, which under full comprehension says that being at a world that accesses only itself is positive; the independence set does not and cannot address that proximity.
+
+The modules of this line import the logic layer and nothing else. No module of the other two lines imports them, the seam module is a leaf, and it does not use the constitution law. CI enforces all of that and rejects theological tokens in the line's Lean files. Scott's D1 is named `AllPositive`; the source's name for it appears only in the contract's source mapping, and no theorem uses any reading of it.
+
+This cut does not show that Scott's argument is unsound or that his premises are false, says nothing about Goedel's original axioms or about the variants that avoid modal collapse, and does not show `W` true or false.
 
 The load-bearing grounding theorem remains:
 
@@ -238,7 +250,9 @@ commitments, so a defence of one is not a defence of the other. Both are listed 
 result about the fork. `W` and the constitution law are listed in `STATUS` next to the
 commitments, each under its own kind.
 
-Goedel-Scott is a separate formal branch of the LOGOS program, not a step in the grounding/totality sequence. TWIST-J is likewise not a dependency of the general ontology core.
+No cut is open on the Goedel-Scott line. It is a separate line of the LOGOS program, not a step in the grounding/totality sequence, and nothing on the other lines depends on it. `scott-collapse-1` leaves two questions it names and does not attempt: whether a variant of the argument that avoids modal collapse can stand beside `W`, and whether any of the placement survives when property variables are restricted to what the object language can express.
+
+TWIST-J is likewise not a dependency of the general ontology core.
 
 ## Project-wide rules
 
@@ -256,6 +270,7 @@ See also:
 - `A4-FACT-INDEPENDENCE-CONTRACT.md` for the independence of the entity-level and fact-level principles;
 - `TOTALITY-CONSTITUTION-CONTRACT.md` for the constitution law, the presupposition `W` and the degenerate-frame reading of the foundation theorem;
 - `INTERNAL-TRUTH-CONTRACT.md`, `SELF-CLOSURE-CONTRACT.md` and `TRUTH-FACT-SEAM-CONTRACT.md` for the semantic self-reference line and its seam with the grounding line;
+- `SCOTT-COLLAPSE-CONTRACT.md` for the Goedel-Scott line, its seam with the grounding line, and the comprehension commitment the placement depends on;
 - `A2-A3-A4-ATTACK.md` for the foundation route's philosophical attack surface;
 - `DESIGN-CONTRACT.md` for the historical CUT 1 design contract.
 

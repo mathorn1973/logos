@@ -59,3 +59,7 @@ import Logos.Systems.SelfClosure.Axioms
 import Logos.Systems.SelfClosure.Theorems
 import Logos.Models.Semantics.SelfClosure
 import Logos.Models.Seam.TruthFact
+import Logos.Ontology.Grounding.TotalityConstitution
+import Logos.Systems.TotalityConstitution.Law
+import Logos.Systems.TotalityConstitution.Theorems
+import Logos.Models.Grounding.TotalityConstitution

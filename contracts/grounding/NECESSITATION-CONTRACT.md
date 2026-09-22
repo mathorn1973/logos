@@ -1,6 +1,6 @@
 # NECESSITATION-1 DESIGN CONTRACT
 
-Status: **PROPOSED CUT CONTRACT - IN REVIEW**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 Base: `main` at `c94d6cb`, with the documentation restructure of PR #38 on top. That PR changes
 no Lean source.

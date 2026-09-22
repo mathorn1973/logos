@@ -38,6 +38,10 @@ the form "something is necessary" for free, and so empties the question rather t
 Nothing in the formal layer rules out a brute entity or a brute totality. Each is excluded by one
 principle of sufficient reason, and by nothing weaker that has been found.
 
+Under `W` the necessary-reality position has a further cost: the link from the necessary source to
+what it grounds or explains cannot necessitate its target. Section 5 says exactly where that is
+proved and where it needs the constitution law.
+
 ## 2. Foundation route: entities
 
 Premises (`Logos/Systems/AbsoluteGround/Axioms.lean`):
@@ -189,7 +193,66 @@ from the foundation route.
   substantive claim of the totality route comes from the premises stated over the record, not
   from the record.
 
-## 5. The premises that decide
+## 5. The link from source to target
+
+Both routes end in a necessary source of something contingent, and neither `directGrounds` nor
+`explainsFact` carries a modal law of its own. `necessitation-1` asks what happens when the link
+must necessitate: wherever the source exists, its target exists or obtains too. The premises are
+`GroundingNecessitates` (for the plurality of actual immediate grounds of each derived entity)
+and `ExplanationNecessitates` (for the explanatory sources of one fact, when it is explained).
+They are hypotheses of that cut's theorems only.
+
+```text
+foundation route   A1, A2, A4, A5  ->
+                       GroundingNecessitates M  <->  every actual entity is necessary
+                   groundingNecessitates_iff_actual_necessary; A0 is not used.
+                   The forward direction needs necessitation only at links whose actual
+                   grounds are all necessary (actual_necessary_of_necessary_links).
+
+totality route     core  ->
+                       ExplanationNecessitates  <->  (explained -> NecessaryFact(totality))
+                   explanationNecessitates_iff_explained_imp_necessaryFact
+                   core, local sufficient explanation  ->
+                       ExplanationNecessitates  <->  NecessaryFact(totality)
+                   explanationNecessitates_iff_necessaryFact
+```
+
+On the foundation route necessitating grounding is necessitarianism under another name. The
+forward direction is a real well-founded induction, and necessitation is not redundant:
+`freeCreationModel` satisfies A1, A2, A4 and A5 with a contingent creature, and its grounding does
+not necessitate (`FreeCreation.not_grounding_necessitates`).
+
+On the totality route the equivalence is close to a renaming. Under the core every explainer of
+the totality fact is already necessary, so necessitating explanation says only that the totality
+fact, if explained, is necessary. The converse direction, `explanationNecessitates_of_necessaryFact`,
+is *propositional*. The step from a necessary totality fact to the denial of `W` needs the
+constitution law (`necessaryFact_iff_not_contingencyWitness`). That composition is a *reading*,
+not a Lean theorem, because the law is confined to its own cut. Without the law `W` survives
+necessitating explanation (`LawlessNecessitation`, `law_needed_for_W_reading`).
+
+Countermodels (`Logos/Models/Grounding/Necessitation.lean`):
+
+```text
+UnactualGround, NecessitatingRegress,    A1, A2, A4 and A5 are each load-bearing for
+Brute (bruteModel), NoSelfAccess         the foundation direction
+FreeCreation (freeCreationModel)         necessitation is load-bearing
+NecessaryCreation                        the necessitating side, on a non-degenerate frame
+NonNecessitatingExplainer,               necessitation, local sufficient explanation and
+BruteTotality, SelfCitingExplainer       the core are each load-bearing on the totality side
+NecessaryTotality                        the necessitating side of the totality equivalence
+LawlessNecessitation                     the law is needed for the reading against W
+```
+
+*Reading*: given `W`, the necessary-reality position of section 1 is available only with a link
+that does not necessitate. On the foundation route that follows from A1, A2, A4 and A5; on the
+totality route it follows only under the constitution law as well.
+`freeCreationModel` provably has such a link. `Witnessed.NecessaryExplainer` has one by the
+totality equivalence, since it satisfies the core and local sufficient explanation with a
+non-necessary totality fact; that instance is not stated as a separate theorem. What a
+non-necessitating link is, and whether it explains why the contingent world obtains rather than
+fails, is open (section 9).
+
+## 6. The premises that decide
 
 ```text
 premise                        kind                    where it acts            it excludes
@@ -215,10 +278,13 @@ of the totality route carries a regress record and so fails A2 by construction.)
 not a position by itself: it only makes the foundation route unavailable and moves the question
 to the totality route.
 
+The necessitation premises of section 5 are not in this table. They are hypotheses of one cut,
+and under `W` the positions that keep a necessary reality must deny them.
+
 The current wording of each commitment, and what is known about it, is in the register in
 `STATUS.md`.
 
-## 6. Recorded dead ends
+## 7. Recorded dead ends
 
 Attempts to reach necessity without paying for one of the two principles. Each is kept as a
 result.
@@ -242,7 +308,7 @@ totality-externality-1  separating constitution from explanation made externalit
                         did not get weaker
 ```
 
-## 7. Side lines
+## 8. Side lines
 
 **Goedel-Scott line** (`contracts/goedel-scott/`). `scott-collapse-1` states Scott's axioms over
 a LOGOS frame. Under full comprehension, A1, A2 and A5 of Scott's package with back-access at
@@ -267,7 +333,7 @@ deliberately does not formalize. Without it the line says nothing about what exi
 to the question would take a cut that states that premise and tests it; until then it stays a
 side line.
 
-## 8. Open questions
+## 9. Open questions
 
 Philosophical, and not settled by any theorem here:
 
@@ -277,20 +343,21 @@ Philosophical, and not settled by any theorem here:
 - whether exempting a carrier from completeness, scope or adequacy can be principled;
 - whether a necessary explanatory source that is itself grounded deserves the name the
   foundation route earns;
-- whether reality can have two or more independent necessary foundations (A3).
+- whether reality can have two or more independent necessary foundations (A3);
+- whether a necessary source can adequately ground or explain something contingent without
+  necessitating it, and whether such a link is itself a brute element. Section 5 shows that,
+  under `W`, the necessary-reality position needs exactly such a link.
 
 Formal, and not yet attempted:
 
-- the modal behaviour of explanation and grounding. `explainsFact` and `directGrounds` carry no
-  law relating the source's existence to the target's obtaining across worlds. Which of the
-  positions in section 1 survive when explanation or grounding is required to necessitate its
-  target is open.
+- the composition of section 5 with the constitution law as a Lean theorem, which needs the
+  confinement of that law in `totality-constitution-1` to be amended by a reviewed change;
 - on the semantic side line: `SELF-CLOSURE-CONTRACT.md` section 9 and
   `TRUTH-FACT-SEAM-CONTRACT.md` section 10;
 - on the Goedel-Scott line: a variant of the argument that avoids the collapse beside `W`, and
   the placement under restricted comprehension.
 
-## 9. Retired vocabulary
+## 10. Retired vocabulary
 
 Older contracts and `history/CHANGELOG.md` use premise names that are no longer part of the
 current argument. The theorems stated with them remain on `main` and remain valid; they are

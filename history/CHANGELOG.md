@@ -11,8 +11,9 @@ replaced by the new `README.md`, and everything else is here. Headings inside mo
 were demoted, and contract file names in them now refer to files under `contracts/`. No theorem
 statement changed.
 
-Each record keeps the vocabulary of its time. `MAP.md` section 9 maps retired premise names to
-their current counterparts.
+Each record keeps the vocabulary of its time. `MAP.md` section 10 maps retired premise names to
+their current counterparts. Records of cuts promoted after the restructure are written here
+directly, at each cut's closure.
 
 Pull request numbers are those of the cut PRs; a closure PR follows each cut. `#8` to `#10`
 were stacked on `#7` and reached `main` through it.
@@ -566,6 +567,70 @@ exclude it either: the modal content of the central theorem is supplied by the f
 `W` is what rules the degenerate reading out. This does not weaken the theorem. It records
 what its conclusion means on a frame the premises admit.
 
+### 14. necessitation-1 (PR #39, closure #40)
+
+`necessitation-1` - both routes with the link from source to target required to necessitate. On
+the foundation route necessitating grounding is equivalent to necessitarianism about the actual
+world; on the totality route necessitating explanation is equivalent to the necessity of the
+totality fact, and the step from there to the denial of `W` needs the constitution law.
+
+Contract: `contracts/grounding/NECESSITATION-CONTRACT.md`.
+
+Two premises, as hypotheses only:
+
+```text
+GroundingNecessitates M       for every derived entity, at every accessible world where all
+                              of its actual immediate grounds exist, the entity exists
+ExplanationNecessitates G p   if p is explained, then at every accessible world where all of
+                              its actual explanatory sources exist, p obtains
+```
+
+Foundation side, with A1, A2, A4 and A5 stated as the accepted record fields and A0 unused:
+
+```text
+actual_necessary_of_necessary_links          classical
+    necessitation at links whose actual grounds are all necessary
+        -> forall x, Actual M x -> Necessary M x
+groundingNecessitates_iff_actual_necessary    classical
+    GroundingNecessitates M  <->  forall x, Actual M x -> Necessary M x
+groundingNecessitates_of_actual_necessary     axiom-free, A1 only
+```
+
+Totality side, with no constitution law, no `W` and no A2:
+
+```text
+explanationNecessitates_iff_explained_imp_necessaryFact    classical, the core only
+explanationNecessitates_iff_necessaryFact                   classical, the core and local
+                                                            sufficient explanation
+explanationNecessitates_of_necessaryFact                    axiom-free, no premise
+```
+
+Independence. Foundation side: `UnactualGround` (A1), `NecessitatingRegress` (A2), `bruteModel`
+(A4), `NoSelfAccess` (A5) and `freeCreationModel` (necessitation), with `NecessaryCreation` on
+the necessitating side. Totality side: `NonNecessitatingExplainer` (necessitation),
+`BruteTotality` (local sufficient explanation) and `SelfCitingExplainer` (the core, failing at
+adequacy only), with `NecessaryTotality` on the necessitating side. `LawlessNecessitation`
+satisfies the core, local sufficient explanation and necessitating explanation together with
+`W`, so the reading against `W` on the totality route needs the law
+(`law_needed_for_W_reading`).
+
+Section 10 of the contract records seven findings of an independent review done before any Lean
+was pushed. The first corrects the contract. Its sections 1, 6 and 7 said that, given `W`, a
+necessitating link is excluded on both routes; on the totality route that holds only under the
+constitution law. The second: on the totality route the equivalence is close to a renaming,
+since under the core every explainer is already necessary.
+
+Negative boundary:
+
+```text
+NO constitution law and NO ContingencyWitness; W appears only written out
+NO A0 in the foundation theorems; NO A3 or A6-A8 anywhere in the cut
+NO global assertion of either necessitation premise
+NO claim that grounding or explanation necessitates, or that it does not
+NO claim that a non-necessitating link is coherent, adequate or itself brute
+NO new structure, class or axiom; no import of the cut outside it; static CI guards
+```
+
 ## Semantic self-reference side line
 
 ### internal-truth-1 (PR #27, closure #29)
@@ -916,7 +981,25 @@ Dedicated comparison, scope, type-boundary, and static CI audits pin these bound
 
 ## Promotion notes
 
-From the "Open stack" section of `STATUS.md`, newest first:
+Newest first. The first two notes were written at their closures; the rest are from the "Open
+stack" section of `STATUS.md` as it stood at `c94d6cb`.
+
+`#39 necessitation-1` was promoted on 2026-09-22 with its three commits unchanged: contract
+first, with its own green run before any Lean for the cut was pushed; Lean second; outcome
+addendum third. Section 0 of the contract records that a scratch proof of a stronger
+totality-side variant existed before the contract. An independent review of the implementation,
+done before the Lean was pushed, produced seven findings. They are in section 10 of the contract,
+and `LawlessNecessitation` and three theorems were added in response. After `#38` was merged the
+branch was brought up to date with `main` by a merge commit that left its tree unchanged. Before
+promotion, on the exact trees of the three commits, the build ran 76 jobs, all 35 run steps of the
+workflow passed, and each of the three new guards failed on a seeded violation and passed on the
+clean tree.
+
+`#38` restructured the documentation on 2026-09-22. `README.md` states the question and the
+answer, `MAP.md` holds the logical map, `STATUS.md` the current state only, and this file the
+history. It changed no Lean source and no contract body. An independent check of the new
+documents against the Lean sources corrected several statements that the old documents had also
+made too strongly; the records above keep the old wording.
 
 `#36 scott-collapse-1` was promoted on 2026-09-21 with its three commits unchanged: contract
 first, Lean second, outcome addendum third. The contract commit was pushed and had its own green

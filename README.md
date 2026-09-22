@@ -40,6 +40,15 @@ Every statement below is relative to the definitions and premises stated in this
    fresh carrier works only by exempting that carrier from completeness, scope or adequacy
    (`carrier-schema-1`).
 
+5. **A necessary reality beside contingent things needs a link that does not necessitate**,
+   outright on the foundation route and under the constitution law on the totality route. With
+   A1, A2, A4 and A5, grounding that necessitates what it grounds is equivalent to everything
+   actual being necessary (`groundingNecessitates_iff_actual_necessary`). With the core and local
+   sufficient explanation, explanation that necessitates the totality fact is equivalent to that
+   fact being necessary (`explanationNecessitates_iff_necessaryFact`); the constitution law turns
+   this into the denial of `W`, and without the law `W` survives (`necessitation-1`). This is the
+   modal collapse objection to sufficient reason, placed on both routes.
+
 The formal arguments are short; the central theorems take a few lines each. The weight is in the
 premises, and the job of the repository is to show exactly which premise carries it.
 
@@ -50,8 +59,9 @@ of the two principles above. Nothing shows that it is one: uniqueness needs A3, 
 `twoRootModel` has two distinct ungrounded roots satisfying every other foundation premise (on a
 frame where necessity is degenerate; see `MAP.md` section 2). Nothing shows that it is personal,
 intelligent or good, that it has a will, or that it has any traditional divine attribute.
-Nothing shows that a brute fact or a brute modality is a contradiction. "Absolute" is a
-structural term here, not a theological one.
+Nothing shows that a brute fact or a brute modality is a contradiction, or that a link which
+does not necessitate is coherent or explains anything. "Absolute" is a structural term here, not
+a theological one.
 
 ## Where to read
 
@@ -68,7 +78,7 @@ structural term here, not a theological one.
 
 The repository has one main line and two side lines. The grounding line carries the answer
 above. The Goedel-Scott line places Scott's argument on that map. The semantic self-reference
-line is a separate study that does not bear on the question; `MAP.md` section 7 says why it is
+line is a separate study that does not bear on the question; `MAP.md` section 8 says why it is
 kept apart.
 
 ## Building

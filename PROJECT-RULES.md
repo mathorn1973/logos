@@ -190,4 +190,4 @@ fixes what a premise means; it is not presented as a finding. An interpretation 
 results taken together is typed as a *reading*.
 
 Premise names that the current argument no longer uses are listed as retired in `MAP.md`
-section 9 rather than kept among the current premises.
+section 10 rather than kept among the current premises.

@@ -3,7 +3,7 @@
 ```text
 PROGRAM     LOGOS
 STATE       FORMAL LABORATORY
-MAIN        17 accepted cuts: 13 on the grounding line, 1 on the Goedel-Scott line,
+MAIN        18 accepted cuts: 14 on the grounding line, 1 on the Goedel-Scott line,
             3 on the semantic self-reference side line
 OPEN        none
 FOCUS       none open; the grounding line is stable and its residue is philosophical
@@ -45,6 +45,7 @@ grounding line
   route-seam-1                   #16   ROUTE-SEAM-CONTRACT.md                   RouteSeamAudit
   a4-fact-independence-1         #24   A4-FACT-INDEPENDENCE-CONTRACT.md         A4FactIndependenceAudit
   totality-constitution-1        #33   TOTALITY-CONSTITUTION-CONTRACT.md        TotalityConstitutionAudit
+  necessitation-1                #39   NECESSITATION-CONTRACT.md                NecessitationAudit
 
 Goedel-Scott line
   scott-collapse-1               #36   SCOTT-COLLAPSE-CONTRACT.md               ScottCollapseAudit
@@ -62,7 +63,7 @@ and in `history/CHANGELOG.md`.
 ## Live premise register
 
 Principles the formal layer states and does not establish. The machine has not established any
-of them, nor the presupposition, as true of reality. `MAP.md` section 5 shows where each one acts.
+of them, nor the presupposition, as true of reality. `MAP.md` section 6 shows where each one acts.
 
 ### Commitments
 
@@ -146,6 +147,23 @@ Open, and no theorem depends on how they are answered.
 
 The exemption is not identified for any particular proposal. In particular it is **not** established that the modal condition of `ConditionedBrute` is exempt from completeness: `CompletenessExempt` is an uninterpreted one-item carrier, no interpretation of `Explains` is supplied for the modal-condition carrier, and there is no bridge to `licensesFailure`.
 
+#### Whether a link that does not necessitate can explain
+
+*Philosophical question, not a premise. Opened by `necessitation-1`.*
+
+On the foundation route, with A1, A2, A4 and A5, grounding that necessitates is equivalent to
+every actual entity being necessary. On the totality route, with the core and local sufficient
+explanation, explanation that necessitates is equivalent to the totality fact being necessary,
+and under the constitution law that is the denial of `W`; without the law `W` survives
+(`LawlessNecessitation`). So whoever keeps a necessary reality and `W` needs a link from the
+necessary source that does not necessitate its target: outright on the foundation route, and
+under the constitution law on the totality route.
+
+With such a link there is an accessible world where the source exists and the target fails. The
+question is whether the source then explains why the target obtains rather than fails, or
+whether the link is itself a brute element. The formal layer states the constraint and leaves the
+question open.
+
 #### Whether the middle disjunct deserves the name
 
 *Interpretive question, not a premise. No theorem depends on how it is answered.*
@@ -208,6 +226,9 @@ the semantic line uses no grounding carrier; nothing outside the   internal-trut
   line and its seam imports it; the seam is a leaf
 the Goedel-Scott line imports only the logic layer; its seam is    scott-collapse-1
   a leaf; no theological token in its Lean files
+the necessitation cut declares no record, nothing outside it       necessitation-1
+  imports it, and it mentions neither the constitution law, W,
+  A3 nor A6-A8
 ```
 
 ## Open stack

@@ -981,8 +981,21 @@ Dedicated comparison, scope, type-boundary, and static CI audits pin these bound
 
 ## Promotion notes
 
-Newest first. The first two notes were written at their closures; the rest are from the "Open
-stack" section of `STATUS.md` as it stood at `c94d6cb`.
+Newest first. The first four notes were written when their pull requests were merged; the rest
+are from the "Open stack" section of `STATUS.md` as it stood at `c94d6cb`.
+
+`#41` added the axiom gate on 2026-09-22. Before it, the audit files printed `#print axioms`
+output for review, and a theorem that started to use a new axiom would have passed CI.
+`Logos/AxiomGateAudit.lean` walks every theorem and definition declared in a `Logos` module and
+fails if one uses an axiom beyond `propext`, `Classical.choice` and `Quot.sound`, or if any axiom
+is declared there. That covers what the textual guards cannot see: an unfinished proof closed
+with `admit`, which the `sorry` grep misses; the auxiliary axiom `native_decide` creates, which no
+guard checked; and a `private axiom`, which the per-cut regex `^\s*axiom\b` misses. At the time
+it checked 3061 declarations. It was verified to fail on a seeded `private axiom`, an unfinished
+proof and a use of `native_decide`, and to pass on the clean tree. It imports the `Lean` meta
+library from the toolchain; `lake-manifest.json` still lists no packages.
+
+`#40` was the closure for `necessitation-1`.
 
 `#39 necessitation-1` was promoted on 2026-09-22 with its three commits unchanged: contract
 first, with its own green run before any Lean for the cut was pushed; Lean second; outcome

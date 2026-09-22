@@ -338,5 +338,95 @@ T13  the audit file and the static guards are wired into CI in the same PR
 
 ## 10. Outcome
 
-To be added after implementation. Sections 0 to 9 are not edited once this contract is
-committed; departures are recorded here.
+Added after implementation. Sections 0 to 9 are unchanged since the contract commit.
+
+```text
+5.1   holds; both statements axiom-free
+5.2   holds; the forward direction classical (the ungrounded case), the converse
+      axiom-free and using A1 only; A0 unused; the corollary against
+      NecessaryExistenceAxioms is present
+5.3   holds; the first two statements classical through the accepted trichotomy
+      and engine; the converse axiom-free and premise-free
+5.4   all four models exhibited, each with a non-redundancy theorem over all
+      models in Type; freeCreationModel and NecessaryCreation inhabit both sides
+5.5   all three models exhibited, each with a non-redundancy theorem over all
+      models in Type; NonNecessitatingExplainer and NecessaryTotality inhabit
+      both sides
+T1-T13  pass; the axioms of every result are printed by
+      Logos/NecessitationAudit.lean, and the only change to pre-existing Lean
+      is three import lines in Logos.lean
+```
+
+By section 6 that is the first row on the foundation route. On the totality route the first
+row says more than the cut shows; see correction 1.
+
+An independent review of the implementation, done before any Lean of the cut was pushed, found
+the following. Each is recorded here rather than absorbed.
+
+**1. On the totality route the reading against `W` needs the constitution law.** Sections 1, 6
+(first row) and 7 say that, given `W`, a necessitating link is excluded on both routes. On the
+totality route the cut shows only that necessitating explanation makes the totality fact
+necessary (5.3). Without a law tying that fact to its members, the core, local sufficient
+explanation and necessitating explanation hold together with `W`: the model
+`LawlessNecessitation`, added after review, and `law_needed_for_W_reading`, stated over all
+models. With the law, the step to the denial of `W` is the accepted
+`necessaryFact_iff_not_contingencyWitness` (section 5.6), which this cut does not formalise.
+So the first row of section 6 holds on the foundation route as written, and on the totality
+route only under the constitution law.
+
+**2. On the totality route the equivalence is close to a renaming.** Under the core every
+explainer of the totality fact is already necessary. So `ExplanationNecessitates G R.totality`
+says exactly that the totality fact, if explained, is necessary
+(`explanationNecessitates_iff_explained_imp_necessaryFact`, added after review). Rigid sources
+and the plurality of sources do no work on that route, and 5.3 is one step on top of the
+accepted trichotomy. The foundation route is different in kind. Its forward direction is a
+well-founded induction, and the four models of 5.4 have necessitating grounding together with an
+actual entity that is not necessary.
+
+**3. A weaker premise suffices on the foundation route.** The induction uses necessitation only
+at links whose actual grounds are all necessary. `actual_necessary_of_necessary_links`, added
+after review, states the result from that weaker premise, and
+`actual_necessary_of_groundingNecessitates` is its corollary. That form is what the phrase "a
+necessitating link from the necessary source" in section 6 describes.
+
+**4. Models changed after review.**
+- `UnactualGround` uses three worlds, so its necessitation is not vacuous
+  (`ground_exists_somewhere`).
+- In `SelfCitingExplainer` the root exists at no world. Source actuality and completeness then
+  hold, and the core fails at adequacy alone (`explains_source_actual_holds`,
+  `covers_nonNecessary_holds`, `adequacy_fails`).
+- A non-redundancy theorem for necessitation itself on the foundation side was added,
+  `groundingNecessitates_needed`, from the accepted `freeCreationModel`.
+
+**5. Section 3 overstates one confinement.** It says `ContingencyWitness` is confined to
+`totality-constitution-1` "by its contract and by CI". That cut's contract confines the law
+explicitly. `ContingencyWitness` is confined only by the import guard on its module, and the
+Scott seam imports that module under an exemption. The cut avoids both either way.
+
+**6. Names.** The accepted `BruteTotality` used in 5.5 is `FactSufficientExplanation.BruteTotality`.
+A namespace with the same name exists in `Logos.Models.Grounding.ContingentAbsolute`.
+`NecessaryCreation` keeps the contract's name, but its `created` predicate is empty and the
+name refers to grounding only.
+
+**7. Vacuity, recorded.** `Brute` and `NoSelfAccess` satisfy necessitation because nothing in
+them is grounded. `NoSelfAccess` satisfies A4 because nothing is possible from its actual world.
+That is enough for non-redundancy, and their docstrings say so.
+
+What the cut establishes, relative to its premises:
+
+```text
+foundation route   under A1, A2, A4, A5: necessitating grounding  <->  every actual
+                   entity is necessary; necessitation at links out of necessary
+                   grounds already suffices for the forward direction
+totality route     under the core: necessitating explanation  <->  (explained ->
+                   the totality fact is necessary)
+                   with local sufficient explanation as well:  <->  the totality
+                   fact is necessary
+                   the further step to not W needs the constitution law (5.6);
+                   without it W survives (LawlessNecessitation)
+```
+
+Read against `W`, which is a reading and not a theorem of the cut: whoever holds A4 and `W` must
+hold that grounding out of the necessary root does not necessitate. Whoever holds local
+sufficient explanation, the constitution law and `W` must hold that the explanation of the
+totality fact does not necessitate it.

@@ -40,14 +40,17 @@ Every statement below is relative to the definitions and premises stated in this
    fresh carrier works only by exempting that carrier from completeness, scope or adequacy
    (`carrier-schema-1`).
 
-5. **A necessary reality beside contingent things needs a link that does not necessitate**,
-   outright on the foundation route and under the constitution law on the totality route. With
-   A1, A2, A4 and A5, grounding that necessitates what it grounds is equivalent to everything
-   actual being necessary (`groundingNecessitates_iff_actual_necessary`). With the core and local
-   sufficient explanation, explanation that necessitates the totality fact is equivalent to that
-   fact being necessary (`explanationNecessitates_iff_necessaryFact`); the constitution law turns
-   this into the denial of `W`, and without the law `W` survives (`necessitation-1`). This is the
-   modal collapse objection to sufficient reason, placed on both routes.
+5. **A necessary reality beside contingent things needs a link that does not necessitate**: on
+   the foundation route from that route's own premises, on the totality route only under the
+   constitution law as well. With A1, A2, A4 and A5, grounding that necessitates what it grounds
+   is equivalent to everything actual being necessary
+   (`groundingNecessitates_iff_actual_necessary`). With the core and local sufficient
+   explanation, explanation that necessitates the totality fact is equivalent to that fact being
+   necessary (`explanationNecessitates_iff_necessaryFact`). Through
+   `necessaryFact_iff_not_contingencyWitness` the constitution law turns this into the denial of
+   `W`; that composition is a *reading*, not a theorem, and without the law `W` survives
+   (`necessitation-1`). This is the modal collapse objection to sufficient reason, placed on both
+   routes.
 
 The formal arguments are short; the central theorems take a few lines each. The weight is in the
 premises, and the job of the repository is to show exactly which premise carries it.
@@ -75,8 +78,10 @@ a theological one.
 - `Logos/`: the Lean sources. The `Logos/*Audit.lean` files print the axioms of the main
   theorems for review, and some pin theorem boundaries with wrapper theorems that stop
   elaborating if a signature is strengthened. `Logos/AxiomGateAudit.lean` fails if any
-  declaration in `Logos` uses an axiom beyond `propext`, `Classical.choice` and `Quot.sound`, or
-  if any axiom is declared there.
+  declaration in the library, that is in any module `Logos.lean` imports, uses an axiom beyond
+  `propext`, `Classical.choice` and `Quot.sound`, or if any axiom is declared there. The audit
+  files are outside the library; CI rejects axiom declarations, unfinished proofs and
+  `native_decide` in every Lean file by textual guards.
 
 The repository has one main line and two side lines. The grounding line carries the answer
 above. The Goedel-Scott line places Scott's argument on that map. The semantic self-reference

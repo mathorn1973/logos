@@ -53,7 +53,7 @@ Forbidden reverse dependencies include:
 Essays -> Theorems
 Interpretation -> Logic
 TWIST-J bridge -> General ontology
-Gödel–Scott branch -> Grounding core, unless a later cut explicitly declares and reviews such a bridge
+Gödel-Scott branch -> Grounding core, unless a later cut explicitly declares and reviews such a bridge
 Metaphor -> Formal premise
 Confession -> Formal premise
 ```
@@ -71,11 +71,11 @@ MODAL / GENERAL LOGIC
 GROUNDING / ABSOLUTE-GROUND
 TOTALITY / EXPLANATION
 SEMANTIC SELF-REFERENCE
-GÖDEL–SCOTT
+GÖDEL-SCOTT
 OPTIONAL INTERPRETATION BRIDGES
 ```
 
-Gödel–Scott is a separate formal branch. It is not a mandatory continuation of the grounding/totality sequence.
+Gödel-Scott is a separate formal branch. It is not a mandatory continuation of the grounding/totality sequence.
 
 Its first cut is `scott-collapse-1`. The `GoedelScott` modules import the logic layer and nothing else, and no module of another line imports them. The only module allowed to mention that line together with the grounding line is the seam `Logos/Models/Seam/ScottGrounding.lean`, which is a leaf and may not use the constitution law of `totality-constitution-1`. CI enforces the import direction, the leaf condition, the absence of the constitution law in the seam, and the absence of theological tokens in the line's Lean files.
 
@@ -97,7 +97,7 @@ For `absolute-ground-1`, this means in particular:
 NecessaryExistenceAxioms = A0 + A1 + A2 + A4 + A5
 ```
 
-and the minimal necessity theorem must not require A3 or A6–A8.
+and the minimal necessity theorem must not require A3 or A6-A8.
 
 ## 6. Audit requirements
 
@@ -106,7 +106,7 @@ Trusted cuts must satisfy all applicable checks:
 ```text
 whole-project Lean build
 no sorry / sorryAx
-whole-project axiom gate (Logos/AxiomGateAudit.lean)
+axiom gate over the library (Logos/AxiomGateAudit.lean)
 #print axioms audit
 exact theorem-boundary audit for load-bearing signatures
 countermodels for substantive independence claims where practical

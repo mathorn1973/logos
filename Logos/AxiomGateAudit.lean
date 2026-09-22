@@ -9,7 +9,10 @@ Whole-project check, run by CI. It fails the build when
   modifiers or attributes; or
 * any theorem or definition declared in a `Logos` module depends on an axiom
   other than `propext`, `Classical.choice` and `Quot.sound`. That also catches
-  unfinished proofs and the axiom behind `native_decide`.
+  unfinished proofs and the auxiliary axioms native evaluation creates.
+
+It walks the library: every module that `Logos.lean` imports. The audit files
+are not library modules; CI covers them with textual guards.
 
 The per-cut audit files print the axioms of named results for review; this
 file is what makes an unexpected axiom fail CI. It imports the `Lean` meta

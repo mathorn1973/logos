@@ -6,7 +6,8 @@ STATE       FORMAL LABORATORY
 MAIN        18 accepted cuts: 14 on the grounding line, 1 on the Goedel-Scott line,
             3 on the semantic self-reference side line
 OPEN        none
-FOCUS       none open; the grounding line is stable and its residue is philosophical
+FOCUS       none open; the grounding line's residue is philosophical, apart from one
+            formal item listed in MAP.md section 9
 AUTHORITY   none; no released theorem catalogue exists yet
 CANON       none
 LICENSE     MIT; copyright 2026 A. M. Thorn
@@ -132,7 +133,7 @@ side `W` is what excludes the frame on which `Necessary` coincides with `Actual`
 
 `scott-collapse-1` places Scott's axiom package on this position: under full comprehension,
 Scott's A1, A2 and A5 with back-access at the actual world force the single-successor frame. That is a
-statement about where the package sits, relative to the comprehension commitment below. It is
+statement about where the package sits, relative to the comprehension commitment above. It is
 not an argument against `W` and not an argument against the package.
 
 ### Questions
@@ -156,8 +157,8 @@ every actual entity being necessary. On the totality route, with the core and lo
 explanation, explanation that necessitates is equivalent to the totality fact being necessary,
 and under the constitution law that is the denial of `W`; without the law `W` survives
 (`LawlessNecessitation`). So whoever keeps a necessary reality and `W` needs a link from the
-necessary source that does not necessitate its target: outright on the foundation route, and
-under the constitution law on the totality route.
+necessary source that does not necessitate its target: on the foundation route from A1, A2, A4
+and A5, and on the totality route only under the constitution law as well.
 
 With such a link there is an accessible world where the source exists and the target fails. The
 question is whether the source then explains why the target obtains rather than fails, or
@@ -200,24 +201,27 @@ The accepted grounding/totality core contains no formal `God` predicate and no t
 Goedel-Scott is a separate line with one accepted cut, `scott-collapse-1`. No module of the
 grounding/totality core or of the semantic line imports it, its seam module is a leaf, and CI
 enforces both. Scott's D1 is named `AllPositive` in Lean. The source's name for it appears in no
-Lean file; among the contracts it appears in the source mapping of `SCOTT-COLLAPSE-CONTRACT.md`
-and in the list of vocabulary `FINITE-COUNTERMODELS-CONTRACT.md` kept out of that cut. No theorem
-uses any reading of it.
+Lean file. Among the contracts it appears in section 3 of `SCOTT-COLLAPSE-CONTRACT.md` (whose own
+pointer to a mapping in its section 4 is inaccurate) and in the list of vocabulary
+`FINITE-COUNTERMODELS-CONTRACT.md` kept out of that cut. No theorem uses any reading of it.
 
-Apart from the Goedel-Scott import and token guards, nothing in CI checks this firewall; it
-holds by inspection and review. The same is true of the general layer direction in
+Apart from the Goedel-Scott import and token guards, and the axiom gate, which keeps any
+hidden global axiom out of the library, nothing in CI checks this firewall; it holds by
+inspection and review. The same is true of the general layer direction in
 `PROJECT-RULES.md` section 3.
 
 ### Enforced by CI
 
 Each boundary below was introduced by the cut or pull request named. Import guards check direct
-imports under `Logos/`; the root `Logos.lean` imports every module, and the audit files import
-it.
+imports under `Logos/`. The root `Logos.lean` imports every library module; the audit files are
+not library modules, and each imports either the root or specific modules.
 
 ```text
-no declaration in Logos uses an axiom beyond propext,              #41, AxiomGateAudit.lean
-  Classical.choice and Quot.sound, and no axiom is declared
-  there, whatever its modifiers
+no declaration in the library (every module Logos.lean           #41, AxiomGateAudit.lean
+  imports) uses an axiom beyond propext, Classical.choice and
+  Quot.sound, and no axiom is declared there
+no axiom declaration, unfinished proof or native_decide in any    #42, textual guards
+  Lean file, the audit files included
 exists_necessary_ungrounded needs no A3 and no A6-A8              absolute-ground-1, CoreBoundaryAudit.lean
 the deep externality theorem uses no A2, A3 or old E               totality-externality-1
 the modal layer does not enter the totality argument               grounded-modality-1
@@ -231,8 +235,8 @@ the semantic line uses no grounding carrier; nothing outside the   internal-trut
 the Goedel-Scott line imports only the logic layer; its seam is    scott-collapse-1
   a leaf; no theological token in its Lean files
 the necessitation cut declares no record, nothing outside it       necessitation-1
-  imports it, and it mentions neither the constitution law, W,
-  A3 nor A6-A8
+  imports it, and it names no identifier of the constitution
+  law, of W (ContingencyWitness), of A3 or of A6-A8
 ```
 
 ## Open stack

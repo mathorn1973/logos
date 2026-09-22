@@ -14,7 +14,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: Reject unfinished proofs
         run: |
-          if grep -R -n --include='*.lean' -E '\bsorry\b|sorryAx' .; then
+          if grep -R -n --include='*.lean' -E '\bsorry\b|sorryAx|\badmit\b|native_decide' .; then
+            exit 1
+          fi
+      - name: Reject axiom declarations in every Lean file
+        run: |
+          if grep -R -n --include='*.lean' -E '^\s*(@\[[^]]*\]\s*)?((private|protected|noncomputable|unsafe|partial|nonrec)\s+)*axiom\s' .; then
+            echo 'An axiom is declared in a Lean file. LOGOS declares no axioms; premises are records or hypotheses.'
             exit 1
           fi
       - uses: leanprover/lean-action@v1

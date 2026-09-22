@@ -981,8 +981,23 @@ Dedicated comparison, scope, type-boundary, and static CI audits pin these bound
 
 ## Promotion notes
 
-Newest first. The first four notes were written when their pull requests were merged; the rest
+Newest first. The first five notes were written when their pull requests were merged; the rest
 are from the "Open stack" section of `STATUS.md` as it stood at `c94d6cb`.
+
+`#42` made the documents more precise after an independent audit of `main` at `5f3a569`.
+- The note on `#41` below and the documents overstated the gate's reach. It walks the library,
+  every module `Logos.lean` imports, and not the audit files. An axiom declared in an audit file
+  passed CI until this change. Two textual guards now cover every Lean file: the
+  unfinished-proof guard also rejects `admit` and `native_decide`, and a new guard rejects axiom
+  declarations whatever their modifiers or attributes. Both were checked to fail on a seeded
+  violation.
+- Three sentences in `MAP.md` stated the necessitation constraint without the constitution law
+  on the totality route. Two others in `README.md` and `STATUS.md` said "outright" where the
+  foundation premises are needed. All five are qualified now.
+- The composition in `README.md` point 5 is typed *reading*.
+- Smaller corrections: a "below" that meant "above", a pointer to the Scott contract's source
+  mapping that does not exist there, a claimed open item in `TRUTH-FACT-SEAM-CONTRACT.md`
+  section 10 that is a finding, and the `FOCUS` line of `STATUS.md`.
 
 `#41` added the axiom gate on 2026-09-22. Before it, the audit files printed `#print axioms`
 output for review, and a theorem that started to use a new axiom would have passed CI.

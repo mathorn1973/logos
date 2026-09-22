@@ -1,6 +1,6 @@
 # DESIGN CONTRACT — TOTALITY-REGRESS-1
 
-Status: **ACCEPTED CUT CONTRACT — ON MAIN**.
+Status: **ACCEPTED CUT CONTRACT - ON MAIN**.
 
 This accepted cut builds on the general grounding language now present on `main`. Its purpose is to test whether the well-foundedness commitment A2 is needed merely to establish *necessary reality*, once an infinite regress is treated as an explicit totality.
 

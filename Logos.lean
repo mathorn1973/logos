@@ -68,3 +68,6 @@ import Logos.Systems.GoedelScott.Axioms
 import Logos.Systems.GoedelScott.Theorems
 import Logos.Models.GoedelScott.Independence
 import Logos.Models.Seam.ScottGrounding
+import Logos.Ontology.Grounding.Necessitation
+import Logos.Systems.Necessitation.Theorems
+import Logos.Models.Grounding.Necessitation

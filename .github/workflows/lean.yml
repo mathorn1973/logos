@@ -153,3 +153,27 @@ jobs:
             echo 'SCOTT-COLLAPSE: a theological token appeared in the formal layer. Source names belong in the contract only.'
             exit 1
           fi
+      - name: Run necessitation audit
+        run: lake env lean Logos/NecessitationAudit.lean
+      - name: Reject new records in the necessitation cut
+        run: |
+          if grep -nE '^\s*(structure|class|axiom)\b' Logos/Ontology/Grounding/Necessitation.lean Logos/Systems/Necessitation/Theorems.lean Logos/Models/Grounding/Necessitation.lean Logos/NecessitationAudit.lean; then
+            echo 'NECESSITATION: the cut declared a new record, class or axiom.'
+            exit 1
+          fi
+      - name: Reject imports of the necessitation cut outside its own modules
+        run: |
+          if grep -rlE '^import Logos\.(Ontology\.Grounding|Systems|Models\.Grounding)\.Necessitation' Logos --include='*.lean' | grep -vE '^Logos/(Ontology/Grounding/Necessitation\.lean|Systems/Necessitation/|Models/Grounding/Necessitation\.lean)|^Logos/NecessitationAudit\.lean'; then
+            echo 'NECESSITATION: a module outside the cut imports it.'
+            exit 1
+          fi
+      - name: Reject the constitution law, W, A3 and A6-A8 in the necessitation cut
+        run: |
+          if grep -nE 'ConstitutedTotality|TotalityRequiresMembers|ContingencyWitness|constitutedFacts|constitutedRegress|TotalityConstitution' Logos/Ontology/Grounding/Necessitation.lean Logos/Systems/Necessitation/Theorems.lean Logos/Models/Grounding/Necessitation.lean Logos/NecessitationAudit.lean; then
+            echo 'NECESSITATION: the cut mentions the constitution law or W, which TOTALITY-CONSTITUTION-CONTRACT.md confines to its own cut.'
+            exit 1
+          fi
+          if grep -nE 'StructuralAxioms|NecessaryGroundAxioms|TranscendenceAxioms|CreationAxioms|EssentialAseityAxioms|common_ground|created_is_derived|created_nonempty|aseity_essential' Logos/Ontology/Grounding/Necessitation.lean Logos/Systems/Necessitation/Theorems.lean Logos/Models/Grounding/Necessitation.lean Logos/NecessitationAudit.lean; then
+            echo 'NECESSITATION: A3 or A6-A8 appeared in the cut.'
+            exit 1
+          fi

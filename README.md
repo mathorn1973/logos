@@ -74,7 +74,9 @@ a theological one.
   the premise vocabulary that has since been retired.
 - `Logos/`: the Lean sources. The `Logos/*Audit.lean` files print the axioms of the main
   theorems for review, and some pin theorem boundaries with wrapper theorems that stop
-  elaborating if a signature is strengthened.
+  elaborating if a signature is strengthened. `Logos/AxiomGateAudit.lean` fails if any
+  declaration in `Logos` uses an axiom beyond `propext`, `Classical.choice` and `Quot.sound`, or
+  if any axiom is declared there.
 
 The repository has one main line and two side lines. The grounding line carries the answer
 above. The Goedel-Scott line places Scott's argument on that map. The semantic self-reference
@@ -90,8 +92,8 @@ no packages, so `#print axioms` reports only what the proofs themselves use.
 lake build
 ```
 
-CI (`.github/workflows/lean.yml`) also rejects `sorry`, runs every audit file, and enforces
-line-specific import and token guards. The general layer direction of `PROJECT-RULES.md`
-section 3 is kept by review, not by CI.
+CI (`.github/workflows/lean.yml`) also rejects `sorry`, runs every audit file including the
+axiom gate, and enforces line-specific import and token guards. The general layer direction of
+`PROJECT-RULES.md` section 3 is kept by review, not by CI.
 
 License: MIT, copyright 2026 A. M. Thorn.

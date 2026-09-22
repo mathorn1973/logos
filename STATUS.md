@@ -210,10 +210,14 @@ holds by inspection and review. The same is true of the general layer direction 
 
 ### Enforced by CI
 
-Each boundary below was introduced by the cut named. Import guards check direct imports under
-`Logos/`; the root `Logos.lean` imports every module, and the audit files import it.
+Each boundary below was introduced by the cut or pull request named. Import guards check direct
+imports under `Logos/`; the root `Logos.lean` imports every module, and the audit files import
+it.
 
 ```text
+no declaration in Logos uses an axiom beyond propext,              #41, AxiomGateAudit.lean
+  Classical.choice and Quot.sound, and no axiom is declared
+  there, whatever its modifiers
 exists_necessary_ungrounded needs no A3 and no A6-A8              absolute-ground-1, CoreBoundaryAudit.lean
 the deep externality theorem uses no A2, A3 or old E               totality-externality-1
 the modal layer does not enter the totality argument               grounded-modality-1
@@ -237,9 +241,6 @@ Empty. No research cut is open on any line.
 
 ## Open repository questions
 
-- The axiom audits print `#print axioms` output for review but do not fail when it changes;
-  there is no `#guard_msgs`. A theorem that starts to use a new axiom is caught by review only,
-  and CI has no general guard against `axiom` declarations outside the cut-specific ones.
 - Whether the CI trigger list should cover stacked branches. `.github/workflows/lean.yml` runs
   on pushes to `main` and `cut/**` and on pull requests into them, so a branch stacked on a
   non-cut branch shows no checks until the workflow is dispatched by hand.

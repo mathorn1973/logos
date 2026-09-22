@@ -106,6 +106,7 @@ Trusted cuts must satisfy all applicable checks:
 ```text
 whole-project Lean build
 no sorry / sorryAx
+whole-project axiom gate (Logos/AxiomGateAudit.lean)
 #print axioms audit
 exact theorem-boundary audit for load-bearing signatures
 countermodels for substantive independence claims where practical

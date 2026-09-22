@@ -38,9 +38,10 @@ the form "something is necessary" for free, and so empties the question rather t
 Nothing in the formal layer rules out a brute entity or a brute totality. Each is excluded by one
 principle of sufficient reason, and by nothing weaker that has been found.
 
-Under `W` the necessary-reality position has a further cost: the link from the necessary source to
-what it grounds or explains cannot necessitate its target. Section 5 says exactly where that is
-proved and where it needs the constitution law.
+Under `W` the necessary-reality position has a further cost. With A1, A2, A4 and A5, some link out
+of necessary grounds fails to necessitate its target; on the totality route the explanation of
+the totality fact fails to necessitate it, provided the constitution law holds. Section 5 has the
+theorems and the countermodel that shows the law is needed.
 
 ## 2. Foundation route: entities
 
@@ -238,7 +239,8 @@ Brute (bruteModel), NoSelfAccess         the foundation direction
 FreeCreation (freeCreationModel)         necessitation is load-bearing
 NecessaryCreation                        the necessitating side, on a non-degenerate frame
 NonNecessitatingExplainer,               necessitation, local sufficient explanation and
-BruteTotality, SelfCitingExplainer       the core are each load-bearing on the totality side
+BruteTotalityReuse (the accepted         the core are each load-bearing on the totality side
+  BruteTotality), SelfCitingExplainer
 NecessaryTotality                        the necessitating side of the totality equivalence
 LawlessNecessitation                     the law is needed for the reading against W
 ```
@@ -278,8 +280,10 @@ of the totality route carries a regress record and so fails A2 by construction.)
 not a position by itself: it only makes the foundation route unavailable and moves the question
 to the totality route.
 
-The necessitation premises of section 5 are not in this table. They are hypotheses of one cut,
-and under `W` the positions that keep a necessary reality must deny them.
+The necessitation premises of section 5 are not in this table. They are hypotheses of one cut.
+Under `W`, a position that keeps a necessary reality must deny the grounding premise if it holds
+A1, A2, A4 and A5, and must deny the explanation premise if it holds the core, local sufficient
+explanation and the constitution law.
 
 The current wording of each commitment, and what is known about it, is in the register in
 `STATUS.md`.
@@ -346,14 +350,17 @@ Philosophical, and not settled by any theorem here:
 - whether reality can have two or more independent necessary foundations (A3);
 - whether a necessary source can adequately ground or explain something contingent without
   necessitating it, and whether such a link is itself a brute element. Section 5 shows that,
-  under `W`, the necessary-reality position needs exactly such a link.
+  under `W`, the necessary-reality position needs such a link: on the foundation route from its
+  premises, on the totality route only under the constitution law as well.
 
 Formal, and not yet attempted:
 
 - the composition of section 5 with the constitution law as a Lean theorem, which needs the
   confinement of that law in `totality-constitution-1` to be amended by a reviewed change;
-- on the semantic side line: `SELF-CLOSURE-CONTRACT.md` section 9 and
-  `TRUTH-FACT-SEAM-CONTRACT.md` section 10;
+- on the semantic side line: whether maximality needs choice at arbitrary size
+  (`SELF-CLOSURE-CONTRACT.md` section 9). `TRUTH-FACT-SEAM-CONTRACT.md` section 10 records that
+  the truth predicate stays free off the image of the coding map; that is a finding, not an open
+  target;
 - on the Goedel-Scott line: a variant of the argument that avoids the collapse beside `W`, and
   the placement under restricted comprehension.
 

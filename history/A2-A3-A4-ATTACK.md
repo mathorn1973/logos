@@ -1,6 +1,6 @@
 # A2–A3–A4 ATTACK
 
-Status: **NON-CANONICAL ATTACK NOTE, REVISED AFTER THE EXPLANATION LINE**.
+Status: **HISTORICAL ATTACK NOTE**. The current logical map, including the A3 and A4 questions below, is `MAP.md`; the live premise register is in `STATUS.md`.
 
 This note was written before the totality/explanation line existed. It has been revised
 against `main` as of `route-seam-1`. Two of its three targets changed shape; one did not.

@@ -1,6 +1,6 @@
 # DESIGN CONTRACT — CUT 1: MODAL FOUNDATION
 
-Status: **HISTORICAL CUT CONTRACT — CUT ACCEPTED ON MAIN**.
+Status: **HISTORICAL CUT CONTRACT - CUT ACCEPTED ON MAIN**.
 
 This contract records the design boundary of the first LOGOS cut. Project-wide governance, claim typing, import firewall, branch topology, and merge-closure rules now live in `PROJECT-RULES.md`.
 

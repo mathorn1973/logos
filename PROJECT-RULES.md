@@ -81,6 +81,8 @@ Its first cut is `scott-collapse-1`. The `GoedelScott` modules import the logic 
 
 Semantic self-reference (`internal-truth-1`, `self-closure-1`) is a separate line that shares no carrier with the grounding and totality cuts. The only module allowed to mention both lines is a seam cut, and a seam module must be a leaf: nothing imports it. CI enforces the carrier separation, the import direction and the leaf condition.
 
+The semantic self-reference line is a side study: it does not bear on the programme's question, and `README.md` and `MAP.md` present it that way. Its motivating argument needs a transfer premise from definability to ontology (`SemanticClosure` in `INTERNAL-TRUTH-CONTRACT.md`) that the line deliberately leaves unformalized. It rejoins the main line only through a cut that states that premise and tests it.
+
 Before restacking or merging a research cut, inspect actual Lean imports and theorem signatures. If a cut does not depend on another cut, prefer rebasing it directly on the weakest accepted `main` state that supplies its real dependencies.
 
 ## 5. No hidden strengthening
@@ -115,6 +117,8 @@ A documentation statement that an assumption is unused is not enough when the bo
 
 Each research cut may have a cut-specific design contract describing its semantic language, explicit commitments, intended theorems, countermodels, and acceptance tests.
 
+Contracts live under `contracts/<line>/`: `grounding`, `semantic` or `goedel-scott`. A cut on a new line opens a new folder.
+
 Cut contracts are local records. They do not define project-wide branch topology or override this file.
 
 Historical contracts may remain in the repository, but must be marked as historical when their planning sections are superseded.
@@ -126,10 +130,11 @@ A cut is not operationally complete at the instant its code PR merges.
 The merge operation is complete only after an immediate closure update brings repository truth into sync with `main`:
 
 ```text
-README: branch/in-review wording -> accepted/on-main wording
-STATUS: current branch/base -> actual main state
-contracts: obsolete planning language marked historical or corrected
-open stack: bases and dependency notes refreshed
+MAP: premises, theorems and countermodels the cut adds or changes
+STATUS: accepted-cuts table, live premise register and open stack -> actual main state
+CHANGELOG: the cut's record appended to history/CHANGELOG.md
+README: only if the answer it states has changed
+contracts: status line set to accepted; obsolete planning language marked historical or corrected
 ```
 
 This closure should be part of the same promotion session and should not be deferred to a later research cut.
@@ -158,3 +163,31 @@ Kripke accessibility != metaphysical possibility without an explicit bridge
 ## 11. Human responsibility
 
 Formal success closes derivability questions, not metaphysical truth questions. When Lean isolates a fork between explicit premises or countermodels, the next task is philosophical analysis of those premises, not relabeling the theorem as unconditional fact.
+
+## 12. Documentation layout
+
+Each document has one job, and a fact is written in the document whose job it is.
+
+```text
+README.md               the question and the current answer; changes only when the answer does
+MAP.md                  the logical map: positions, routes, deciding premises, the theorems
+                        that use each premise and the countermodels that separate them
+STATUS.md               the current state of main only: accepted cuts, live premise register,
+                        enforced boundaries, open stack
+PROJECT-RULES.md        this file
+contracts/<line>/       frozen cut contracts
+history/CHANGELOG.md    the cut-by-cut record: what each cut established, its negative
+                        boundary, review and promotion notes
+history/                superseded notes, kept rather than deleted
+```
+
+Narrative about how a result was reached belongs in `history/CHANGELOG.md` and in the cut's
+contract, not in `README.md` or `STATUS.md`.
+
+A result that follows from definitions by propositional logic alone, with no axiom and no
+premise of its route, is typed as *propositional* wherever `MAP.md` or `README.md` cites it. It
+fixes what a premise means; it is not presented as a finding. An interpretation of several
+results taken together is typed as a *reading*.
+
+Premise names that the current argument no longer uses are listed as retired in `MAP.md`
+section 9 rather than kept among the current premises.

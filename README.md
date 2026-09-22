@@ -1,279 +1,87 @@
 # LOGOS
 
-A formal laboratory for ontology, modal logic, and computational philosophy in Lean.
+A formal laboratory in Lean 4 for one question:
 
-LOGOS does not assert theological conclusions unconditionally. Every theorem is relative to explicit definitions, assumptions, semantics, and frame conditions. Lean checks consequence; human judgment remains responsible for the meaning and truth of the starting commitments.
+> If anything exists at all, must there be, at the deepest level, some necessary reality, or
+> could everything in the end be contingent?
 
-## Accepted main line
+Lean checks what follows from what. It does not check whether the premises are true, or whether
+a formal predicate captures the philosophical notion it is named after. That responsibility stays
+with the human reader, and the repository is built to keep it visible.
 
-`main` currently contains thirteen accepted formal cuts on the grounding line:
+## The answer so far
 
-1. `modal-foundation-1` - Kripke semantics for necessity, possibility, contingency, and standard modal principles under exact frame hypotheses;
-2. `finite-countermodels-2` - explicit finite frames, pointed refutations, and a genuine contingency witness;
-3. `absolute-ground-1` - a grounding language, explicit A0-A8 assumption records, the minimal necessary-ground theorem, and independence/countermodels delimiting its assumptions;
-4. `totality-regress-1` - a separate fact carrier and an A2-free totality route showing that pure contingency is impossible under explicit fact-sufficient-ground, externality, and completeness commitments;
-5. `totality-externality-1` - a role split between constitution and explanation, a premise-order audit for F4/EF4 and E/E_expl, and a derived-externality theorem from explanatory scope plus irreflexivity;
-6. `self-explanation-1` - reduction of explanatory irreflexivity first to contingent propriety and then to a local adequacy condition on the totality explanation alone;
-7. `fact-sufficient-explanation-1` - removal of EF4 from the core, and the resulting three-way fork in which a contingent explanatory absolute is a live option;
-8. `contingent-absolute-1` - the modal reading of that option, and the recorded finding that deriving necessity from explanatory ultimacy is equivalent to local EF4;
-9. `grounded-modality-1` - modal conditions as a carrier separate from entities and explanatory sources, with the recorded finding that the axis does not close the fork;
-10. `carrier-schema-1` - the closure argument stated for an arbitrary carrier, with the accepted route shown to be an instance of it;
-11. `route-seam-1` - the relation between the foundation route and the totality route, and the deflation of the `RegressTotality` record;
-12. `a4-fact-independence-1` - two countermodels under one hypothesis schema showing that A4 at the entity level and local sufficient explanation for the totality fact are two commitments, neither entailing the other;
-13. `totality-constitution-1` - a constitution law saying what the totality fact is, under which the first disjunct of the trichotomy is necessitarianism about the actual world, and the presupposition `W` that removes it.
+Every statement below is relative to the definitions and premises stated in this repository.
 
-### Second line: semantic self-reference
+1. **Logic alone does not force a necessary reality.** Pure contingency is consistent. There are
+   models with an actual, ungrounded entity that need not exist (`bruteModel`), and models in
+   which nothing actual is necessary and the totality of contingent things is an actual fact
+   that is neither necessary nor explained (`BruteTotality`).
 
-`main` also contains three cuts that are not part of the grounding sequence above. The first two share no vocabulary with it, and the third is their seam with it:
+2. **What forces it is a principle of sufficient reason, in one of two forms, and neither form
+   implies the other** (`a4-fact-independence-1`, under a shared hypothesis schema).
+   - *For entities* (A4): what exists but need not exist is not ultimate. Together with
+     well-founded grounding (A2) and three technical premises (A0, A1, A5), some ungrounded
+     entity exists necessarily (`exists_necessary_ungrounded`).
+   - *For the totality* (local sufficient explanation): if the totality of contingent things is
+     not necessary, something explains it. Together with completeness, scope and adequacy,
+     whatever explains it is necessary (`closure_explainer_is_necessary`).
 
-- `internal-truth-1` - seven separately droppable conditions on a language and its truth-value carrier, shown jointly unsatisfiable, with an independence witness and a non-redundancy theorem for each. Truth-value gaps and truth-value gluts are separated over one and the same value carrier and negation, so they are distinct exits rather than one condition. It is not Tarski's undefinability theorem: there is no arithmetic, no coding, no representability and no theory, and the coding and diagonalisation assumptions are primitive and visible. It says nothing about meaning, experience, physicalism, necessary reality, grounding or the totality fact, and it does not show that there is no absolute standpoint.
+3. **The only other exit is necessitarianism:** everything actual is necessary. It is consistent
+   and not refuted here, but it grants the conclusion trivially and empties the question. The
+   question presupposes `W`: something actual is not necessary. Scott's version of the
+   ontological argument lands on this exit, under full comprehension and back-access at the
+   actual world (`scott-collapse-1`).
 
-- `self-closure-1` - the bound implied by the previous cut, shown tight. A language is semantically self-closed when its internal truth predicate applies to every one of its own sentences and returns exactly the external value there. Self-closure is satisfiable classically, survives an infinite sentence type, and is compatible with a predicate carrier realising every function on codes except exactly one, that one being the negated internal truth predicate. So the cost of self-closure is a single nameable function rather than a knife edge. The cut introduces no carrier and no premise; two of its five results are typed as a restatement and a re-presentation and carry no new content.
+4. **Attempts to get necessity without paying for one of the two principles failed, and the
+   failures are kept as results.** Deriving necessity from explanatory ultimacy is equivalent to
+   the local principle (`contingent-absolute-1`). Grounding modality in conditions leaves a brute
+   totality possible (`grounded-modality-1`). Offering an actual contingent explainer from a
+   fresh carrier works only by exempting that carrier from completeness, scope or adequacy
+   (`carrier-schema-1`).
 
-- `truth-fact-seam-1` - the first module in the repository to mention both lines, joined by one explicit bridge saying that a sentence's fact obtains exactly when the sentence is designated true. The truth carrier turns out to be **conditionally** new. Under a two-valued carrier and a self-closed language it collapses into the fact carrier on the image of the naming map, which is the renaming worry confirmed for that case. Under a carrier with two distinct values both designated true it does not collapse. The fact carrier is in turn not a function of the language side, with the naming map proved surjective, so the residual freedom there is modal rather than extensional. The bridge is a commitment, not a discovery, and anyone who rejects that reading is untouched by the result.
+The formal arguments are short; the central theorems take a few lines each. The weight is in the
+premises, and the job of the repository is to show exactly which premise carries it.
 
-This line uses no `Entity`, `Fact` or `World` carrier outside the seam module, and no module of the grounding line imports any of it. The seam module is a leaf: nothing imports it either. CI enforces all three, and `Logos/SemanticLineAudit.lean` pins the axiom claims.
+## What is not claimed
 
-Nothing on this line concerns an absolute, a God, simplicity, or any theological notion, and no name in it may be read that way. Self-closure where it holds is bought with expressive poverty rather than plenitude: the language is self-closed because it cannot express one specific thing about itself.
+Nothing here shows that a necessary reality exists: every such conclusion is conditional on one
+of the two principles above. Nothing shows that it is one: uniqueness needs A3, and
+`twoRootModel` has two distinct ungrounded roots satisfying every other foundation premise (on a
+frame where necessity is degenerate; see `MAP.md` section 2). Nothing shows that it is personal,
+intelligent or good, that it has a will, or that it has any traditional divine attribute.
+Nothing shows that a brute fact or a brute modality is a contradiction. "Absolute" is a
+structural term here, not a theological one.
 
-### Third line: Goedel-Scott
+## Where to read
 
-`main` contains one cut on the Goedel-Scott line:
+- `MAP.md`: the logical map. The positions, the two routes, the premises that decide between
+  them, the theorems that use each premise and the countermodels that separate them. Start here.
+- `STATUS.md`: what is on `main`, what is open, and the register of live premises.
+- `PROJECT-RULES.md`: claim typing, import firewall, the cut cycle, audits and closure.
+- `contracts/`: the frozen contract of every accepted cut, one folder per line.
+- `history/`: how the programme got here. `CHANGELOG.md` is the cut-by-cut record, including
+  the premise vocabulary that has since been retired.
+- `Logos/`: the Lean sources. The `Logos/*Audit.lean` files print the axioms of the main
+  theorems for review, and some pin theorem boundaries with wrapper theorems that stop
+  elaborating if a signature is strengthened.
 
-- `scott-collapse-1` - Scott's version of the ontological argument stated over a LOGOS frame, with a leaf seam to the grounding line. Under full comprehension, Scott's definition D3 is a frame condition: it holds of an individual at a world exactly when that world accesses nothing but itself. With possible exemplification from A1 and A2, with A5, and with back-access at the actual world, that forces the single-successor frame recorded by `totality-constitution-1`. So Scott's package sits on the position that denies `W`. It is not a rival argument for necessary reality beside the LOGOS question; it sits on the position that empties the question. A3, A4 and the all-positive predicate play no part in putting it there. The package is consistent, each of A1, A2, A5 and back-access is shown load-bearing by a model satisfying everything else, and over one grounding model any entity whatever, including a derived one, can be made the all-positive individual, so the package says nothing about grounding position.
+The repository has one main line and two side lines. The grounding line carries the answer
+above. The Goedel-Scott line places Scott's argument on that map. The semantic self-reference
+line is a separate study that does not bear on the question; `MAP.md` section 7 says why it is
+kept apart.
 
-The placement depends on **full comprehension**: property variables range over every function from individuals and worlds to propositions, including ones that mention a particular world. That is a commitment, not a discovery, and a reader who restricts property variables to what the object language can express is untouched by the result. The conclusion also sits close to A5, which under full comprehension says that being at a world that accesses only itself is positive; the independence set does not and cannot address that proximity.
+## Building
 
-The modules of this line import the logic layer and nothing else. No module of the other two lines imports them, the seam module is a leaf, and it does not use the constitution law. CI enforces all of that and rejects theological tokens in the line's Lean files. Scott's D1 is named `AllPositive`; the source's name for it appears only in the contract's source mapping, and no theorem uses any reading of it.
-
-This cut does not show that Scott's argument is unsound or that his premises are false, says nothing about Goedel's original axioms or about the variants that avoid modal collapse, and does not show `W` true or false.
-
-The load-bearing grounding theorem remains:
-
-```text
-A0 + A1 + A2 + A4 + A5
-        ->
-there exists some actual ungrounded entity that exists necessarily
-```
-
-Formally, `exists_necessary_ungrounded` requires `NecessaryExistenceAxioms`. That record contains A0-A2 and A4-A5. It contains neither A3 nor the later transcendence/creation assumptions A6-A8.
-
-A3 is separate and is used for uniqueness and universal grounding ancestry. A6-A8 are explicit extensions concerning created-order transcendence and essential aseity; they are not premises of the minimal existence theorem.
-
-The accepted totality route has a different conclusion and premise package:
-
-```text
-fact F4 + externality E + completeness C
-        ->
-NecessaryFact(totality)
-OR
-an actual necessary entity grounds the totality fact from outside the regress
-```
-
-It does not prove that the necessary witness is ungrounded, and it does not eliminate A2 from the stronger foundation theorem. `route-seam-1` pins both points; see below.
-
-`totality-externality-1` then audits the externality route more finely. It introduces a primitive `explainsFact` relation alongside constitutive support and distinguishes:
-
-```text
-F4     generic fact grounding of actual non-necessary facts
-EF4    explanatory grounding of actual non-necessary facts
-E      every generic ground of the totality fact is outside
-E_expl every explanatory source of the totality fact is outside
-```
-
-The accepted premise-order result is:
+Lean 4.30.0, pinned in `lean-toolchain`. There are no dependencies: `lake-manifest.json` lists
+no packages, so `#print axioms` reports only what the proofs themselves use.
 
 ```text
-without G = ExplanationImpliesGrounding:
-  F4 and EF4 are independent
-  E and E_expl are independent
-
-with G:
-  EF4 is strictly stronger than F4
-  E_expl is strictly weaker than E
+lake build
 ```
 
-Therefore the cut is not a proof that the total metaphysical premise package became weaker. It is a factorization and premise-accounting result: externality can be weakened and then derived from lower explanatory conditions, but the sufficient-ground commitment moves from generic F4 to stronger EF4 when explanation is required to imply grounding.
-
-The deepest accepted theorem is conditional on:
-
-```text
-EF4 + S + I + C
-```
-
-where `S` is explanatory scope coverage and `I` is explanatory irreflexivity. From this package Lean proves either a necessary totality fact or an actual necessary explanatory source outside the represented regress. The deep theorem uses no A2, no A3, no old E, and no primitive E_expl premise.
-
-Dedicated comparison, scope, type-boundary, and static CI audits pin these boundaries.
-
-## Where the explanation line ended
-
-Cuts 6 to 10 took the totality route as far as the present language allows. The outcome is a mapped fork, not a closure, and two attempts at closing it are recorded as failures rather than removed.
-
-EF4 is no longer a premise of the core. `TotalityExplanationCore` contains only source actuality, local explanatory adequacy and completeness, and asserts no principle that an explanation must exist. From it Lean proves:
-
-```text
-NecessaryFact(totality)
-OR
-an actual necessary explanatory source explains the totality fact
-OR
-the totality fact is a contingent explanatory absolute:
-  actual, non-necessary, and unexplained
-```
-
-The third disjunct is the surviving opponent position. Two routes to removing it were tried:
-
-- `contingent-absolute-1` tested the claim that an explanatorily ultimate fact must be necessary. At the designated actual fact that claim is provably equivalent to local EF4. It is not an independent route around EF4; it is EF4 restated in modal-stability form. Any future argument from ultimacy to necessity must add genuinely new structure rather than rename the old premise.
-- `grounded-modality-1` tested whether refusing to identify raw Kripke accessibility with metaphysically licensed possibility closes the position. It does not. The cut's own `ConditionedBrute` model satisfies no-brute-modality together with an unexplained, non-necessary totality fact. The cut's main implication also partitions necessity rather than deriving it: no-brute-modality together with modal unconditionedness is equivalent to actuality together with necessity.
-
-`carrier-schema-1` then answers the general form of the worry those two cuts raise. The engine of the accepted route consults only five predicates of its sources, so it can be stated for an arbitrary carrier:
-
-```text
-escape_requires_exemption
-    K.Explains a -> not K.Necessary a -> not ScopeClosureAxioms K
-```
-
-A contingent item can be offered as an explainer of the target only at a carrier exempted from completeness, scope or adequacy. Offering one from a fresh carrier therefore never dissolves the fork. Three one-item countermodels show each of the three conditions is separately load-bearing, and `TotalityExplanationCore` is proved to be an instance of the schema rather than an analogy to it.
-
-The schema records that an item explains the designated target. It does not record that the item is itself unexplained, and it supplies no interpretation of `Explains` for an arbitrary fresh carrier, so it does not license the stronger reading that an unexplained item is being relocated.
-
-The open question is consequently no longer "can a contingent explainer always be found somewhere fresh". It is: for a proposed carrier, which condition is it exempt from, and is that exemption principled or merely stipulated.
-
-## How the two routes are related
-
-`route-seam-1` settles a question the two routes had left open by never being compared.
-
-### The record is weak
-
-`RegressTotality` carries an infinite descending grounding chain. Beyond that, its fact
-layer, its designated totality fact and its `inside` predicate are largely free data, so any
-actual infinite descent can be dressed as one over a single always-obtaining fact. The record
-captures a chain plus a label. Every substantive claim of the totality route arrives with the
-premises stated over it, never from the record itself.
-
-The point is made concrete rather than asserted: in the freely constructed witness the
-totality fact obtains at every world, so the totality conclusion holds by its first disjunct
-with no explanatory premise doing any work.
-
-### The presuppositions are incompatible
-
-A2 is a field of the foundation package and is refuted by the mere presence of the record.
-
-```text
-RegressTotality M F -> not WellFounded (ActualGrounds M)
-RegressTotality M F -> not NecessaryExistenceAxioms M
-```
-
-No model carries both premise packages, and a theorem stated over both is vacuous, which
-`seam_bridge_is_vacuous` states outright. These theorems depend on no axioms at all.
-
-This is a statement about presuppositions, not about conclusions. Well-foundedness against
-the availability of a bare regress record is an exhaustive **structural** dichotomy. The
-full premise packages of the two arguments are **not** exhaustive and may fail together:
-well-founded grounding by itself supplies neither A0, A1, A4 nor A5, and the availability of
-a regress record by itself supplies neither local sufficient explanation, nor adequacy, nor
-completeness. "One route or the other applies" is not proved and is not true in general.
-
-### The core fixes modality, not grounding
-
-Against `TotalityExplanationCore` the cut exhibits a model in which the explanatory source of
-the totality fact is actual, necessary and outside the regress, and is nevertheless grounded
-by a further necessary entity. The accepted positive model gives the opposite reading. So the
-core determines the modal status of any source that explains the totality fact and determines
-nothing about that source's position in the grounding order.
-
-`AbsoluteGround`, which builds in `Ungrounded`, is therefore reachable only on the foundation
-side. Whether the totality route's middle disjunct deserves the same name is a human question
-the formal layer leaves open.
-
-## What the totality fact is
-
-`route-seam-1` left the designated totality fact as free data. `totality-constitution-1` makes
-the repair and records what it costs. It states a constitution law, confined to the cut:
-
-```text
-ConstitutedTotality F R
-    forall w, holdsAt w totality <-> forall x, inside x -> existsAt w x
-```
-
-Membership is rigid, so this is the de re reading: the fact that *these* members exist. The
-law fixes when the totality obtains and nothing else; what grounds or explains it stays free.
-It is a commitment about what the fact carrier records, not a discovery, and anyone who
-rejects that reading is untouched by the results.
-
-Under the law the first disjunct of the trichotomy stops being a free option. It is
-member-necessity, and under completeness it is exactly the denial of
-
-```text
-W   something actual is not necessary
-```
-
-`W` is in no accepted premise package. It is the presupposition of the programme's question
-rather than a commitment among the others. Denying it is necessitarianism about the actual
-world, which is a consistent position, is not refuted here, and grants the totality
-conclusion trivially while emptying the question. With the law and `W` the trichotomy reduces
-to the fork between a necessary explanatory source and a contingent explanatory absolute.
-That fork is exactly where `fact-sufficient-explanation-1` left it, and local sufficient
-explanation is still the commitment that decides it. The cut is a reduction under two
-explicit premises, not a new route and not a closure.
-
-The same cut records a fact about the foundation route. Nothing in
-`NecessaryExistenceAxioms` constrains the frame beyond `A5`. On a frame where the actual
-world accesses only itself, `Necessary` coincides with `Actual`, `A4` is vacuous, and
-`exists_necessary_ungrounded` says what `exists_ungrounded` already said from `A0` to `A2`.
-The accepted `twoRootModel` lives on such a frame. The premises do not force that frame,
-as the accepted `free_creation_refutes_actual_implies_necessary` shows, but they do not
-exclude it either: the modal content of the central theorem is supplied by the frame, and
-`W` is what rules the degenerate reading out. This does not weaken the theorem. It records
-what its conclusion means on a frame the premises admit.
-
-## Current research frontier
-
-No cut is open on the grounding line. That programme has reached a stable state and the
-remaining work on it is philosophical rather than formal.
-
-No cut is open on the semantic self-reference line either. Its main open question, whether the
-truth carrier is a new axis or the fact carrier renamed, was settled conditionally by
-`truth-fact-seam-1`: it collapses under bivalence and self-closure and not otherwise. What
-remains open there is smaller and stated in `SELF-CLOSURE-CONTRACT.md` section 9 and
-`TRUTH-FACT-SEAM-CONTRACT.md` section 10.
-
-The judgments the machine has isolated and cannot settle are whether an identity citation can
-count as an adequate explanation of contingent existence, whether exempting a carrier from
-completeness, scope or adequacy can ever be principled, and whether a necessary explanatory
-source that is itself grounded deserves the name the foundation route earns.
-
-`a4-fact-independence-1` divides the brute-contingency question rather than answering it.
-A4 at the entity level and local sufficient explanation for the totality fact are two
-commitments, so a defence of one is not a defence of the other. Both are listed in `STATUS`.
-
-`totality-constitution-1` adds a presupposition and a confined commitment rather than a
-result about the fork. `W` and the constitution law are listed in `STATUS` next to the
-commitments, each under its own kind.
-
-No cut is open on the Goedel-Scott line. It is a separate line of the LOGOS program, not a step in the grounding/totality sequence, and nothing on the other lines depends on it. `scott-collapse-1` leaves two questions it names and does not attempt: whether a variant of the argument that avoids modal collapse can stand beside `W`, and whether any of the placement survives when property variables are restricted to what the object language can express.
-
-TWIST-J is likewise not a dependency of the general ontology core.
-
-## Project-wide rules
-
-Repository-wide claim typing, import firewall, cut topology, audit requirements, and the mandatory post-merge documentation closure rule live in `PROJECT-RULES.md`.
-
-Cut-specific contracts remain local records of the assumptions and acceptance tests for their cuts; they do not override project-wide rules.
-
-See also:
-
-- `ABSOLUTE-GROUND-CONTRACT.md` for the accepted foundation route;
-- `TOTALITY-REGRESS-CONTRACT.md` for the accepted totality route;
-- `TOTALITY-EXTERNALITY-CONTRACT.md` for the accepted externality/premise-order cut;
-- `SELF-EXPLANATION-CONTRACT.md`, `FACT-SUFFICIENT-EXPLANATION-CONTRACT.md`, `CONTINGENT-ABSOLUTE-CONTRACT.md`, `GROUNDED-MODALITY-CONTRACT.md` and `CARRIER-SCHEMA-CONTRACT.md` for the accepted explanation line;
-- `ROUTE-SEAM-CONTRACT.md` for the relation between the two routes;
-- `A4-FACT-INDEPENDENCE-CONTRACT.md` for the independence of the entity-level and fact-level principles;
-- `TOTALITY-CONSTITUTION-CONTRACT.md` for the constitution law, the presupposition `W` and the degenerate-frame reading of the foundation theorem;
-- `INTERNAL-TRUTH-CONTRACT.md`, `SELF-CLOSURE-CONTRACT.md` and `TRUTH-FACT-SEAM-CONTRACT.md` for the semantic self-reference line and its seam with the grounding line;
-- `SCOTT-COLLAPSE-CONTRACT.md` for the Goedel-Scott line, its seam with the grounding line, and the comprehension commitment the placement depends on;
-- `A2-A3-A4-ATTACK.md` for the foundation route's philosophical attack surface;
-- `DESIGN-CONTRACT.md` for the historical CUT 1 design contract.
-
-Status: **FORMAL LABORATORY - EXPLANATION LINE AND ROUTE SEAM ON MAIN**.
+CI (`.github/workflows/lean.yml`) also rejects `sorry`, runs every audit file, and enforces
+line-specific import and token guards. The general layer direction of `PROJECT-RULES.md`
+section 3 is kept by review, not by CI.
 
 License: MIT, copyright 2026 A. M. Thorn.
